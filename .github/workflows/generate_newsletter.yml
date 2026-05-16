@@ -3,8 +3,8 @@ name: Generate SEA Electronics Newsletter
 # ── Triggers ───────────────────────────────────────────────────────────────
 on:
   schedule:
-    # Every Friday at 09:00 SGT / MYT (UTC+8) = 01:00 UTC
-    - cron: '0 1 * * 5'
+    # Every Monday at 08:00 SGT (UTC+8) = 00:00 UTC
+    - cron: '0 0 * * 1'
 
   # Allow manual run from GitHub → Actions tab → "Run workflow"
   workflow_dispatch:

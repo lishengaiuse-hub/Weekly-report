@@ -131,7 +131,7 @@ python generate_newsletter.py --search-cache search_cache.txt
 
 ## Schedule
 
-The workflow runs automatically every **Friday at 09:00 SGT / MYT** (01:00 UTC). Output filename convention:
+The workflow runs automatically every **Monday at 08:00 SGT** (00:00 UTC). Output filename convention:
 
 ```
 newsletter_SEA_electronics_DDMONYYYY_EN.html
