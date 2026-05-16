@@ -1,0 +1,36 @@
+# ── Secrets — NEVER commit these ─────────────────────────────
+.env
+
+# ── Python ────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+.Python
+
+# ── Logs & temp files ─────────────────────────────────────────
+newsletter_generator.log
+*.log
+search_cache*.txt
+debug_*.txt
+
+# ── OS files ──────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDE ───────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── Output newsletters (generated files — tracked by git) ─────
+# The output/ folder IS committed so newsletters are version-controlled.
+# Remove the next line if you prefer NOT to store them in git.
+# output/*.html

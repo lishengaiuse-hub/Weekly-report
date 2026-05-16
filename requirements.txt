@@ -1,0 +1,7 @@
+# SEA Newsletter Generator — Python dependencies
+# Install with: pip install -r requirements.txt
+
+openai>=1.35.0          # DeepSeek API (OpenAI-compatible) AND OpenAI models
+anthropic>=0.40.0       # Anthropic Claude (optional — only needed if PROVIDER=anthropic)
+requests>=2.31.0        # HTTP for Tavily search API
+python-dotenv>=1.0.0    # Load .env file for local development
