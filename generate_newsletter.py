@@ -54,9 +54,9 @@ ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
 TAVILY_API_KEY    = os.getenv("TAVILY_API_KEY", "")
 
 _DEFAULT_MODELS = {"deepseek": "deepseek-chat", "anthropic": "claude-opus-4-7"}
-MODEL      = os.getenv("MODEL", _DEFAULT_MODELS.get(PROVIDER, "deepseek-chat"))
-MAX_TOKENS = int(os.getenv("MAX_TOKENS", "7000"))   # DeepSeek hard limit 8192
-SEARCH_N   = int(os.getenv("SEARCH_RESULTS_PER_QUERY", "6"))
+MODEL      = os.getenv("MODEL") or _DEFAULT_MODELS.get(PROVIDER, "deepseek-chat")
+MAX_TOKENS = int(os.getenv("MAX_TOKENS") or "7000")   # DeepSeek hard limit 8192; "or" handles empty string
+SEARCH_N   = int(os.getenv("SEARCH_RESULTS_PER_QUERY") or "6")
 
 # Default to ./output so GitHub Actions works out of the box;
 # override with OUTPUT_DIR env var for local Windows paths.
