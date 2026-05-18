@@ -214,6 +214,40 @@ A companion automated pipeline that generates a weekly U.S. market intelligence 
 | **Coverage** | 🇺🇸 U.S. (12 modules) · 🇨🇳 A股 (indices · sectors · 北向 · 融资 · PMI · 茅台) · 🤖 DeepSeek AI解读 (⑬) |
 | **API keys required** | None (FRED optional · Gmail secrets for email delivery) |
 | **Email delivery** | Auto-sends HTML report every Friday 17:00 CST (configure `EMAIL_FROM`, `EMAIL_PASSWORD`, `EMAIL_TO` in repo secrets) |
+| **AI analysis** | DeepSeek AI market commentary ⑬ — add `DEEPSEEK_API_KEY` to repo secrets |
+
+### Financial-report pipeline file structure
+
+```
+Financial-report/
+├── scripts/
+│   ├── main.py                # Entrypoint: fetch → AI analysis → email
+│   ├── fetch_data.py          # Data: yfinance · akshare · FRED · pizzint.watch
+│   ├── generate_report.py     # HTML renderer (13 US modules + 8 CN modules)
+│   ├── generate_analysis.py   # DeepSeek AI commentary (⑬)
+│   └── send_email.py          # Gmail SMTP auto-delivery
+├── requirements.txt
+├── .github/workflows/
+│   └── weekly_report.yml      # Cron: every Friday 09:00 UTC = 17:00 CST
+└── output/
+    ├── index.html             # Latest generated report
+    └── data.json              # Latest fetched data
+```
+
+### Required GitHub Secrets (Financial-report repo)
+
+Configure at: https://github.com/lishengaiuse-hub/Financial-report/settings/secrets/actions
+
+| Secret | Required | Purpose |
+|--------|----------|---------|
+| `DEEPSEEK_API_KEY` | Optional | AI market commentary section ⑬ |
+| `EMAIL_FROM` | Optional* | Gmail sender address |
+| `EMAIL_PASSWORD` | Optional* | Gmail App Password (16 chars) |
+| `EMAIL_TO` | Optional* | Recipient(s), comma-separated |
+| `EMAIL_CC` | Optional | CC recipients |
+| `FRED_API_KEY` | Optional | CPI / NFP / ISM macro data |
+
+*All three EMAIL_* secrets must be set together for email delivery to activate.
 
 ---
 
