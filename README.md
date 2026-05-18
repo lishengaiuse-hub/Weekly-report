@@ -201,6 +201,20 @@ GitHub Actions wakes up
 
 ---
 
+## Related: U.S. Market Sentiment & Macro Report
+
+A companion automated pipeline that generates a weekly U.S. market intelligence report (12 modules: indices, volatility, macro, sectors, semiconductors, commodities, Pentagon Pizza Index).
+
+| | |
+|---|---|
+| **Repo** | https://github.com/lishengaiuse-hub/us-market-report |
+| **Live report** | https://lishengaiuse-hub.github.io/us-market-report/ |
+| **Schedule** | Every **Friday 17:00 CST** (09:00 UTC) |
+| **Data** | yfinance · FRED API · pizzint.watch |
+| **API keys required** | None (FRED key optional for CPI/NFP/ISM) |
+
+---
+
 ## Providers
 
 | Provider | Model | Input limit | Output limit | Cost |
