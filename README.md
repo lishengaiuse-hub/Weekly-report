@@ -210,7 +210,8 @@ A companion automated pipeline that generates a weekly U.S. market intelligence 
 | **Repo** | https://github.com/lishengaiuse-hub/us-market-report |
 | **Live report** | https://lishengaiuse-hub.github.io/us-market-report/ |
 | **Schedule** | Every **Friday 17:00 CST** (09:00 UTC) |
-| **Data** | yfinance · FRED API · pizzint.watch |
+| **Data** | yfinance · FRED API · pizzint.watch · SSE · SZSE |
+| **Coverage** | 🇺🇸 U.S. market (12 modules) + 🇨🇳 China A-share (5 indices · 8 sector ETFs · USDCNY) |
 | **API keys required** | None (FRED key optional for CPI/NFP/ISM) |
 
 ---
