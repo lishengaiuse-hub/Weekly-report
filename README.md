@@ -249,6 +249,19 @@ Configure at: https://github.com/lishengaiuse-hub/Financial-report/settings/secr
 
 *All three EMAIL_* secrets must be set together for email delivery to activate.
 
+### Manual trigger (test run)
+
+To run the pipeline on demand (outside the Friday schedule):
+
+```bash
+# Via GitHub CLI
+gh workflow run weekly_report.yml --repo lishengaiuse-hub/Financial-report
+
+# Or via GitHub UI → Actions tab:
+# https://github.com/lishengaiuse-hub/Financial-report/actions/workflows/weekly_report.yml
+# Click "Run workflow" button on the right side of the page
+```
+
 > **FRED API Key is not required.** All 10 macro fields (Fed rate, 10Y yield, CPI, NFP, ISM PMI, etc.) are fetched via FRED's free public CSV endpoint with zero registration. The `FRED_API_KEY` secret only adds a faster API path; the pipeline works fully without it.
 
 ---
