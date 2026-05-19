@@ -211,7 +211,7 @@ A companion automated pipeline that generates a weekly U.S. market intelligence 
 | **Live report** | https://lishengaiuse-hub.github.io/Financial-report/ |
 | **Schedule** | Every **Friday 17:00 CST** (09:00 UTC) |
 | **Data** | yfinance · FRED API · pizzint.watch · SSE · SZSE |
-| **Coverage** | 🇺🇸 U.S. (12 modules) · 🇨🇳 A股 (indices · sectors · 北向 · 融资 · PMI · 茅台) · 🤖 DeepSeek AI解读 (⑬) |
+| **Coverage** | 🇺🇸 U.S. (12 modules) · 🇨🇳 A股 (indices · sectors · 北向 · 融资 · PMI · 茅台 · 陆家嘴LNJI) · 🤖 DeepSeek AI解读 |
 | **API keys required** | None (FRED optional · Gmail secrets for email delivery) |
 | **Email delivery** | Auto-sends HTML report every Friday 17:00 CST (configure `EMAIL_FROM`, `EMAIL_PASSWORD`, `EMAIL_TO` in repo secrets) |
 | **AI analysis** | DeepSeek AI market commentary ⑬ — add `DEEPSEEK_API_KEY` to repo secrets |
