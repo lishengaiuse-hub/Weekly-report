@@ -245,9 +245,11 @@ Configure at: https://github.com/lishengaiuse-hub/Financial-report/settings/secr
 | `EMAIL_PASSWORD` | Optional* | Gmail App Password (16 chars) |
 | `EMAIL_TO` | Optional* | Recipient(s), comma-separated |
 | `EMAIL_CC` | Optional | CC recipients |
-| `FRED_API_KEY` | Optional | CPI / NFP / ISM macro data |
+| `FRED_API_KEY` | **Not needed** | CPI/NFP/ISM auto-fetched via FRED public CSV (no key required) |
 
 *All three EMAIL_* secrets must be set together for email delivery to activate.
+
+> **FRED API Key is not required.** All 10 macro fields (Fed rate, 10Y yield, CPI, NFP, ISM PMI, etc.) are fetched via FRED's free public CSV endpoint with zero registration. The `FRED_API_KEY` secret only adds a faster API path; the pipeline works fully without it.
 
 ---
 
