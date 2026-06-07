@@ -26,7 +26,7 @@ import os
 import smtplib
 import sys
 import time
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from email import encoders
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
@@ -54,9 +54,9 @@ ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
 TAVILY_API_KEY    = os.getenv("TAVILY_API_KEY", "")
 
 _DEFAULT_MODELS = {"deepseek": "deepseek-chat", "anthropic": "claude-opus-4-7"}
-MODEL      = os.getenv("MODEL", _DEFAULT_MODELS.get(PROVIDER, "deepseek-chat"))
-MAX_TOKENS = int(os.getenv("MAX_TOKENS", "7000"))   # DeepSeek hard limit 8192
-SEARCH_N   = int(os.getenv("SEARCH_RESULTS_PER_QUERY", "6"))
+MODEL      = os.getenv("MODEL") or _DEFAULT_MODELS.get(PROVIDER, "deepseek-chat")
+MAX_TOKENS = int(os.getenv("MAX_TOKENS") or "7000")   # DeepSeek hard limit 8192; "or" handles empty string
+SEARCH_N   = int(os.getenv("SEARCH_RESULTS_PER_QUERY") or "6")
 
 # Default to ./output so GitHub Actions works out of the box;
 # override with OUTPUT_DIR env var for local Windows paths.
@@ -209,8 +209,27 @@ def make_output_path(end: datetime) -> Path:
 # WEB SEARCH  —  Tavily API
 # ══════════════════════════════════════════════════════════════════════════════
 
+def _parse_published_date(raw: str) -> datetime | None:
+    """Best-effort parse of Tavily published_date strings."""
+    if not raw or raw == "n/d":
+        return None
+    for pattern in ("%Y-%m-%dT%H:%M:%S", "%Y-%m-%dT%H:%M:%SZ",
+                    "%Y-%m-%dT%H:%M:%S%z", "%Y-%m-%d", "%d %b %Y",
+                    "%B %d, %Y", "%b %d, %Y"):
+        try:
+            dt = datetime.strptime(raw.strip()[:19] if "T" in raw else raw.strip(), pattern)
+            return dt
+        except ValueError:
+            continue
+    return None
+
+
 def tavily_search(query: str, days_back: int = 7) -> str:
-    """Run one Tavily search; returns a formatted text block."""
+    """Run one Tavily search; returns a formatted text block.
+
+    Results with a published_date older than ``days_back`` are discarded
+    so that the newsletter only contains news from the past week.
+    """
     payload = {
         "api_key": TAVILY_API_KEY,
         "query": query,
@@ -228,15 +247,25 @@ def tavily_search(query: str, days_back: int = 7) -> str:
         log.warning(f"    ⚠ Search failed: {exc}")
         return f"[Search unavailable for: {query}]"
 
+    cutoff = datetime.now() - timedelta(days=days_back)
+
     lines = []
     if data.get("answer"):
         lines.append(f"SUMMARY: {data['answer']}")
+    skipped = 0
     for item in data.get("results", []):
-        pub   = item.get("published_date") or "n/d"
+        pub_raw = item.get("published_date") or "n/d"
+        pub_dt  = _parse_published_date(pub_raw)
+        if pub_dt and pub_dt < cutoff:
+            skipped += 1
+            continue
         title = item.get("title", "(no title)")
         url   = item.get("url", "")
         body  = item.get("content", "")[:480]
-        lines.append(f"• [{pub}] {title}\n  URL: {url}\n  {body}")
+        lines.append(f"• [{pub_raw}] {title}\n  URL: {url}\n  {body}")
+
+    if skipped:
+        log.info(f"    ↳ filtered out {skipped} result(s) older than {days_back} days")
 
     return "\n".join(lines) if lines else "[No results]"
 
@@ -352,6 +381,10 @@ Generate the BODY CONTENT of a weekly SEA consumer electronics newsletter.
 Use ONLY the news from the search results below.
 Do NOT invent facts. If a section has no relevant results, write:
 <p class="no-news">No significant developments reported this week.</p>
+
+IMPORTANT: Only include news published within the coverage period below.
+Discard any article whose date falls outside {start_date} – {end_date}.
+If an article has no date, include it only if the content clearly refers to this week's events.
 
 COVERAGE : {start_date} – {end_date}
 COMPILED  : {end_date}
