@@ -382,9 +382,17 @@ Use ONLY the news from the search results below.
 Do NOT invent facts. If a section has no relevant results, write:
 <p class="no-news">No significant developments reported this week.</p>
 
-IMPORTANT: Only include news published within the coverage period below.
-Discard any article whose date falls outside {start_date} – {end_date}.
-If an article has no date, include it only if the content clearly refers to this week's events.
+IMPORTANT — DATE FILTERING (strictly enforce):
+1. Only include news where the EVENT ITSELF occurred within {start_date} – {end_date}.
+2. An article may be recently published but describe old events (e.g. a 2026
+   article summarising a policy announced in 2025). Such articles must be EXCLUDED
+   because the underlying event is stale — the article publication date alone is
+   NOT sufficient to qualify.
+3. Check dates, years, and temporal language in each article. If the key facts
+   (product launch, policy effective date, factory opening, deal signing) happened
+   before {start_date}, discard it.
+4. If an article has no date at all, include it only if the content clearly
+   describes events from this specific week.
 
 COVERAGE : {start_date} – {end_date}
 COMPILED  : {end_date}
