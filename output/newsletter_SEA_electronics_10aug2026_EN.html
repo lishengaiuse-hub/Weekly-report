@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEA Consumer Electronics Intelligence | 04–10 Aug 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+
+:root{--navy:#1a3a5c;--red:#c0392b;--cream:#f5f0e8;--white:#ffffff;
+--yellow-bg:#fdf6e3;--new-bg:#fff8f0;--ink:#0d0d0d;--muted:#6b5f50;
+--rule:#d4c9b5;--supply-bg:#f0eaf8;--supply-accent:#6d28d9;
+--supply-border:#c4b5fd;--gold:#b8860b;--gold-light:#fdf3d0;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}a:hover{text-decoration:underline}
+.wrap{max-width:880px;margin:0 auto;padding:0 24px 80px}
+.masthead{background:var(--navy);color:#fff;padding:52px 40px 40px;position:relative;overflow:hidden}
+.masthead::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-55deg,transparent,transparent 8px,rgba(255,255,255,.03) 8px,rgba(255,255,255,.03) 9px);pointer-events:none}
+.masthead::before{content:'';position:absolute;bottom:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--red) 0%,#e84040 50%,var(--red) 100%)}
+.mast-eyebrow{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:12px}
+.mast-title{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:16px}
+.mast-title em{font-style:italic;font-weight:400;color:rgba(255,255,255,.75)}
+.mast-flags{font-size:22px;letter-spacing:3px;margin:14px 0 10px;opacity:.9}
+.mast-tags{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 0}
+.mast-tag{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(255,255,255,.28);color:rgba(255,255,255,.68);padding:3px 9px;border-radius:2px}
+.mast-meta{font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,.6);margin-top:18px;display:flex;flex-wrap:wrap;gap:20px}
+.highlights{background:var(--red);color:#fff;padding:30px 32px}
+.highlights-label{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;opacity:.75;margin-bottom:18px}
+.hl-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.hl-grid{grid-template-columns:1fr}}
+.hl-item{display:flex;gap:12px;align-items:flex-start}
+.hl-num{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;line-height:1;opacity:.3;flex-shrink:0;width:26px}
+.hl-text{font-size:13.5px;font-weight:600;line-height:1.45}
+.section-rule{display:flex;align-items:center;gap:12px;margin:40px 0 20px;padding-bottom:12px;border-bottom:2.5px solid var(--navy)}
+.section-icon{font-size:22px}
+.section-rule h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--navy);flex:1}
+.section-sub{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.card{background:var(--white);border-top:3px solid var(--navy);padding:22px 24px;margin-bottom:20px;position:relative;box-shadow:0 1px 6px rgba(0,0,0,.05),0 0 0 1px rgba(0,0,0,.04)}
+.card.breaking{border-top-color:var(--red)}
+.card.new-item{background:var(--new-bg)}
+.breaking-badge{position:absolute;top:0;right:0;background:var(--red);color:#fff;font-family:'Space Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.14em;padding:3px 9px;text-transform:uppercase}
+.card-header{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px}
+.btag{font-family:'Space Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#fff;padding:3px 9px;border-radius:2px;flex-shrink:0;margin-top:3px}
+.b-samsung{background:#1428a0}.b-apple{background:#555}.b-huawei{background:#c82333}
+.b-oppo{background:#1e4a8c}.b-xiaomi{background:#f97316}.b-vivo{background:#415fff}
+.b-honor{background:#b8000e}.b-realme{background:#d97706}.b-iqoo{background:#0050a0}
+.b-transsion{background:#7c3aed}.b-motorola{background:#003087}.b-dyson{background:#c34a00}
+.b-panasonic{background:#003087}.b-hisense{background:#0a3d6b}.b-haier{background:#00529b}
+.b-tcl{background:#e31837}.b-policy{background:#374151}.b-event{background:#065f46}
+.b-supply{background:#5b21b6}.b-data{background:#0369a1}.b-ems{background:#5b21b6}
+.card h3{font-family:'Playfair Display',serif;font-size:17.5px;font-weight:700;line-height:1.3;color:var(--ink)}
+.card p{font-size:14px;color:#2c2620;line-height:1.7;margin-top:10px}
+.card p+p{margin-top:8px}
+.impact{background:var(--yellow-bg);border-left:3px solid var(--gold);padding:11px 15px;margin-top:16px}
+.impact-label{font-family:'Space Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+.impact p{font-size:13px;color:#3d2c00;line-height:1.6;margin-top:0}
+.src{font-family:'Space Mono',monospace;font-size:9.5px;color:var(--muted);margin-top:14px;padding-top:10px;border-top:1px solid var(--rule);line-height:1.6}
+.src a{color:var(--navy);text-decoration:none}.src a:hover{text-decoration:underline}
+.no-news{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);padding:14px 0 6px;font-style:italic}
+.global-wrap{background:var(--navy);color:#fff;padding:34px 36px;margin:40px 0}
+.global-wrap h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:22px;display:flex;align-items:center;gap:10px}
+.g-card{border-left:3px solid rgba(255,255,255,.25);padding:13px 18px;margin-bottom:18px}
+.g-card:last-child{margin-bottom:0}
+.g-card h4{font-family:'Playfair Display',serif;font-size:15.5px;font-weight:700;margin-bottom:7px}
+.g-card p{font-size:13.5px;color:rgba(255,255,255,.82)}
+.g-link{display:inline-block;margin-top:8px;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#fbbf24}
+.g-src{font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.45);margin-top:8px}
+.supply-wrap{background:var(--supply-bg);border:1px solid var(--supply-border);padding:28px 32px;margin:40px 0}
+.supply-wrap h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#3b0764;margin-bottom:22px;display:flex;align-items:center;gap:10px}
+.s-card{background:#fff;border-left:4px solid var(--supply-accent);padding:15px 18px;margin-bottom:15px}
+.s-card h4{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:#3b0764;margin-bottom:6px}
+.s-card p{font-size:13.5px;color:#2e1065;line-height:1.65}
+.s-card .s-meta{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--supply-accent);margin-top:8px;text-transform:uppercase}
+.s-impact{background:#ede9fe;border-left:3px solid #7c3aed;padding:9px 13px;margin-top:10px}
+.s-impact p{font-size:12.5px;color:#3b0764;margin:0}
+.policy-wrap{background:var(--gold-light);border:1px solid #e8c44a;padding:28px 32px;margin:40px 0}
+.policy-wrap h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#78350f;margin-bottom:22px;display:flex;align-items:center;gap:10px}
+.p-card{background:#fff;border-left:4px solid #d97706;padding:16px 20px;margin-bottom:16px}
+.p-card h4{font-family:'Playfair Display',serif;font-size:15.5px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.p-card p{font-size:13.5px;color:#2c1800;line-height:1.65}.p-card p+p{margin-top:6px}
+.p-status{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;color:#92400e;margin-top:9px;text-transform:uppercase}
+.p-alert{background:#fef3c7;border:1px solid #fcd34d;padding:9px 13px;margin-top:10px;font-size:13px;color:#78350f}
+.ptable{width:100%;border-collapse:collapse;margin-top:22px;font-size:12.5px}
+.ptable th{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;background:var(--navy);color:#fff;padding:9px 11px;text-align:left}
+.ptable td{padding:9px 11px;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.5}
+.ptable tr:nth-child(even) td{background:rgba(255,255,255,.6)}
+.src-index{margin:40px 0}
+.src-index h2{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--navy);margin-bottom:14px;padding-bottom:10px;border-bottom:2.5px solid var(--navy);display:flex;align-items:center;gap:8px}
+.itable{width:100%;border-collapse:collapse;font-size:12px}
+.itable th{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;background:var(--navy);color:#fff;padding:9px 11px;text-align:left}
+.itable td{padding:8px 11px;border-bottom:1px solid var(--rule);vertical-align:top}
+.itable tr.r-supply td{background:#f5f0ff}.itable tr.r-policy td{background:#fff8e1}
+.itable tr.r-global td{background:#eef2ff}.itable tr.r-new td{background:var(--new-bg)}
+.itable a{color:var(--navy);font-size:11px}
+.divider{height:1px;background:var(--rule);margin:28px 0}
+footer{border-top:2.5px solid var(--navy);padding-top:26px;margin-top:44px;font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);line-height:1.9}
+footer strong{color:var(--ink)}
+
+</style>
+</head>
+<body>
+<div class="masthead"><div class="wrap">
+  <div class="mast-eyebrow">Southeast Asia · Consumer Electronics &amp; Smartphone Intelligence</div>
+  <div class="mast-title">Industry Intelligence<br><em>Weekly Briefing</em></div>
+  <div class="mast-flags">🇸🇬 🇲🇾 🇮🇩 🇹🇭 🇻🇳 🇵🇭 🇲🇲 🇰🇭 🇱🇦 🇧🇳 🇹🇱</div>
+  <div class="mast-tags">
+    <span class="mast-tag">Smartphones</span>
+    <span class="mast-tag">Home Appliances</span>
+    <span class="mast-tag">OEM/EMS</span>
+    <span class="mast-tag">Supply Chain</span>
+    <span class="mast-tag">Policy &amp; Regulation</span>
+    <span class="mast-tag">Market Intelligence</span>
+  </div>
+  <div class="mast-meta">
+    <span>📅 Coverage: 04 August 2026 – 10 August 2026</span>
+    <span>🗓 Compiled: 10 August 2026</span>
+    <span>🎯 Audience: Supply-chain practitioners, procurement leads, industry analysts</span>
+  </div>
+</div></div>
+
+<div class="highlights"><div class="wrap">
+  <div class="highlights-label">⚡ Key Highlights — This Week</div>
+  <div class="hl-grid">
+    <div class="hl-item"><span class="hl-num">1</span><span class="hl-text">Midea Thailand RAC factory certified as home appliance industry's first Lighthouse Factory; 2026 output targeted at 6M units.</span></div>
+    <div class="hl-item"><span class="hl-num">2</span><span class="hl-text">LG Innotek completes new camera module factory in Hai Phong, Vietnam; additional US$823M investment approved.</span></div>
+    <div class="hl-item"><span class="hl-num">3</span><span class="hl-text">Samsung Electro-Mechanics raises MLCC prices 30% from 1 Aug; accelerates Philippine capacitor plant plans.</span></div>
+    <div class="hl-item"><span class="hl-num">4</span><span class="hl-text">US Section 301 tariffs hit Vietnam and Thailand at 12.5%; smartphones, laptops and data-processing gear exempt.</span></div>
+  </div>
+</div></div>
+
+<div class="global-wrap"><div class="wrap">
+  <h3 class="section-title">Global Industry Shifts — SEA Impact</h3>
+  <div class="g-card">
+    <h4>Chinese Appliance Brands Gain Ground in Southeast Asia</h4>
+    <p>Chinese manufacturers are taking share from Japanese and Korean rivals across the region. In home laundry appliances, the Chinese share rose to 21.2% from 18.1%, with particularly strong gains in Thailand where it climbed to 23.2% from 15.3%. Haier and Midea are scaling up production in Thailand, positioning the country as both a key market and export hub.</p>
+    <div class="g-link">→ Downstream SEA impact: Competitive pressure on Japanese/Korean brands intensifies; Thai manufacturing base becomes a regional export platform.</div>
+    <div class="g-src">Source: Nikkei Asia / kr-asia</div>
+  </div>
+  <div class="g-card">
+    <h4>China+1 Strategy Solidifies Across SEA Manufacturing</h4>
+    <p>Electronics supply chains in 2026 increasingly rely on a China+1 approach, diversifying manufacturing to Southeast Asia to mitigate geopolitical risk. Vietnam, Indonesia and Malaysia are the primary alternatives. Factory occupancy in key Vietnamese provinces is above 90%, with availability windows closing.</p>
+    <div class="g-link">→ Downstream SEA impact: Capacity constraints emerging in Vietnam; Indonesia's large population and growing middle class make it increasingly attractive for both manufacturing and domestic consumption.</div>
+    <div class="g-src">Source: Cosmo Sourcing / DocShipper / SVI Global</div>
+  </div>
+  <div class="g-card">
+    <h4>SEA Smartphone Market Shifts to Profitability</h4>
+    <p>Regional smartphone shipments fell 9% YoY in Q1 2026 while ASPs rose 19% to a record US$349. Rising DRAM and NAND costs are forcing vendors to prioritise margins over volume. Samsung led with 21% share, followed by OPPO at 20% and Xiaomi at 17%.</p>
+    <div class="g-link">→ Downstream SEA impact: Entry-level segment under pressure; vendors enforcing stricter pricing discipline and raising prices on existing models.</div>
+    <div class="g-src">Source: Omdia / Android Headlines</div>
+  </div>
+</div></div>
+
+<div class="supply-wrap"><div class="wrap">
+  <h3 class="section-title">Core Component Supply Chain Update</h3>
+  
+  <h4 class="sub-section">PCB / FPC</h4>
+  <div class="s-card">
+    <h4>Thailand, Vietnam, Malaysia PCB Output to Hit $13.4B in 2026</h4>
+    <p>Combined PCB production across the three countries is projected to reach US$13.4 billion in 2026, up from US$11.3 billion in 2025, driven by AI infrastructure demand and geopolitical shifts. Key players include Fujikura Vietnam (FPCs) and Matsumura Electronics, which is investing US$156.4 million in a new PCB plant in Gia Lai, Vietnam.</p>
+    <div class="s-meta">📍 Vietnam / Malaysia / Thailand · Status: Active expansion</div>
+    <div class="s-impact"><p>PCB capacity in the region is scaling rapidly to serve AI and consumer electronics demand.</p></div>
+  </div>
+
+  <h4 class="sub-section">Display</h4>
+  <div class="s-card">
+    <h4>Samsung Display's $1.8B Vietnam OLED Plant on Track</h4>
+    <p>Samsung Display's new OLED module plant in Yen Phong industrial park, Bac Ninh, will handle back-end assembly from 2026, processing approximately 10 million 8.6th-generation OLED panels annually. The facility serves automotive and technology equipment displays.</p>
+    <div class="s-meta">📍 Bac Ninh, Vietnam · Status: Back-end assembly from 2026</div>
+    <div class="s-impact"><p>Strengthens Vietnam's position in high-end display module assembly; supports automotive display growth.</p></div>
+  </div>
+
+  <h4 class="sub-section">Camera Modules</h4>
+  <div class="s-card">
+    <h4>LG Innotek Completes New Camera Module Factory in Vietnam</h4>
+    <p>LG Innotek has completed its new camera module factory in Hai Phong, doubling global production capacity. The company is investing an additional US$823 million to further expand operations, with total registered investment in Vietnam exceeding US$2 billion across three factories.</p>
+    <div class="s-meta">📍 Hai Phong, Vietnam · Status: Completed; expansion ongoing</div>
+    <div class="s-impact"><p>Increases regional capacity for advanced camera modules; strengthens Vietnam's role in smartphone component supply.</p></div>
+  </div>
+
+  <h4 class="sub-section">Battery</h4>
+  <div class="s-card">
+    <h4>Chinese Battery Makers Announce SEA Factory Plans</h4>
+    <p>Sunwoda plans to invest 2 billion yuan in a consumer lithium battery factory in Vietnam. EVE Energy will invest 3.27 billion yuan in a new energy storage and consumer battery manufacturing project in Malaysia. COSMX will invest 2 billion yuan to produce consumer battery products in the region.</p>
+    <div class="s-meta">📍 Vietnam / Malaysia · Status: Announced July 2026</div>
+    <div class="s-impact"><p>Diversification of battery production away from China; supports local consumer electronics assembly.</p></div>
+  </div>
+
+  <h4 class="sub-section">Passive Components</h4>
+  <div class="s-card">
+    <h4>MLCC Market Enters K-Shaped Recovery; Samsung Electro-Mechanics Raises Prices 30%</h4>
+    <p>The MLCC market is bifurcated: high-capacitance, large-case grades for AI servers and automotive are in tight supply with 20-40% price increases, while commodity 0402/0603 parts remain in oversupply. Samsung Electro-Mechanics has announced a 30% price increase on certain MLCC products from 1 August 2026 and is accelerating plans for its first overseas MLCC plant in the Philippines.</p>
+    <div class="s-meta">📍 Philippines (new plant) · Status: Price increase effective 1 Aug 2026</div>
+    <div class="s-impact"><p>Buyers should audit BOMs by case size and capacitance grade; large-case, high-capacitance parts face 20-40% cost increases.</p></div>
+  </div>
+
+  <h4 class="sub-section">Compressors / Motors</h4>
+  <div class="s-card">
+    <h4>Nidec to Invest $70M in Embraco Compressor Business</h4>
+    <p>Nidec Global Appliance is investing US$70 million to increase Embraco compressor production capacity. The investment is motivated by a composite of demand growth and the need for energy-efficient compressors.</p>
+    <div class="s-meta">📍 Global (incl. SEA operations) · Status: Announced 8 Aug 2026</div>
+    <div class="s-impact"><p>Supports refrigeration and air-conditioning manufacturing across SEA; aligns with energy-efficiency trends.</p></div>
+  </div>
+</div></div>
+
+<div class="policy-wrap"><div class="wrap">
+  <h3 class="section-title">Policy Focus — SEA Regulatory Updates</h3>
+  
+  <div class="p-card">
+    <h4>Indonesia: MOT Regulation 19/2026 Takes Effect</h4>
+    <p>Indonesia's new e-commerce regulation expands coverage, introduces AI governance rules, tightens conditions for cross-border sellers, and mandates algorithmic changes for domestic product promotion. Platforms are now directly responsible for seller compliance. A five-tier sanctions framework backs the regulation.</p>
+    <div class="p-status">Status: In effect since June 2026</div>
+    <div class="p-alert">Compliance Alert: All digital commerce businesses must comply; platforms face direct liability for hosted sellers.</div>
+  </div>
+  
+  <div class="p-card">
+    <h4>Malaysia: MCMC Sets Implementation Dates for New Equipment Standards</h4>
+    <p>Two new technical codes — MCMC MTSFB TC T022:2026 (Communications Equipment – Baseline Requirements) and an SRD specification — are effective 5 May 2026 with a six-month grace period. Full enforcement begins 5 November 2026.</p>
+    <div class="p-status">Status: Grace period until 5 Nov 2026</div>
+    <div class="p-alert">Compliance Alert: All subsequent related equipment submitted for certification must comply with the new standards.</div>
+  </div>
+  
+  <div class="p-card">
+    <h4>Singapore: Cybersecurity Labelling for Routers to Rise to CLS Level 2</h4>
+    <p>CSA and IMDA will raise mandatory cybersecurity requirements for residential routers from CLS Level 1 to Level 2 by end-2027. Level 2 requires secure communications, secure storage of sensitive data, and robust authentication mechanisms.</p>
+    <div class="p-status">Status: Mandatory by end-2027</div>
+    <div class="p-alert">Compliance Alert: Manufacturers and distributors of residential routers must prepare for heightened security benchmarks.</div>
+  </div>
+  
+  <div class="p-card">
+    <h4>US Section 301 Tariffs: Vietnam and Thailand at 12.5%</h4>
+    <p>Effective 24 July 2026, the US implemented new Section 301 tariffs on imports from 60 trading partners. Vietnam and Thailand face a 12.5% effective rate on electronics; Malaysia faces 10%. Smartphones, laptops, desktop computers, hard drives, keyboards and all automatic data processing machines are exempt across all 60 economies.</p>
+    <div class="p-status">Status: In effect since 24 July 2026</div>
+    <div class="p-alert">Compliance Alert: Technology products exempt; non-tech electronics from Vietnam and Thailand face 12.5% duty.</div>
+  </div>
+
+  <div class="ptable">
+    <table>
+      <tr><th>Market</th><th>Policy</th><th>CE Impact</th><th>Effective Date</th></tr>
+      <tr><td>🇮🇩 Indonesia</td><td>MOT Reg 19/2026 (e-commerce)</td><td>Platform liability; AI governance; cross-border seller rules</td><td>June 2026</td></tr>
+      <tr><td>🇲🇾 Malaysia</td><td>MCMC TC T022:2026 &amp; SRD specs</td><td>New certification for comms equipment</td><td>5 May 2026 (grace to 5 Nov 2026)</td></tr>
+      <tr><td>🇸🇬 Singapore</td><td>CLS Level 2 for routers</td><td>Stronger security requirements for residential routers</td><td>End-2027</td></tr>
+      <tr><td>🇻🇳 Vietnam</td><td>US Section 301 (12.5%)</td><td>Non-tech electronics exports to US face tariff</td><td>24 July 2026</td></tr>
+      <tr><td>🇹🇭 Thailand</td><td>US Section 301 (12.5%)</td><td>Non-tech electronics exports to US face tariff</td><td>24 July 2026</td></tr>
+    </table>
+  </div>
+</div></div>
+
+<div class="section-rule"><span class="section-icon">🇲🇾</span><h2>Malaysia</h2><span class="section-sub">Manufacturing · Smartphones · Market Data · Policy</span></div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-ems">EMS</span><h3>Wistron Approves Additional CAPEX for Malaysia Site</h3></div>
+  <p>Wistron's board approved additional capital expenditures of USD 22.7 million for its Malaysia site, covering facility construction and improvements. The approval was made on 26 June 2026 alongside allocations for Hsinchu, Kaohsiung and Vietnam.</p>
+  <p>The investment signals continued commitment to Malaysia as a manufacturing base within Wistron's SEA footprint.</p>
+  <div class="impact"><span class="impact-label">Sourcing Implication</span><p>Malaysia remains a viable EMS destination; expect expanded capacity at Wistron's local operations.</p></div>
+  <div class="src">26 Jun 2026 · Wistron · <a href="https://www.wistron.com/en/Newsroom/2026-06-26">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-supply">Supply Chain</span><h3>EVE Energy to Invest 3.27B Yuan in Malaysian Battery Plant</h3></div>
+  <p>EVE Energy will invest 3.27 billion yuan in a new energy storage and consumer battery manufacturing project in Malaysia. The announcement was made in July 2026 as part of a wave of Chinese lithium battery companies establishing factories in Southeast Asia.</p>
+  <p>The investment diversifies battery production away from China and supports local consumer electronics assembly.</p>
+  <div class="impact"><span class="impact-label">Sourcing Implication</span><p>Malaysia gains battery cell manufacturing capacity; relevant for local device assembly and energy storage.</p></div>
+  <div class="src">5 Aug 2026 · INVT Electric Global · <a href="https://www.invt.com/news/many-lithium-battery-companies-announce-plans-to-build-factories-in-southeast-asia-320">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-data">Market Data</span><h3>Inari Amertron: Next Earnings 27 Aug; Market Cap MYR 9.32B</h3></div>
+  <p>Inari Amertron Berhad's next earnings report is scheduled for 27 August 2026. The company's market cap stands at MYR 9.32 billion with an enterprise value of MYR 7.48 billion. FY2026 consensus EPS forecast is RM0.058, down from an earlier RM0.066 estimate.</p>
+  <p>Revenue forecast for FY2026 was reduced from RM1.39 billion to RM1.27 billion. Share price fell 13% to RM1.32 over the past week. EPF and KWAP have been active in share transactions.</p>
+  <div class="impact"><span class="impact-label">Market Signal</span><p>Analyst sentiment softening; watch for guidance on semiconductor packaging demand in the upcoming earnings call.</p></div>
+  <div class="src">7 Aug 2026 · StockAnalysis / Simply Wall St · <a href="https://stockanalysis.com/quote/klse/INARI/statistics">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-policy">Policy</span><h3>MCMC Sets Implementation Dates for Two Communication Equipment Standards</h3></div>
+  <p>MCMC has set implementation dates for two new technical codes effective 5 May 2026: MCMC MTSFB TC T022:2026 (Communications Equipment – Baseline Requirements) and an SRD specification. A six-month grace period applies, with full enforcement from 5 November 2026.</p>
+  <p>All subsequent related equipment submitted for certification must comply with the new standards. The government encourages applicants to achieve compliance as soon as possible during the grace period.</p>
+  <div class="impact"><span class="impact-label">Compliance Alert</span><p>Certification submissions after 5 Nov 2026 must meet the new MCMC standards; plan testing accordingly.</p></div>
+  <div class="src">25 Jun 2026 · CAICT / MCMC · <a href="https://gma.caict.ac.cn/en/update/29/1385">source</a></div>
+</div>
+
+<div class="section-rule"><span class="section-icon">🇸🇬</span><h2>Singapore</h2><span class="section-sub">Flagship Launches · Home Appliances · Events</span></div>
+
+<div class="card breaking">
+  <div class="card-header"><span class="btag b-event">Event</span><h3>Home Appliance Fair 2026 Runs 8–10 August at Singapore EXPO</h3></div>
+  <p>The Home Appliance Fair, organised by Groupe Seb Singapore, runs 8–10 August 2026 at Hall 5B, Singapore EXPO. Admission is free and open to the public, with discounts up to 70%.</p>
+  <p>Running concurrently are the Muslim Fashion Festival and Halal Fiesta (7–9 August) and My Home Grand Furniture &amp; Reno Expo (8–16 August). Sia Huat is also holding its biggest household &amp; kitchenware warehouse sale at the venue with up to 90% off.</p>
+  <div class="impact"><span class="impact-label">Market Signal</span><p>Retail promotions signal inventory clearing; consumer demand for home appliances remains price-sensitive.</p></div>
+  <div class="src">8 Aug 2026 · Singapore EXPO · <a href="https://www.singaporeexpo.com.sg/events-at-expo/home-appliance-fair-aug-2026">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-policy">Policy</span><h3>Singapore to Raise Cybersecurity Labelling for Residential Routers to CLS Level 2</h3></div>
+  <p>CSA and IMDA will raise mandatory cybersecurity requirements for residential routers from CLS Level 1 to Level 2 by end-2027. Level 2 requires secure communications, secure storage of sensitive data, and robust authentication mechanisms.</p>
+  <p>The CLS, launched in October 2020, was the first cybersecurity labelling scheme for consumer IoT devices. CSA has also concluded its public consultation on cybersecurity licensing framework updates, with mandatory certification requirements expected by end-2027.</p>
+  <div class="impact"><span class="impact-label">Compliance Alert</span><p>Router manufacturers and distributors must prepare for heightened security benchmarks to maintain market access in Singapore.</p></div>
+  <div class="src">Mar 2026 · CSA / MDDI · <a href="https://www.csa.gov.sg/news-events/press-releases/government-to-raise-cybersecurity-labelling-requirements-for-residential-routers">source</a></div>
+</div>
+
+<div class="section-rule"><span class="section-icon">🇮🇩</span><h2>Indonesia</h2><span class="section-sub">Smartphones · TKDN · Home Appliances</span></div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-policy">Policy</span><h3>MOT Regulation 19/2026 Overhauls E-Commerce Framework</h3></div>
+  <p>Indonesia's Minister of Trade Regulation No. 19 of 2026 expands the scope of businesses covered, introduces new obligations for online platforms and merchants, and establishes the country's first comprehensive rules on AI use in e-commerce. Platforms are directly responsible for seller compliance.</p>
+  <p>The regulation replaces MOT Reg 31/2023 and includes a five-tier sanctions framework. Cross-border sellers face tighter conditions, and algorithms must be adjusted to promote domestic products.</p>
+  <div class="impact"><span class="impact-label">Compliance Alert</span><p>All digital commerce businesses operating in Indonesia must review compliance obligations; platform liability is now explicit.</p></div>
+  <div class="src">14 Jul 2026 · Dentons HPRP · <a href="https://dentons.hprplawyers.com/en/insights/articles/2026/july/14/mot-regulation-192026-takes-effect-wider-scope-sharper-rules-for-ecommerce-players">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-haier">Home Appliances</span><h3>Midea Indonesia Opens Largest Refrigerator Factory in Karawang</h3></div>
+  <p>Midea Electronics Indonesia officially invited key dealers to visit its refrigerator manufacturing plant in Karawang as part of its commitment to strengthening investment and local production. The plant follows the launch of Midea's air conditioner production in the country.</p>
+  <p>The establishment marks another milestone for Midea Electronics Indonesia's domestic manufacturing strategy.</p>
+  <div class="impact"><span class="impact-label">Sourcing Implication</span><p>Local refrigerator production in Indonesia supports TKDN compliance and reduces import dependence.</p></div>
+  <div class="src">21 May 2026 · Midea Indonesia · <a href="https://www.midea.com/id-en/news/2026/pabrik-kulkas-terbesar-di-indonesia">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-data">Market Data</span><h3>Indonesia Leads SEA Household Appliances Market</h3></div>
+  <p>Indonesia leads the Southeast Asia household appliances market due to its large population, growing middle class, and increasing demand for smart and energy-efficient appliances. Other emerging markets include Thailand, Vietnam, and the Philippines.</p>
+  <p>Key players in the regional market include Samsung Electronics, LG Electronics, Panasonic, Whirlpool, Midea Group, Electrolux, and Haier Group.</p>
+  <div class="impact"><span class="impact-label">Market Signal</span><p>Indonesia remains the priority market for home appliance brands seeking SEA growth.</p></div>
+  <div class="src">2026 · UnivDatos · <a href="https://univdatos.com/reports/southeast-asia-household-appliances-market">source</a></div>
+</div>
+
+<div class="section-rule"><span class="section-icon">🇹🇭</span><h2>Thailand</h2><span class="section-sub">Manufacturing · Smartphones</span></div>
+
+<div class="card breaking">
+  <div class="card-header"><span class="btag b-midea">Manufacturing</span><h3>Midea Thailand Factory Becomes Home Appliance Industry's First Lighthouse Factory</h3></div>
+  <p>Certified by the World Economic Forum, Midea Thailand RAC Factory in Chonburi is the home appliance industry's first Lighthouse Factory beyond its home market. The 208,000 sqm facility represents approximately USD 168 million in total investment and is the largest residential air conditioner production hub in Thailand and Southeast Asia.</p>
+  <p>In 2026, the factory's annual output is expected to reach 6 million units. The recognition reinforces Midea's leadership in global intelligent and digital manufacturing transformation.</p>
+  <div class="impact"><span class="impact-label">Strategic Read</span><p>Thailand's Eastern Economic Corridor strengthens as a smart manufacturing hub for home appliances.</p></div>
+  <div class="src">2026 · ANTARA / PRNewswire · <a href="https://en.antaranews.com/news/381772/midea-has-achieved-another-global-first-midea-thailand-factory-becomes-the-home-appliance-industrys-first-lighthouse">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-electrolux">Manufacturing</span><h3>Electrolux Thailand Opens New Kitchen-Product Line at Rayong Plant</h3></div>
+  <p>Electrolux Thailand is investing Bt450 million to open a new kitchen-product manufacturing line at its Rayong plant. The factory is set to become an export centre for kitchen products.</p>
+  <p>The investment underscores Thailand's role as a manufacturing hub for Electrolux in the region.</p>
+  <div class="impact"><span class="impact-label">Sourcing Implication</span><p>Rayong plant expands kitchen appliance capacity; potential sourcing opportunity for local component suppliers.</p></div>
+  <div class="src">3 Aug 2026 · Scandasia · <a href="https://scandasia.com/1564-electroluxs-expansion">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-data">Market Data</span><h3>Thailand Air Conditioners Market: Key Players and Segment Leadership</h3></div>
+  <p>Daikin Industries, LG Electronics, Mitsubishi Electric, Panasonic, Carrier, Haier, Samsung, Sharp, Arçelik Hitachi, and others are key players in the Thailand air conditioners market. The room air conditioners segment holds the largest market share.</p>
+  <p>The market is growing with a focus on energy-efficient models.</p>
+  <div class="impact"><span class="impact-label">Market Signal</span><p>Room AC segment remains the battleground; energy efficiency is the key differentiator.</p></div>
+  <div class="src">2026 · MarkNtel Advisors · <a href="https://www.marknteladvisors.com/research-library/thailand-air-conditioners-market-report.html">source</a></div>
+</div>
+
+<div class="section-rule"><span class="section-icon">🇻🇳</span><h2>Vietnam</h2><span class="section-sub">Manufacturing &amp; Supply Chain · Smartphones</span></div>
+
+<div class="card breaking">
+  <div class="card-header"><span class="btag b-lg">Camera Modules</span><h3>LG Innotek Completes New Camera Module Factory in Hai Phong</h3></div>
+  <p>LG Innotek has completed its new camera module factory in Hai Phong, doubling global production capacity. The company is investing an additional US$823 million to further expand operations, with total registered investment in Vietnam exceeding US$2 billion across three factories.</p>
+  <p>LG Group has invested a total of US$10.6 billion across seven major projects in Hai Phong. A US$1 billion semiconductor substrate plant is scheduled to begin construction in Q3 2026.</p>
+  <div class="impact"><span class="impact-label">Sourcing Implication</span><p>Vietnam's camera module and semiconductor substrate capacity expands; relevant for smartphone supply chain buyers.</p></div>
+  <div class="src">7 Aug 2026 · The Investor / The Elec · <a href="https://theinvestor.vn/lg-innotek-completes-expansion-of-camera-module-plant-in-northern-vietnam-d17110.html">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-apple">EMS</span><h3>Luxshare Pushes $504M Vietnam Investment to Start Operations</h3></div>
+  <p>Luxshare-ICT subsidiary plans to put its US$504 million project in Bac Giang province into operation in July 2026. The facility covers 29.1 hectares in Quang Chau Industrial Park and will produce cables for smart devices, communications equipment, touch pens, smart positioning tags, and smartwatches.</p>
+  <p>The Bac Giang Industrial Zones Authority approved an additional US$330 million investment in November 2023, raising the total project investment to US$504 million.</p>
+  <div class="impact"><span class="impact-label">Sourcing Implication</span><p>Expanded Luxshare capacity in Vietnam supports Apple supply chain diversification; relevant for cable and accessory sourcing.</p></div>
+  <div class="src">2026 · The Investor / Reuters · <a href="https://theinvestor.vn/apple-supplier-luxshare-pushes-504-mln-vietnam-investment-to-start-operations-in-2026-d11338.html">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-goertek">EMS</span><h3>Goertek Pours Extra $130M into Northern Vietnam Project</h3></div>
+  <p>Goertek Vina is injecting an additional US$130 million into its northern Vietnam operations. The project footprint will expand from eight to nine locations, including a new site in Que Vo Industrial Park expansion zone. Total land use will rise to nearly 453,000 square meters.</p>
+  <p>The filing also highlights plans related to unmanned aerial vehicles (UAVs), with production of certain drone models currently at 45,<div class="src">6 Aug 2026 · The Investor · <a href="https://theinvestor.vn/chinas-goertekpours-extra-130-mln-into-northern-vietnam-project-d17089.html">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-foxconn">EMS</span><h3>Foxconn Accelerates Vietnam Investment, Moves Toward Humanoid Robot Manufacturing</h3></div>
+  <p>Fushan Technology (Vietnam), part of the Foxconn ecosystem, plans to install and complete new production lines between May and August 2026, conduct a trial run in September-October 2026, and begin official operations in November 2026. The company was established in 2011 as Nokia Vietnam and later became Microsoft Mobile Vietnam before being sold to FIH Mobile in 2017.</p>
+  <p>The move signals Foxconn's continued expansion in Vietnam beyond traditional handset assembly.</p>
+  <div class="impact"><span class="impact-label">Strategic Read</span><p>Vietnam's EMS ecosystem is diversifying into advanced manufacturing including robotics.</p></div>
+  <div class="src">2026 · The Investor · <a href="https://theinvestor.vn/foxconn-accelerates-investment-in-vietnam-moves-toward-humanoid-robot-manufacturing-d18929.html">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-samsung">Display</span><h3>Samsung Display's $1.8B OLED Plant in Vietnam to Process 10M Panels Annually</h3></div>
+  <p>Samsung Display's new OLED module plant in Yen Phong industrial park, Bac Ninh, will handle back-end assembly from 2026, processing approximately 10 million 8.6th-generation OLED panels annually. The panels are manufactured at the Asan plant in Korea and assembled in Vietnam.</p>
+  <p>The facility produces OLED displays for automobiles and technology equipment. Samsung Display already operates a small-to-medium OLED module plant and a foldable display production line in Bac Ninh.</p>
+  <div class="impact"><span class="impact-label">Sourcing Implication</span><p>Vietnam's display module assembly capacity expands; relevant for automotive and IT display supply chains.</p></div>
+  <div class="src">2024/2026 · KED Global / Reuters · <a href="https://www.kedglobal.com/electronics/newsView/ked202409240008">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-sunwoda">Battery</span><h3>Sunwoda Plans Additional $22M Investment in Northern Vietnam Plant</h3></div>
+  <p>Chinese battery maker Sunwoda plans an additional US$22 million investment in its northern Vietnam plant, on top of a previously announced 2 billion yuan consumer lithium battery factory project. The company is diversifying production to avoid trade barriers.</p>
+  <p>The investment is part of a broader wave of Chinese lithium battery companies establishing factories in Southeast Asia.</p>
+  <div class="impact"><span class="impact-label">Sourcing Implication</span><p>Vietnam's battery cell production capacity grows; supports local consumer electronics assembly.</p></div>
+  <div class="src">23 Jul 2026 · The Investor · <a href="https://theinvestor.vn/chinese-battery-maker-sunwoda-plans-extra-22-mln-investment-in-northern-vietnam-plant-d15330.html">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-matsumura">PCB</span><h3>Matsumura Electronics Invests $156M in Gia Lai PCB Factory</h3></div>
+  <p>Matsumura Electronics Industry (Vietnam) Co., Ltd. was officially granted its Investment Registration Certificate on 28 March 2026 for a PCB manufacturing plant in Becamex VSIP Industrial Park, Gia Lai. Total investment is US$156.4 million (~VND 4,000 billion).</p>
+  <p>The project marks another milestone in FDI attraction in Vietnam's Central Highlands region.</p>
+  <div class="impact"><span class="impact-label">Sourcing Implication</span><p>New PCB capacity in Vietnam's Central Highlands; diversifies production beyond the northern and southern hubs.</p></div>
+  <div class="src">28 Mar 2026 · LinkedIn / The Investor · <a href="https://www.linkedin.com/posts/%C4%91%E1%BA%A1t-th%C3%A0nh-nguy%E1%BB%85n-728607140_gia-lai-usd-156-million-electronics-pcb-activity-7448581855009751040-ZWmd">source</a></div>
+</div>
+
+<div class="section-rule"><span class="section-icon">🇵🇭</span><h2>Philippines</h2><span class="section-sub">Smartphone Launches · Consumer Electronics</span></div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-samsung">Passive Components</span><h3>Samsung Electro-Mechanics Speeds Up Philippine Capacitor Plant</h3></div>
+  <p>Samsung Electro-Mechanics is reportedly bringing forward plans for its first overseas MLCC plant in the Philippines as AI demand tightens supply and lifts prices. The company has announced a 30% price increase on certain MLCC products from 1 August 2026.</p>
+  <p>The move highlights how the AI boom is reshaping not just chips and servers, but also the passive components that support them.</p>
+  <div class="impact"><span class="impact-label">Sourcing Implication</span><p>Philippines gains MLCC manufacturing capacity; buyers should monitor supply availability and pricing.</p></div>
+  <div class="src">6 Aug 2026 · ETCIOSEA · <a href="https://ciosea.economictimes.indiatimes.com/news/strategy-and-management/samsung-electro-mechanics-speeds-up-philippine-capacitor-plant-as-ai-demand-lifts-prices/132988216">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-data">Market Data</span><h3>Philippines Among Emerging SEA Household Appliance Markets</h3></div>
+  <p>The Philippines is identified as an emerging market in the Southeast Asia household appliances sector, alongside Thailand and Vietnam. Indonesia leads the regional market due to its large population and growing middle class.</p>
+  <p>Key players in the regional market include Samsung Electronics, LG Electronics, Panasonic, Whirlpool, Midea Group, Electrolux, and Haier Group.</p>
+  <div class="impact"><span class="impact-label">Market Signal</span><p>Philippines offers growth potential for home appliance brands; monitor middle-class consumption trends.</p></div>
+  <div class="src">2026 · UnivDatos · <a href="https://univdatos.com/reports/southeast-asia-household-appliances-market">source</a></div>
+</div>
+
+<div class="section-rule"><span class="section-icon">🌏</span><h2>Other SEA</h2><span class="section-sub">Myanmar/Cambodia/Laos/Brunei/Timor-Leste</span></div>
+
+<p class="no-news">No significant developments reported this week.</p>
+
+<div class="src-index"><div class="wrap">
+  <h3 class="section-title">Source Index</h3>
+  <table class="itable">
+    <tr><th>No.</th><th>Market</th><th>Story Topic</th><th>Source Media</th><th>Date</th></tr>
+    <tr class="r-global"><td>1</td><td>🌏 Global</td><td>Chinese appliance brands gain ground in SEA</td><td>Nikkei Asia / kr-asia</td><td>Jun 2026</td></tr>
+    <tr class="r-global"><td>2</td><td>🌏 Global</td><td>China+1 strategy solidifies across SEA</td><td>Cosmo Sourcing / DocShipper</td><td>Aug 2026</td></tr>
+    <tr class="r-global"><td>3</td><td>🌏 Global</td><td>SEA smartphone market shifts to profitability</td><td>Omdia / Android Headlines</td><td>May 2026</td></tr>
+    <tr class="r-supply"><td>4</td><td>🇹🇭🇻🇳🇲🇾</td><td>PCB output to hit $13.4B in 2026</td><td>Supply Chain Intelligence</td><td>21 Jul 2026</td></tr>
+    <tr class="r-supply"><td>5</td><td>🇻🇳</td><td>Samsung Display $1.8B OLED plant</td><td>KED Global / Reuters</td><td>Sep 2024</td></tr>
+    <tr class="r-supply"><td>6</td><td>🇻🇳</td><td>LG Innotek completes camera module factory</td><td>The Investor / The Elec</td><td>7 Aug 2026</td></tr>
+    <tr class="r-supply"><td>7</td><td>🇻🇳🇲🇾</td><td>Chinese battery makers announce SEA factories</td><td>INVT Electric Global</td><td>5 Aug 2026</td></tr>
+    <tr class="r-supply"><td>8</td><td>🇵🇭</td><td>Samsung Electro-Mechanics MLCC price hike &amp; PH plant</td><td>ETCIOSEA / TechNews</td><td>6 Aug 2026</td></tr>
+    <tr class="r-supply"><td>9</td><td>🌏 Global</td><td>Nidec invests $70M in Embraco compressors</td><td>Cooling Post</td><td>8 Aug 2026</td></tr>
+    <tr class="r-policy"><td>10</td><td>🇮🇩</td><td>MOT Regulation 19/2026 e-commerce overhaul</td><td>Dentons HPRP</td><td>14 Jul 2026</td></tr>
+    <tr class="r-policy"><td>11</td><td>🇲🇾</td><td>MCMC new equipment standards</td><td>CAICT / MCMC</td><td>25 Jun 2026</td></tr>
+    <tr class="r-policy"><td>12</td><td>🇸🇬</td><td>CLS Level 2 for residential routers</td><td>CSA / MDDI</td><td>Mar 2026</td></tr>
+    <tr class="r-policy"><td>13</td><td>🇻🇳🇹🇭</td><td>US Section 301 tariffs at 12.5%</td><td>TNGlobal / TariffsTool</td><td>24 Jul 2026</td></tr>
+    <tr class="r-new"><td>14</td><td>🇲🇾</td><td>Wistron additional CAPEX for Malaysia</td><td>Wistron</td><td>26 Jun 2026</td></tr>
+    <tr class="r-new"><td>15</td><td>🇲🇾</td><td>EVE Energy 3.27B yuan Malaysia battery plant</td><td>INVT Electric Global</td><td>5 Aug 2026</td></tr>
+    <tr class="r-new"><td>16</td><td>🇲🇾</td><td>Inari Amertron earnings 27 Aug</td><td>StockAnalysis / Simply Wall St</td><td>7 Aug 2026</td></tr>
+    <tr class="r-new"><td>17</td><td>🇸🇬</td><td>Home Appliance Fair 8–10 Aug</td><td>Singapore EXPO</td><td>8 Aug 2026</td></tr>
+    <tr class="r-new"><td>18</td><td>🇮🇩</td><td>Midea Indonesia largest refrigerator factory</td><td>Midea Indonesia</td><td>21 May 2026</td></tr>
+    <tr class="r-new"><td>19</td><td>🇮🇩</td><td>Indonesia leads SEA household appliances</td><td>UnivDatos</td><td>2026</td></tr>
+    <tr class="r-new"><td>20</td><td>🇹🇭</td><td>Midea Thailand Lighthouse Factory</td><td>ANTARA / PRNewswire</td><td>2026</td></tr>
+    <tr class="r-new"><td>21</td><td>🇹🇭</td><td>Electrolux Rayong kitchen line</td><td>Scandasia</td><td>3 Aug 2026</td></tr>
+    <tr class="r-new"><td>22</td><td>🇹🇭</td><td>Thailand AC market key players</td><td>MarkNtel Advisors</td><td>2026</td></tr>
+    <tr class="r-new"><td>23</td><td>🇻🇳</td><td>Luxshare $504M Bac Giang operations</td><td>The Investor / Reuters</td><td>2026</td></tr>
+    <tr class="r-new"><td>24</td><td>🇻🇳</td><td>Goertek extra $130M in northern Vietnam</td><td>The Investor</td><td>6 Aug 2026</td></tr>
+    <tr class="r-new"><td>25</td><td>🇻🇳</td><td>Foxconn accelerates Vietnam investment</td><td>The Investor</td><td>2026</td></tr>
+    <tr class="r-new"><td>26</td><td>🇻🇳</td><td>Sunwoda additional $22M in Vietnam</td><td>The Investor</td><td>23 Jul 2026</td></tr>
+    <tr class="r-new"><td>27</td><td>🇻🇳</td><td>Matsumura $156M Gia Lai PCB factory</td><td>LinkedIn / The Investor</td><td>28 Mar 2026</td></tr>
+    <tr class="r-new"><td>28</td><td>🇵🇭</td><td>Philippines emerging appliance market</td><td>UnivDatos</td><td>2026</td></tr>
+  </table>
+</div></div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-brand">SEA Consumer Electronics &amp; Smartphone Intelligence</div>
+    <div class="footer-period">Weekly Briefing · 04 August 2026 – 10 August 2026</div>
+    <div class="footer-compiled">Compiled: 10 August 2026</div>
+    <div class="footer-disclaimer">This briefing is compiled exclusively from publicly available sources cited in the Source Index. All facts, figures, and statements are attributed to their original publishers. No independent verification has been conducted. This document is for internal business intelligence purposes only and does not constitute investment, legal, or procurement advice.</div>
+    <div class="footer-sources">Sources: Nikkei Asia, Omdia, IDC, Reuters, The Investor, KED Global, The Elec, ANTARA, PRNewswire, Singapore EXPO, Midea, Wistron, StockAnalysis, Simply Wall St, Dentons HPRP, CAICT, CSA, MDDI, TNGlobal, TariffsTool, INVT Electric Global, Cooling Post, ETCIOSEA, UnivDatos, MarkNtel Advisors, Scandasia, Cosmo Sourcing, DocShipper, SVI Global, Android Headlines, kr-asia, Supply Chain Intelligence, BusinessKorea, TechNode Global, The Belt and Road News Network, Euromonitor International, NIQ, Mordor Intelligence, Statista, and others as cited.</div>
+  </div>
+</footer>
+</body>
+</html>
