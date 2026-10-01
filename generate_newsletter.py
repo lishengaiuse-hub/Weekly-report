@@ -145,7 +145,7 @@ a{color:var(--navy)}a:hover{text-decoration:underline}
 .impact p{font-size:13px;color:#3d2c00;line-height:1.6;margin-top:0}
 .src{font-family:'Space Mono',monospace;font-size:9.5px;color:var(--muted);margin-top:14px;padding-top:10px;border-top:1px solid var(--rule);line-height:1.6}
 .src a{color:var(--navy);text-decoration:none}.src a:hover{text-decoration:underline}
-.no-news{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);padding:14px 0 6px;font-style:italic}
+.no-news{display:none}
 .global-wrap{background:var(--navy);color:#fff;padding:34px 36px;margin:40px 0}
 .global-wrap h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:22px;display:flex;align-items:center;gap:10px}
 .g-card{border-left:3px solid rgba(255,255,255,.25);padding:13px 18px;margin-bottom:18px}
@@ -430,8 +430,8 @@ SYSTEM_PROMPT = (
 USER_PROMPT = """\
 Generate the BODY CONTENT of a weekly SEA consumer electronics newsletter.
 Use ONLY the news from the search results below.
-Do NOT invent facts. If a section has no relevant results, write:
-<p class="no-news">No significant developments reported this week.</p>
+Do NOT invent facts. If a section has no relevant results, OMIT that
+section entirely — do not output it at all.
 
 IMPORTANT — DATE FILTERING (strictly enforce):
 1. Only include news where the EVENT ITSELF occurred within {start_date} – {end_date}.
@@ -717,8 +717,8 @@ row in the source index (.itable):
    Only KEEP dateless cards if the text explicitly describes a new
    development happening "this week" or "today".
 5. Also remove the corresponding source-index row for every removed card.
-6. After removing stale cards, if a section has no cards left, insert:
-   <p class="no-news">No significant developments reported this week.</p>
+6. After removing stale cards, if a section has no cards left, REMOVE
+   that entire section from the output.
 7. Update the KEY HIGHLIGHTS section to reflect only the remaining cards.
 8. Re-number the source-index rows sequentially.
 
