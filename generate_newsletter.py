@@ -128,7 +128,8 @@ a{color:var(--navy)}a:hover{text-decoration:underline}
 .b-honor{background:#b8000e}.b-realme{background:#d97706}.b-iqoo{background:#0050a0}
 .b-transsion{background:#7c3aed}.b-motorola{background:#003087}.b-dyson{background:#c34a00}
 .b-panasonic{background:#003087}.b-hisense{background:#0a3d6b}.b-haier{background:#00529b}
-.b-tcl{background:#e31837}.b-policy{background:#374151}.b-event{background:#065f46}
+.b-tcl{background:#e31837}.b-tata{background:#486aae}.b-dixon{background:#1a6b3c}.b-voltas{background:#e65100}
+.b-policy{background:#374151}.b-event{background:#065f46}
 .b-supply{background:#5b21b6}.b-data{background:#0369a1}.b-ems{background:#5b21b6}
 .card h3{font-family:'Playfair Display',serif;font-size:17.5px;font-weight:700;line-height:1.3;color:var(--ink)}
 .card p{font-size:14px;color:#2c2620;line-height:1.7;margin-top:10px}
@@ -201,7 +202,7 @@ def fmt(dt: datetime, spec: str = "%d %B %Y") -> str:
 
 
 def make_output_path(end: datetime) -> Path:
-    name = f"newsletter_SEA_electronics_{end.strftime('%d%b%Y').lower()}_EN.html"
+    name = f"newsletter_SEA_India_manufacturing_{end.strftime('%d%b%Y').lower()}_EN.html"
     return OUTPUT_DIR / name
 
 
@@ -285,17 +286,17 @@ def build_queries(start: datetime, end: datetime) -> list[dict]:
         {"r": 1, "label": "Electrolux Dyson Bosch SEA",
          "q": f"Electrolux Whirlpool Dyson Bosch Philips home appliance Southeast Asia {my}"},
 
-        # Round 2 — Smartphone Launches
-        {"r": 2, "label": "Smartphone launches MY/SG/ID",
-         "q": f"smartphone launch Malaysia Singapore Indonesia {my} price specs"},
-        {"r": 2, "label": "Smartphone launches TH/VN/PH",
-         "q": f"smartphone launch Thailand Vietnam Philippines {my} price specs"},
-        {"r": 2, "label": "Apple Samsung Huawei OPPO Xiaomi vivo HONOR SEA",
-         "q": f"Apple Samsung Huawei OPPO Xiaomi vivo HONOR iQOO phone launch Southeast Asia {my}"},
-        {"r": 2, "label": "realme Motorola Nothing Tecno Infinix SEA",
-         "q": f"realme OnePlus Motorola Nothing Tecno Infinix itel phone launch Southeast Asia {my}"},
-        {"r": 2, "label": "Foldable flagship SEA debut",
-         "q": f"foldable flagship phone launch Southeast Asia premiere {my}"},
+        # Round 2 — India Manufacturing & Supply Chain
+        {"r": 2, "label": "India electronics manufacturing",
+         "q": f"India electronics manufacturing factory consumer electronics {my}"},
+        {"r": 2, "label": "India home appliance factory",
+         "q": f"India home appliance factory Samsung LG Haier Voltas Daikin {my}"},
+        {"r": 2, "label": "Foxconn Tata Pegatron India factory",
+         "q": f"Foxconn Tata Electronics Pegatron Dixon Technologies factory India {my}"},
+        {"r": 2, "label": "India PLI scheme electronics",
+         "q": f"India PLI production linked incentive electronics manufacturing policy {my}"},
+        {"r": 2, "label": "India supply chain components",
+         "q": f"India PCB semiconductor battery display component manufacturing {my}"},
 
         # Round 3 — OEM / EMS
         {"r": 3, "label": "Foxconn Pegatron Jabil EMS SEA",
@@ -334,14 +335,16 @@ def build_queries(start: datetime, end: datetime) -> list[dict]:
          "q": f"Singapore IMDA CSA consumer device cybersecurity certification {my}"},
         {"r": 6, "label": "Vietnam Thailand Philippines CE policy",
          "q": f"Vietnam Thailand Philippines consumer electronics import tariff regulation {my}"},
+        {"r": 6, "label": "India PLI BIS electronics policy",
+         "q": f"India PLI electronics manufacturing BIS regulation tariff policy {my}"},
 
         # Round 7 — Global Context
-        {"r": 7, "label": "China+1 supply chain SEA",
-         "q": f"consumer electronics supply chain China plus one Southeast Asia manufacturing {my}"},
-        {"r": 7, "label": "SEA smartphone market share",
-         "q": f"smartphone market share Southeast Asia {my} IDC Canalys Omdia"},
-        {"r": 7, "label": "Global brand shifts affecting SEA",
-         "q": f"consumer electronics brand globalisation Southeast Asia Japanese Korean Chinese exit enter {my}"},
+        {"r": 7, "label": "China+1 supply chain SEA India",
+         "q": f"consumer electronics supply chain China plus one Southeast Asia India manufacturing {my}"},
+        {"r": 7, "label": "SEA India manufacturing market data",
+         "q": f"electronics manufacturing market data Southeast Asia India {my} IDC Canalys Omdia"},
+        {"r": 7, "label": "Global shifts affecting SEA India manufacturing",
+         "q": f"consumer electronics manufacturing globalisation Southeast Asia India Japanese Korean Chinese factory {my}"},
     ]
 
 
@@ -368,8 +371,8 @@ def run_all_searches(start: datetime, end: datetime) -> str:
 # ══════════════════════════════════════════════════════════════════════════════
 
 SYSTEM_PROMPT = (
-    "You are a professional Southeast Asia consumer electronics and "
-    "smartphone industry intelligence analyst. You write in direct, "
+    "You are a professional Southeast Asia and India manufacturing "
+    "industry intelligence analyst. You write in direct, "
     "supply-chain-practitioner English. "
     "Output ONLY raw HTML elements — no <!DOCTYPE>, no <html>, no <head>, "
     "no <body> tags, no CSS, no markdown fences. "
@@ -408,10 +411,10 @@ OUTPUT ORDER (HTML elements only, no wrapping tags)
 
 ── 1. MASTHEAD ──────────────────────────────────────────────
 <div class="masthead"><div class="wrap">
-  <div class="mast-eyebrow">Southeast Asia · Consumer Electronics &amp; Smartphone Intelligence</div>
-  <div class="mast-title">Industry Intelligence<br><em>Weekly Briefing</em></div>
-  <div class="mast-flags">🇸🇬 🇲🇾 🇮🇩 🇹🇭 🇻🇳 🇵🇭 🇲🇲 🇰🇭 🇱🇦 🇧🇳 🇹🇱</div>
-  <div class="mast-tags"><!-- 6 .mast-tag spans: Smartphones | Home Appliances | OEM/EMS | Supply Chain | Policy & Regulation | Market Intelligence --></div>
+  <div class="mast-eyebrow">Southeast Asia &amp; India · Manufacturing Intelligence</div>
+  <div class="mast-title">Southeast Asia &amp; India<br><em>Manufacturing Watch</em></div>
+  <div class="mast-flags">🇸🇬 🇲🇾 🇮🇩 🇹🇭 🇻🇳 🇵🇭 🇮🇳 🇲🇲 🇰🇭 🇱🇦 🇧🇳 🇹🇱</div>
+  <div class="mast-tags"><!-- 6 .mast-tag spans: Home Appliances | OEM/EMS | Supply Chain | Policy & Regulation | Market Intelligence | Manufacturing --></div>
   <div class="mast-meta"><!-- 📅 coverage period | 🗓 compiled date | 🎯 audience --></div>
 </div></div>
 
@@ -434,17 +437,20 @@ Passive · Cables · LED · Compressors/Motors · Touch/Glass · Steel
 Each country with news: .p-card > h4 + <p>+ + .p-status + optional .p-alert
 End with .ptable: Market | Policy | CE Impact | Effective Date
 
-── 6–12. COUNTRY SECTIONS ───────────────────────────────────
+── 6–13. COUNTRY SECTIONS ───────────────────────────────────
 For each: .section-rule (with .section-icon flag + h2 name + .section-sub)
 then .card items. Use class="breaking" + .breaking-badge for top 2–3 stories.
+DO NOT include product launch / smartphone launch news in any section.
+Focus on manufacturing, supply chain, factory, OEM/EMS, and policy news only.
 
-6. 🇲🇾 Malaysia   — Manufacturing · Smartphones · Market Data · Policy
-7. 🇸🇬 Singapore  — Flagship Launches · Home Appliances · Events
-8. 🇮🇩 Indonesia  — Smartphones · TKDN · Home Appliances
-9. 🇹🇭 Thailand   — Manufacturing · Smartphones
-10. 🇻🇳 Vietnam    — Manufacturing & Supply Chain · Smartphones
-11. 🇵🇭 Philippines — Smartphone Launches · Consumer Electronics
-12. 🌏 Other SEA  — Myanmar/Cambodia/Laos/Brunei/Timor-Leste (if newsworthy)
+6. 🇲🇾 Malaysia   — Manufacturing · OEM/EMS · Market Data · Policy
+7. 🇸🇬 Singapore  — Home Appliances · Manufacturing · Events
+8. 🇮🇩 Indonesia  — TKDN · Home Appliances · Manufacturing
+9. 🇹🇭 Thailand   — Manufacturing · Supply Chain
+10. 🇻🇳 Vietnam    — Manufacturing & Supply Chain · OEM/EMS
+11. 🇵🇭 Philippines — Consumer Electronics · Manufacturing
+12. 🇮🇳 India      — Manufacturing · PLI & Policy · Supply Chain · OEM/EMS
+13. 🌏 Other SEA  — Myanmar/Cambodia/Laos/Brunei/Timor-Leste (if newsworthy)
 
 ── EVERY .card MUST HAVE ────────────────────────────────────
 .card-header: .btag (colour-coded pill, e.g. class="btag b-samsung") + h3 (10-20 words)
@@ -457,7 +463,7 @@ then .card items. Use class="breaking" + .breaking-badge for top 2–3 stories.
 Brand tag classes (use exact names):
 b-samsung b-apple b-huawei b-oppo b-xiaomi b-vivo b-honor b-realme
 b-iqoo b-transsion b-motorola b-dyson b-panasonic b-hisense b-haier
-b-tcl b-policy b-event b-supply b-data b-ems
+b-tcl b-tata b-dixon b-voltas b-policy b-event b-supply b-data b-ems
 
 ── 13. SOURCE INDEX (.src-index) ────────────────────────────
 .itable: No. | Market (flag emoji) | Story Topic | Source Media | Date
@@ -478,7 +484,7 @@ Output ONLY the HTML elements above. No markdown. No explanations.
 
 def wrap_html(body: str, start: datetime, end: datetime) -> str:
     """Inject body HTML into a complete document with embedded CSS and fonts."""
-    title = f"SEA Consumer Electronics Intelligence | {fmt(start, '%d')}–{fmt(end, '%d %b %Y')}"
+    title = f"SEA & India Manufacturing Watch | {fmt(start, '%d')}–{fmt(end, '%d %b %Y')}"
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -714,7 +720,7 @@ def send_email(html: str, out_path: Path, start: datetime, end: datetime) -> Non
         return
 
     subject = (
-        f"SEA Electronics Intelligence Weekly | "
+        f"SEA & India Manufacturing Watch | "
         f"{fmt(start, '%d')}–{fmt(end, '%d %b %Y')}"
     )
     recipients = [r.strip() for r in EMAIL_TO.split(",") if r.strip()]
@@ -732,7 +738,7 @@ def send_email(html: str, out_path: Path, start: datetime, end: datetime) -> Non
     alt = MIMEMultipart("alternative")
 
     plain_body = (
-        f"SEA Consumer Electronics Intelligence Weekly\n"
+        f"SEA & India Manufacturing Watch Weekly\n"
         f"Coverage: {fmt(start)} – {fmt(end)}\n\n"
         f"Please view this email in an HTML-capable client,\n"
         f"or open the attached HTML file in a browser.\n\n"
