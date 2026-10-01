@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEA & India Manufacturing Watch | 25–01 Oct 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+
+:root{--navy:#1a3a5c;--red:#c0392b;--cream:#f5f0e8;--white:#ffffff;
+--yellow-bg:#fdf6e3;--new-bg:#fff8f0;--ink:#0d0d0d;--muted:#6b5f50;
+--rule:#d4c9b5;--supply-bg:#f0eaf8;--supply-accent:#6d28d9;
+--supply-border:#c4b5fd;--gold:#b8860b;--gold-light:#fdf3d0;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}a:hover{text-decoration:underline}
+.wrap{max-width:880px;margin:0 auto;padding:0 24px 80px}
+.masthead{background:var(--navy);color:#fff;padding:52px 40px 40px;position:relative;overflow:hidden}
+.masthead::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-55deg,transparent,transparent 8px,rgba(255,255,255,.03) 8px,rgba(255,255,255,.03) 9px);pointer-events:none}
+.masthead::before{content:'';position:absolute;bottom:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--red) 0%,#e84040 50%,var(--red) 100%)}
+.mast-eyebrow{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:12px}
+.mast-title{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:16px}
+.mast-title em{font-style:italic;font-weight:400;color:rgba(255,255,255,.75)}
+.mast-flags{font-size:22px;letter-spacing:3px;margin:14px 0 10px;opacity:.9}
+.mast-tags{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 0}
+.mast-tag{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(255,255,255,.28);color:rgba(255,255,255,.68);padding:3px 9px;border-radius:2px}
+.mast-meta{font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,.6);margin-top:18px;display:flex;flex-wrap:wrap;gap:20px}
+.highlights{background:var(--red);color:#fff;padding:30px 32px}
+.highlights-label{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;opacity:.75;margin-bottom:18px}
+.hl-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.hl-grid{grid-template-columns:1fr}}
+.hl-item{display:flex;gap:12px;align-items:flex-start}
+.hl-num{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;line-height:1;opacity:.3;flex-shrink:0;width:26px}
+.hl-text{font-size:13.5px;font-weight:600;line-height:1.45}
+.section-rule{display:flex;align-items:center;gap:12px;margin:40px 0 20px;padding-bottom:12px;border-bottom:2.5px solid var(--navy)}
+.section-icon{font-size:22px}
+.section-rule h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--navy);flex:1}
+.section-sub{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.card{background:var(--white);border-top:3px solid var(--navy);padding:22px 24px;margin-bottom:20px;position:relative;box-shadow:0 1px 6px rgba(0,0,0,.05),0 0 0 1px rgba(0,0,0,.04)}
+.card.breaking{border-top-color:var(--red)}
+.card.new-item{background:var(--new-bg)}
+.breaking-badge{position:absolute;top:0;right:0;background:var(--red);color:#fff;font-family:'Space Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.14em;padding:3px 9px;text-transform:uppercase}
+.card-header{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px}
+.btag{font-family:'Space Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#fff;padding:3px 9px;border-radius:2px;flex-shrink:0;margin-top:3px}
+.b-samsung{background:#1428a0}.b-apple{background:#555}.b-huawei{background:#c82333}
+.b-oppo{background:#1e4a8c}.b-xiaomi{background:#f97316}.b-vivo{background:#415fff}
+.b-honor{background:#b8000e}.b-realme{background:#d97706}.b-iqoo{background:#0050a0}
+.b-transsion{background:#7c3aed}.b-motorola{background:#003087}.b-dyson{background:#c34a00}
+.b-panasonic{background:#003087}.b-hisense{background:#0a3d6b}.b-haier{background:#00529b}
+.b-tcl{background:#e31837}.b-tata{background:#486aae}.b-dixon{background:#1a6b3c}.b-voltas{background:#e65100}
+.b-policy{background:#374151}.b-event{background:#065f46}
+.b-supply{background:#5b21b6}.b-data{background:#0369a1}.b-ems{background:#5b21b6}
+.card h3{font-family:'Playfair Display',serif;font-size:17.5px;font-weight:700;line-height:1.3;color:var(--ink)}
+.card p{font-size:14px;color:#2c2620;line-height:1.7;margin-top:10px}
+.card p+p{margin-top:8px}
+.impact{background:var(--yellow-bg);border-left:3px solid var(--gold);padding:11px 15px;margin-top:16px}
+.impact-label{font-family:'Space Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+.impact p{font-size:13px;color:#3d2c00;line-height:1.6;margin-top:0}
+.src{font-family:'Space Mono',monospace;font-size:9.5px;color:var(--muted);margin-top:14px;padding-top:10px;border-top:1px solid var(--rule);line-height:1.6}
+.src a{color:var(--navy);text-decoration:none}.src a:hover{text-decoration:underline}
+.no-news{font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);padding:14px 0 6px;font-style:italic}
+.global-wrap{background:var(--navy);color:#fff;padding:34px 36px;margin:40px 0}
+.global-wrap h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:22px;display:flex;align-items:center;gap:10px}
+.g-card{border-left:3px solid rgba(255,255,255,.25);padding:13px 18px;margin-bottom:18px}
+.g-card:last-child{margin-bottom:0}
+.g-card h4{font-family:'Playfair Display',serif;font-size:15.5px;font-weight:700;margin-bottom:7px}
+.g-card p{font-size:13.5px;color:rgba(255,255,255,.82)}
+.g-link{display:inline-block;margin-top:8px;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#fbbf24}
+.g-src{font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.45);margin-top:8px}
+.supply-wrap{background:var(--supply-bg);border:1px solid var(--supply-border);padding:28px 32px;margin:40px 0}
+.supply-wrap h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#3b0764;margin-bottom:22px;display:flex;align-items:center;gap:10px}
+.s-card{background:#fff;border-left:4px solid var(--supply-accent);padding:15px 18px;margin-bottom:15px}
+.s-card h4{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:#3b0764;margin-bottom:6px}
+.s-card p{font-size:13.5px;color:#2e1065;line-height:1.65}
+.s-card .s-meta{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--supply-accent);margin-top:8px;text-transform:uppercase}
+.s-impact{background:#ede9fe;border-left:3px solid #7c3aed;padding:9px 13px;margin-top:10px}
+.s-impact p{font-size:12.5px;color:#3b0764;margin:0}
+.policy-wrap{background:var(--gold-light);border:1px solid #e8c44a;padding:28px 32px;margin:40px 0}
+.policy-wrap h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#78350f;margin-bottom:22px;display:flex;align-items:center;gap:10px}
+.p-card{background:#fff;border-left:4px solid #d97706;padding:16px 20px;margin-bottom:16px}
+.p-card h4{font-family:'Playfair Display',serif;font-size:15.5px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.p-card p{font-size:13.5px;color:#2c1800;line-height:1.65}.p-card p+p{margin-top:6px}
+.p-status{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;color:#92400e;margin-top:9px;text-transform:uppercase}
+.p-alert{background:#fef3c7;border:1px solid #fcd34d;padding:9px 13px;margin-top:10px;font-size:13px;color:#78350f}
+.ptable{width:100%;border-collapse:collapse;margin-top:22px;font-size:12.5px}
+.ptable th{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;background:var(--navy);color:#fff;padding:9px 11px;text-align:left}
+.ptable td{padding:9px 11px;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.5}
+.ptable tr:nth-child(even) td{background:rgba(255,255,255,.6)}
+.src-index{margin:40px 0}
+.src-index h2{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--navy);margin-bottom:14px;padding-bottom:10px;border-bottom:2.5px solid var(--navy);display:flex;align-items:center;gap:8px}
+.itable{width:100%;border-collapse:collapse;font-size:12px}
+.itable th{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;background:var(--navy);color:#fff;padding:9px 11px;text-align:left}
+.itable td{padding:8px 11px;border-bottom:1px solid var(--rule);vertical-align:top}
+.itable tr.r-supply td{background:#f5f0ff}.itable tr.r-policy td{background:#fff8e1}
+.itable tr.r-global td{background:#eef2ff}.itable tr.r-new td{background:var(--new-bg)}
+.itable a{color:var(--navy);font-size:11px}
+.divider{height:1px;background:var(--rule);margin:28px 0}
+footer{border-top:2.5px solid var(--navy);padding-top:26px;margin-top:44px;font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);line-height:1.9}
+footer strong{color:var(--ink)}
+
+</style>
+</head>
+<body>
+<div class="masthead"><div class="wrap">
+  <div class="mast-eyebrow">Southeast Asia &amp; India · Manufacturing Intelligence</div>
+  <div class="mast-title">Southeast Asia &amp; India<br><em>Manufacturing Watch</em></div>
+  <div class="mast-flags">🇸🇬 🇲🇾 🇮🇩 🇹🇭 🇻🇳 🇵🇭 🇮🇳 🇲🇲 🇰🇭 🇱🇦 🇧🇳 🇹🇱</div>
+  <div class="mast-tags"><span class="mast-tag">Home Appliances</span><span class="mast-tag">OEM/EMS</span><span class="mast-tag">Supply Chain</span><span class="mast-tag">Policy &amp; Regulation</span><span class="mast-tag">Market Intelligence</span><span class="mast-tag">Manufacturing</span></div>
+  <div class="mast-meta">📅 Coverage: 25 September – 01 October 2026 &nbsp;|&nbsp; 🗓 Compiled: 01 October 2026 &nbsp;|&nbsp; 🎯 Audience: Procurement, sourcing and supply-chain teams</div>
+</div></div>
+
+<div class="highlights"><div class="wrap">
+  <div class="highlights-label">⚡ Key Highlights — This Week</div>
+  <div class="hl-grid">
+    <div class="hl-item"><div class="hl-num">1</div><div class="hl-text">India's BIS QCO for 90+ electrical appliance categories takes effect 1 October 2026.</div></div>
+    <div class="hl-item"><div class="hl-num">2</div><div class="hl-text">Asian factory activity expands in September on global AI boom; Indonesia among improvers.</div></div>
+    <div class="hl-item"><div class="hl-num">3</div><div class="hl-text">US Section 301 forced-labour duties: 12.5% on Vietnam, Thailand, Philippines, Singapore; 10% on Malaysia, Indonesia, Cambodia.</div></div>
+    <div class="hl-item"><div class="hl-num">4</div><div class="hl-text">Foxconn's Fushan Technology Vietnam runs line trials Sep–Oct, official operations November 2026.</div></div>
+  </div>
+</div></div>
+
+<div class="global-wrap"><div class="wrap">
+  <div class="section-rule"><span class="section-icon">🌐</span><h2>Global Industry Shifts</h2><div class="section-sub">Cross-border moves with direct SEA/India manufacturing impact</div></div>
+
+  <div class="g-card">
+    <h4>Asian factory activity expands on global AI boom</h4>
+    <p>Asian factory activity expanded in September 2026, supported by the global AI boom and solid global demand, with notable improvements reported in Japan, South Korea, Taiwan and Indonesia. The report was published on 1 October 2026.</p>
+    <div class="g-link">→ Downstream SEA impact: firmer order books for Indonesian and wider ASEAN electronics and component plants heading into Q4.</div>
+    <div class="g-src">01 Oct 2026 · Global Banking &amp; Finance Review · <a href="https://www.globalbankingandfinance.com/asian-factory-activity-expands-thanks-global-ai-boom">source</a></div>
+  </div>
+
+  <div class="g-card">
+    <h4>US Section 301 forced-labour duties now in force across ASEAN</h4>
+    <p>USTR's 23 July final action in its forced-labour import-policy investigations applies to covered merchandise entered on or after 24 July 2026. Cambodia, Indonesia and Malaysia face an additional 10% Section 301 duty; the Philippines, Singapore, Thailand and Vietnam face an additional 12.5%.</p>
+    <div class="g-link">→ Downstream SEA impact: landed-cost recalculation for US-bound consumer electronics assembled in Vietnam, Thailand, Malaysia and Indonesia.</div>
+    <div class="g-src">2026 · DFDL · <a href="https://www.dfdl.com/insights/legal-and-tax-updates/us-section-301-tariffs-asean-implications">source</a></div>
+  </div>
+
+  <div class="g-card">
+    <h4>China's manufacturing scale continues to reset SEA development benchmarks</h4>
+    <p>Analysis published 26 July 2026 argues China's manufacturing boom continues to move the goalposts for Southeast Asian development, as China remains a leading exporter of consumer electronics and other assembled final goods despite rising labour costs.</p>
+    <div class="g-link">→ Downstream SEA impact: continued pressure on ASEAN assembly margins and on the pace of value-add migration up the component stack.</div>
+    <div class="g-src">26 Jul 2026 · East Asia Forum · <a href="https://eastasiaforum.org/2026/07/26/chinas-manufacturing-boom-moves-the-goalposts-for-southeast-asian-development">source</a></div>
+  </div>
+</div></div>
+
+<div class="supply-wrap"><div class="wrap">
+  <div class="section-rule"><span class="section-icon">🔩</span><h2>Core Component Supply Chain Update</h2><div class="section-sub">PCB/FPC · Display · Camera · Battery · Passive · Compressors/Motors</div></div>
+
+  <div class="s-card">
+    <h4>PCB / FPC — Vietnam base deepens with Korean and Taiwanese capacity</h4>
+    <p>Vietnam's PCB manufacturing base now includes Young Poong (South Korea), which produces PCBs and flexible printed circuits (FPCBs) in Vietnam serving consumer electronics and battery/EV applications, and Tripod Technology Vietnam (Taiwan), which offers multilayer and HDI at scale. Sunching Electronics Vietnam has operated in Bac Ninh since October 2001.</p>
+    <div class="s-meta">📍 Vietnam (Bac Ninh and other northern clusters) · Status: operational, capability confirmation advised per project</div>
+    <div class="s-impact"><p>Sourcing Implication: FPCB and rigid-flex capability in-country reduces the need to dual-source flex circuits out of Greater China for consumer device programmes.</p></div>
+    <div class="src">2026 · Inorsen / OurPCB · <a href="https://www.inorsen.com/guides/top-pcb-manufacturers-in-vietnam">source</a></div>
+  </div>
+
+  <div class="s-card">
+    <h4>PCB — KnownPCB to exhibit at Global Sources Consumer Electronics, Hong Kong</h4>
+    <p>KnownPCB confirmed it will exhibit in Hong Kong in October 2026 to showcase its latest PCB manufacturing capabilities at Global Sources Consumer Electronics 2026.</p>
+    <div class="s-meta">📍 Hong Kong (serving SEA buyers) · Status: exhibiting October 2026</div>
+    <div class="s-impact"><p>Sourcing Implication: a low-cost channel for SEA buyers to qualify new PCB capacity ahead of Q1 2027 build plans.</p></div>
+    <div class="src">2026 · KnownPCB (Facebook) · <a href="https://www.facebook.com/61551103520534/posts/meet-knownpcb-at-global-sources-consumer-electronics-2026-well-be-exhibiting-in-/122286341426036784">source</a></div>
+  </div>
+
+  <div class="s-card">
+    <h4>Display — Samsung Display and LG Display unveil next-gen OLED at IMID 2026</h4>
+    <p>At IMID 2026 in Busan, LG Display unveiled FLiPP, an FMM-less RGB OLED pixel patterning technology that eliminates fine metal masks, while Samsung Display exhibited a wide-view foldable panel and a stretchable display. Samsung Display has disclosed mass production plans for 31.5-inch 4K 360Hz QD-OLED panels in 2H 2026.</p>
+    <div class="s-meta">📍 Busan, South Korea (SEA supply relevance) · Status: technology showcase; QD-OLED mass production 2H 2026</div>
+    <div class="s-impact"><p>Strategic Read: mask-free RGB patterning, if commercialised, would lower OLED deposition cost — a medium-term input to monitor panel pricing for SEA monitor and IT assembly.</p></div>
+    <div class="src">19 Aug 2026 · The Korea Times · <a href="https://www.koreatimes.co.kr/business/companies/20260819/lg-display-samsung-display-showcase-next-generation-oled-technologies-at-imid">source</a></div>
+  </div>
+
+  <div class="s-card">
+    <h4>Display — Samsung Display's $1.8bn Vietnam OLED plant targets Micro OLED</h4>
+    <p>Samsung Display is building a $1.8 billion OLED plant in Vietnam focused on Micro OLED lines for VR and AR devices. Samsung Display held 48% and LG Display 21% of global OLED panel revenue in 2025, with BOE at 14% shipment share.</p>
+    <div class="s-meta">📍 Vietnam · Status: under construction</div>
+    <div class="s-impact"><p>Strategic Read: Micro OLED capacity in Vietnam positions the country for XR device supply, an adjacent demand stream for local camera, flex and precision component suppliers.</p></div>
+    <div class="src">2026 · KED Global · <a href="https://www.kedglobal.com/electronics/newsView/ked202409240008">source</a></div>
+  </div>
+
+  <div class="s-card">
+    <h4>Camera modules — LG Innotek V3 Haiphong plant doubles capacity</h4>
+    <p>LG Innotek has commenced operations at its newly completed V3 factory in Haiphong, Vietnam, effectively doubling its camera module production capacity. The company aims for Vietnam to account for 70–80% of total camera module output within two to three years, with Gumi in Korea retained as a "mother factory" for R&amp;D and high-value-added modules.</p>
+    <div class="s-meta">📍 Haiphong, Vietnam · Status: operational</div>
+    <div class="s-impact"><p>Sourcing Implication: expanded Vietnamese camera module capacity improves price competition on general-purpose modules for mid-tier smartphone programmes.</p></div>
+    <div class="src">22 Sep 2025 · The Elec · <a href="https://www.thelec.net/news/articleView.html?idxno=5437">source</a></div>
+  </div>
+
+  <div class="s-card">
+    <h4>Camera modules — Sunny Optical reaches mass production on 8P lens modules</h4>
+    <p>Sunny Optical achieved full-scale commercial mass production of 8-element (8P) plastic and hybrid glass-plastic lens camera modules for flagship mobile photography, and scaled automotive lines with 8-Megapixel ADAS front-sensing camera module contracts with EV manufacturers in East Asia and Europe.</p>
+    <div class="s-meta">📍 China (SEA supply relevance) · Status: mass production</div>
+    <div class="s-impact"><p>Market Signal: 8P module maturity compresses the premium camera tier, raising the specification bar for SEA-assembled mid-range devices.</p></div>
+    <div class="src">2026 · Market Growth Reports · <a href="https://www.marketgrowthreports.com/blog/camera-module-companies-468">source</a></div>
+  </div>
+
+  <div class="s-card">
+    <h4>Passive — MLCC market enters K-shaped recovery; AI server submarket concentrated</h4>
+    <p>The global MLCC market is projected at US$48.2 billion in 2026, growing at a 6.4% CAGR to 2033, with the consumer electronics MLCC segment estimated at US$16.32 billion in 2026 growing at 16.15% CAGR over 2026–2031. Murata holds around 45% and Samsung Electro-Mechanics around 40% of the AI server MLCC submarket.</p>
+    <div class="s-meta">📍 Japan / South Korea (SEA supply relevance) · Status: K-shaped recovery in 2026</div>
+    <div class="s-impact"><p>Sourcing Implication: bifurcated MLCC pricing — AI-server grades tight, commodity consumer grades competitive — argues for separate negotiation tracks in BOM costing.</p></div>
+    <div class="src">2026 · Persistence Market Research / Mordor Intelligence · <a href="https://www.persistencemarketresearch.com/market-research/passive-components-market.asp">source</a></div>
+  </div>
+
+  <div class="s-card">
+    <h4>Passive — India PLI pull creates nascent local MLCC demand</h4>
+    <p>India's PLI rollout is creating a nascent pull for local MLCC tonnage, with at least two multinational contenders reportedly evaluating sites in Tamil Nadu and Gujarat for a 2026 start-up. Murata's JPY 46 billion Moriyama Innovation Center is due online in 2026, and Samsung Electro-Mechanics is channelling KRW 500 billion into 0201 capacity.</p>
+    <div class="s-meta">📍 India (Tamil Nadu, Gujarat) · Status: site evaluation stage</div>
+    <div class="s-impact"><p>Strategic Read: local MLCC capacity would shorten the passive component lead time for India-assembled PCBs, currently a structural import dependency.</p></div>
+    <div class="src">2026 · Mordor Intelligence · <a href="https://www.mordorintelligence.com/industry-reports/asia-pacific-mlcc-market">source</a></div>
+  </div>
+
+  <div class="s-card">
+    <h4>Battery — ATL and Sunwoda remain the consumer cell benchmarks</h4>
+    <p>Amperex Technology Limited (ATL), a TDK Corporation subsidiary founded in 1999, specialises in lithium-ion batteries for consumer electronics and supplies major brands including Apple and Samsung, with cell manufacturing in China and India. Sunwoda Electronic operates a global manufacturing network across China, Thailand and Hungary.</p>
+    <div class="s-meta">📍 China / India / Thailand · Status: operational</div>
+    <div class="s-impact"><p>Sourcing Implication: Sunwoda's Thailand footprint gives SEA assemblers a regional cell source for non-handset consumer devices without a China-only dependency.</p></div>
+    <div class="src">2026 · DataM Intelligence / DEJI · <a href="https://www.datamintelligence.com/blogs/top-battery-manufacturing-companies">source</a></div>
+  </div>
+
+  <div class="s-card">
+    <h4>Compressors / Motors — Nidec Global Appliance runs 70m-unit capacity</h4>
+    <p>Nidec Global Appliance, the division housing Embraco compressors, has a production capacity of 70 million units of motors and compressors per year, a sales presence in more than 80 countries and over 50 R&amp;D laboratories, with more than 15,000 employees across 9 countries. Embraco units supply compressors for AC and refrigeration in Thailand and other countries.</p>
+    <div class="s-meta">📍 Multi-country, incl. Thailand supply · Status: operational</div>
+    <div class="s-impact"><p>Market Signal: Embraco's Thai AC and refrigeration compressor supply keeps a non-China compressor option open for ASEAN white-goods assembly.</p></div>
+    <div class="src">2026 · Nidec / Embraco (LinkedIn) · <a href="https://acim.nidec.com/tr-TR/motors/News-And-Media/Press-Releases/Nidec-Expands-Aftermarket-HVACR-Solutions-through-Embraco-and-US-MOTORS-brands">source</a></div>
+  </div>
+
+  <div class="s-card">
+    <h4>Compressors — Kulthorn Kirby supplies reciprocating compressors from Thailand</h4>
+    <p>Kulthorn Kirby Public Company Limited manufactures and sells reciprocating motor compressors for refrigeration products including refrigerators, freezers, water coolers, commercial refrigerators and air conditioners, with sizes from 1/20 horsepower to 10 horsepower and compatibility across R22, R290, R134a, R404A, R407C, R410A, R507, R600a and R744 (CO2) refrigerants.</p>
+    <div class="s-meta">📍 Thailand · Status: operational</div>
+    <div class="s-impact"><p>Sourcing Implication: broad refrigerant compatibility makes Kulthorn a drop-in option for white-goods lines transitioning to lower-GWP refrigerants.</p></div>
+    <div class="src">2026 · Kulthorn Kirby · <a href="https://compressor.kulthorn.com/ir_company">source</a></div>
+  </div>
+</div></div>
+
+<div class="policy-wrap"><div class="wrap">
+  <div class="section-rule"><span class="section-icon">📜</span><h2>Policy Focus</h2><div class="section-sub">Regulation, certification and tariff changes affecting consumer electronics</div></div>
+
+  <div class="p-card">
+    <h4>🇮🇳 India — BIS QCO for 90+ electrical appliance categories takes effect 1 October 2026</h4>
+    <p>India's Safety of Household, Commercial and Similar Electrical Appliances (Quality Control) Order, 2026 requires more than 90 categories of household, commercial and industrial electrical appliances to obtain BIS certification and bear the ISI mark prior to market entry in India, effective 1 October 2026. Covered products include shavers, trimmers, toothbrushes, blenders and air appliances. For foreign manufacturers, certification is a precondition for market access.</p>
+    <div class="p-status">Status: In force from 01 October 2026</div>
+    <div class="p-alert">⚠️ Non-compliance can result in import restrictions, product seizures and financial penalties.</div>
+    <div class="src">2026 · India Briefing · <a href="https://www.india-briefing.com/news/india-electrical-appliances-qco-2026-bis-certification-guide-for-foreign-manufacturers-44541.html">source</a></div>
+  </div>
+
+  <div class="p-card">
+    <h4>🇮🇩 Indonesia — MOT Reg 19/2026 reshapes e-commerce and local-content enforcement</h4>
+    <p>Minister of Trade Regulation No. 19 of 2026 replaces MOT Reg 31/2023, expanding the scope of businesses covered, adding obligations for online platforms and merchants, tightening conditions for cross-border sellers, and establishing Indonesia's first trade-level framework for artificial intelligence in commerce. The regulation emphasises platform accountability, seller verification, product transparency and domestic product visibility. TKDN local content rules require minimum locally-sourced component percentages for foreign brands selling electronics in Indonesia.</p>
+    <div class="p-status">Status: In effect; platforms carry direct enforcement responsibilities</div>
+    <div class="p-alert">⚠️ Devices without complete TKDN certification risk IMEI blocking on Telkomsel, Indosat, XL and Tri networks, and delisting from Tokopedia, Shopee, Lazada and Blibli.</div>
+    <div class="src">14 Jul 2026 · Dentons HPRP · <a href="https://dentons.hprplawyers.com/en/insights/articles/2026/july/14/mot-regulation-192026-takes-effect-wider-scope-sharper-rules-for-ecommerce-players">source</a></div>
+  </div>
+
+  <div class="p-card">
+    <h4>🇲🇾 Malaysia — MCMC communication equipment standards enter full enforcement 5 November 2026</h4>
+    <p>Malaysia's MCMC has set implementation dates for two communication equipment standards, effective from 5 May 2026 with a six-month grace period. All subsequent related equipment submitted for certification must comply with the two new standards, with full enforcement starting 5 November 2026. Sellers must ensure products are certified and labelled by MCMC, with non-compliance carrying severe penalties.</p>
+    <div class="p-status">Status: Grace period running; full enforcement 05 November 2026</div>
+    <div class="p-alert">⚠️ Online shopping platforms are required to verify SIRIM certification for listed equipment.</div>
+    <div class="src">2026 · GMA CAICT · <a href="https://gma.caict.ac.cn/en/update/29/1385">source</a></div>
+  </div>
+
+  <div class="p-card">
+    <h4>🇸🇬 Singapore — Residential gateways move to RG-SEC Issue 2 and CLS Level 2</h4>
+    <p>Singapore's IMDA is transitioning residential gateways to RG-SEC Issue 2 and CLS Level 2 cybersecurity requirements, with new-model registration changing on 8 December 2026 and full local-market compliance required by 31 December 2027. Separately, CSA and IMDA plan to raise the mandatory cybersecurity certification requirement for household routers from CLS Level 1 to Level 2 by end-2027.</p>
+    <div class="p-status">Status: New-model registration change 08 December 2026; full compliance by 31 December 2027</div>
+    <div class="src">2026 · ICERTIFI / CSA · <a href="https://icertifi.com/singapore-imda-rg-sec-issue-2-residential-gateway-cybersecurity">source</a></div>
+  </div>
+
+  <div class="p-card">
+    <h4>🇺🇸→🇦🇺 US Section 301 forced-labour duties apply to ASEAN-origin electronics</h4>
+    <p>For covered merchandise entered on or after 24 July 2026, Cambodia, Indonesia and Malaysia are subject to an additional 10% Section 301 duty, while the Philippines, Singapore, Thailand and Vietnam are subject to an additional 12.5% duty. Brunei Darussalam, Lao PDR, Myanmar and Timor-Leste are treated separately under the action.</p>
+    <div class="p-status">Status: In force since 24 July 2026</div>
+    <div class="p-alert">⚠️ Country-level duty stacking materially changes US landed cost for SEA-assembled consumer electronics.</div>
+    <div class="src">2026 · DFDL · <a href="https://www.dfdl.com/insights/legal-and-tax-updates/us-section-301-tariffs-asean-implications">source</a></div>
+  </div>
+
+  <div class="ptable">
+    <table>
+      <thead><tr><th>Market</th><th>Policy</th><th>CE Impact</th><th>Effective Date</th></tr></thead>
+      <tbody>
+        <tr><td>🇮🇳 India</td><td>Electrical Appliances QCO 2026 / BIS + ISI mark</td><td>90+ appliance categories blocked at customs without certification</td><td>01 Oct 2026</td></tr>
+        <tr><td>🇮🇩 Indonesia</td><td>MOT Reg 19/2026 + TKDN local content</td><td>Seller licensing, cross-border conditions, AI governance, IMEI blocking risk</td><td>In effect (2026)</td></tr>
+        <tr><td>🇲🇾 Malaysia</td><td>MCMC communication equipment standards</td><td>Mandatory SIRIM/MCMC certification and labelling</td><td>05 Nov 2026 (full)</td></tr>
+        <tr><td>🇸🇬 Singapore</td><td>IMDA RG-SEC Issue 2 / CLS Level 2</td><td>Residential gateway cybersecurity certification uplift</td><td>08 Dec 2026 / 31 Dec 2027</td></tr>
+        <tr><td>🇻🇳🇹🇭🇵🇭🇸🇬</td><td>US Section 301 forced-labour duty</td><td>+12.5% on covered US-bound merchandise</td><td>24 Jul 2026</td></tr>
+        <tr><td>🇲🇾🇮🇩🇰🇭</td><td>US Section 301 forced-labour duty</td><td>+10% on covered US-bound merchandise</td><td>24 Jul 2026</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div></div>
+
+<div class="section-rule"><span class="section-icon">🇲🇾</span><h2>Malaysia</h2><div class="section-sub">Manufacturing · OEM/EMS · Market Data · Policy</div></div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-ems">EMS</span><h3>NationGate expects earnings inflection from Q4 2026 on optical module ramp</h3></div>
+  <p>NationGate Holdings is expected to see an earnings inflection from the fourth quarter of 2026, driven by new optical module programmes and improving production yields. First-half 2026 adjusted net profit of RM29.5 million accounted for only 38% of UOBKH Research's full-year forecast and 51% of consensus estimates.</p>
+  <p>The research house said the weaker-than-expected 1H26 performance reflected ramp-up costs, and expects the growth trajectory to accelerate further into 2027 as higher ramp-up, better yields and stronger operating leverage drive an anticipated S-curve earnings recovery.</p>
+  <div class="impact"><div class="impact-label">Market Signal</div><p>Optical module programmes are becoming a meaningful second leg for Malaysian EMS beyond conventional consumer device assembly.</p></div>
+  <div class="src">26 Aug 2026 · The Star · <a href="https://www.thestar.com.my/business/business-news/2026/08/26/nationgate-to-ride-on-higher-production-yields">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-supply">Supply</span><h3>UWC closes July 2026 financial year with record fourth quarter</h3></div>
+  <p>UWC ended its July 2026 financial year with a record fourth quarter as semiconductor recovery took hold. Revenue for the quarter rose 71.1% year-on-year to RM186.2 million, while profit before tax reached RM43.7 million.</p>
+  <p>The result marks a sharp rebound for the Malaysian precision engineering and semiconductor-linked manufacturer, which supplies components into global electronics supply chains.</p>
+  <div class="impact"><div class="impact-label">Market Signal</div><p>Semiconductor-linked Malaysian precision manufacturers are re-rating upward, tightening capacity availability for new consumer electronics programmes.</p></div>
+  <div class="src">2026 · The Ledger Asia · <a href="https://www.facebook.com/theledger.asia/posts/uwc-ended-its-july-2026-financial-year-with-a-record-fourth-quarter-as-recoverin/122183278928964725">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-data">Data</span><h3>Inari Amertron FY2026 revenue falls 12.18% to RM1.19 billion</h3></div>
+  <p>Inari Amertron Berhad reported fiscal year 2026 revenue of RM1.19 billion, a decrease of 12.18% compared with the previous year's RM1.35 billion. Earnings were RM127.50 million, a decrease of 41.71%.</p>
+  <p>Shareholders will receive a dividend of RM0.014 with an ex-date of 17 September 2026 and payment date of 8 October 2026, a dividend yield of 1.8%. The dividend represents a 140% earnings payout ratio but is covered by cash flows at an 81% cash payout ratio.</p>
+  <div class="impact"><div class="impact-label">Market Signal</div><p>Optoelectronics and RF component demand softened through FY2026 even as broader Malaysian EMS pivots toward optical and AI-linked programmes.</p></div>
+  <div class="src">2026 · StockAnalysis / Simply Wall St · <a href="https://stockanalysis.com/quote/klse/INARI">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-policy">Policy</span><h3>MCMC communication equipment standards approach full enforcement in November</h3></div>
+  <p>Malaysia's MCMC set implementation dates for two communication equipment standards effective from 5 May 2026, with a six-month grace period. All subsequent related equipment submitted for certification must comply with the new standards, and full enforcement begins 5 November 2026.</p>
+  <p>Sellers are advised to ensure products are certified and labelled by MCMC. Online shopping platforms carry a verification obligation for SIRIM certification of listed equipment, and non-compliance carries severe penalties.</p>
+  <div class="impact"><div class="impact-label">Compliance Alert</div><p>Importers with equipment still in the grace period have roughly five weeks to complete certification before full enforcement.</p></div>
+  <div class="src">2026 · GMA CAICT · <a href="https://gma.caict.ac.cn/en/update/29/1385">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-policy">Policy</span><h3>Malaysia 2026 budget execution continues across carbon pricing and digital tax reporting</h3></div>
+  <p>Implementation of Malaysia's 2026 budget measures continues throughout 2026 across carbon pricing, AI governance and incentive verification, with close coordination with MIDA and MITI remaining critical for timely approvals. The Q1/Q2 2026 launch of the NIIF framework is described as the most significant incentive overhaul in over a decade.</p>
+  <p>Companies that integrate compliance automation and ESG reporting internally are expected to secure faster eligibility reviews and sustain incentive access.</p>
+  <div class="impact"><div class="impact-label">Strategic Read</div><p>Incentive eligibility is increasingly gated on compliance automation — a planning item for electronics manufacturers sizing Malaysian capex.</p></div>
+  <div class="src">2026 · ASEAN Briefing / Horizon Hub · <a href="https://www.aseanbriefing.com/news/malaysias-2026-budget-what-it-means-for-foreign-investors">source</a></div>
+</div>
+
+<div class="section-rule"><span class="section-icon">🇸🇬</span><h2>Singapore</h2><div class="section-sub">Home Appliances · Manufacturing · Events</div></div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-event">Event</span><h3>Sia Huat brings biggest household and kitchenware warehouse sale to Singapore EXPO</h3></div>
+  <  <p>Sia Huat is bringing its biggest household and kitchenware warehouse sale to Singapore EXPO for the first time, running 3–4 October 2026. The event targets trade and consumer buyers across household and kitchenware categories.</p>
+  <p>The warehouse sale format gives regional buyers a short-window opportunity to clear stock and test pricing ahead of the Q4 promotional season.</p>
+  <div class="impact"><div class="impact-label">Market Signal</div><p>Off-price warehouse events are increasingly used by Singapore distributors to move inventory ahead of Singles' Day and year-end promotions.</p></div>
+  <div class="src">2026 · Sia Huat (Instagram) · <a href="https://www.instagram.com/p/DbO9Dc-k05g">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-event">Event</span><h3>Bosch Home Singapore schedules home appliances sale for 9–10 October 2026</h3></div>
+  <p>Bosch Home Singapore will hold a Home Appliances Sale on 9–10 October 2026, 9:30am to 6:30pm, at Bosch Building, Level 1, 11 Bishan Street 21, Singapore 573943. The event is RSVP-based.</p>
+  <p>The direct-to-consumer sale format bypasses retail channel margin and is used by premium appliance brands to clear end-of-cycle models in the Singapore market.</p>
+  <div class="impact"><div class="impact-label">Brand Watch</div><p>Premium European appliance brands are running owned-channel clearance events in Singapore, a signal of inventory normalisation in the local MDA market.</p></div>
+  <div class="src">2026 · Bosch Home SG (Facebook) · <a href="https://www.facebook.com/BoschHomeSG/posts/mark-your-calendar-our-home-appliances-sale-is-on-910-october-930am630pmwhether-/1085419157538254">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-policy">Policy</span><h3>IMDA moves residential gateways to RG-SEC Issue 2 and CLS Level 2</h3></div>
+  <p>Singapore's IMDA is transitioning residential gateways to RG-SEC Issue 2 and CLS Level 2 cybersecurity requirements, with new-model registration changing on 8 December 2026 and full local-market compliance required by 31 December 2027.</p>
+  <p>Separately, CSA and IMDA plan to raise the mandatory cybersecurity certification requirement for household routers from CLS Level 1 to Level 2 by end-2027, announced at the MDDI Committee of Supply Debates 2026.</p>
+  <div class="impact"><div class="impact-label">Compliance Alert</div><p>Networking and gateway OEMs supplying Singapore must re-certify new models from December 2026; existing stock has until end-2027.</p></div>
+  <div class="src">2026 · ICERTIFI / CSA · <a href="https://icertifi.com/singapore-imda-rg-sec-issue-2-residential-gateway-cybersecurity">source</a></div>
+</div>
+
+<div class="section-rule"><span class="section-icon">🇮🇩</span><h2>Indonesia</h2><div class="section-sub">TKDN · Home Appliances · Manufacturing</div></div>
+
+<div class="card breaking">
+  <div class="card-header"><span class="breaking-badge">BREAKING</span><span class="btag b-policy">Policy</span><h3>Indonesia's MOT Reg 19/2026 tightens e-commerce rules and domestic product visibility</h3></div>
+  <p>Minister of Trade Regulation No. 19 of 2026 replaces MOT Reg 31/2023, expanding the categories of businesses subject to PMSE rules, adding mandatory protections for sellers, introducing algorithmic obligations for marketplace platforms, tightening conditions for cross-border sellers, and establishing Indonesia's first trade-level framework for artificial intelligence in commerce.</p>
+  <p>The regulation emphasises platform accountability, seller verification, product transparency and domestic product visibility. Platforms now carry direct enforcement responsibilities, and multinational companies, foreign investors and cross-border sellers must reassess existing PMSE operations against the new requirements.</p>
+  <div class="impact"><div class="impact-label">Compliance Alert</div><p>Cross-border electronics sellers face tighter listing conditions and domestic-product prioritisation on Indonesian marketplaces.</p></div>
+  <div class="src">14 Jul 2026 · Dentons HPRP · <a href="https://dentons.hprplawyers.com/en/insights/articles/2026/july/14/mot-regulation-192026-takes-effect-wider-scope-sharper-rules-for-ecommerce-players">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-policy">Policy</span><h3>TKDN local content rules gate electronics market access and network activation</h3></div>
+  <p>TKDN (Tingkat Komponen Dalam Negeri) local content requirements mandate that certain product categories contain a minimum percentage of locally-sourced components for foreign brands selling electronics in Indonesia. Operators Telkomsel, Indosat, XL and Tri block IMEIs of devices without complete certification, preventing use of Indonesian SIM cards.</p>
+  <p>E-commerce platforms including Tokopedia, Shopee, Lazada and Blibli increasingly require proof of TKDN before listing. If devices are found being sold without proper TKDN, customs and tax authorities can demand reclamation of preferential duties.</p>
+  <div class="impact"><div class="impact-label">Compliance Alert</div><p>Three enforcement layers — network IMEI blocking, marketplace listing requirements and duty clawback — make TKDN a hard gate rather than a soft preference.</p></div>
+  <div class="src">2026 · Kickrate · <a href="https://www.kickrate.com/blog/tkdn-indonesia">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-supply">Supply</span><h3>Indonesia household appliances manufacturing market forecast at 6.8% CAGR to 2032</h3></div>
+  <p>The Indonesia Household Appliances Manufacturing Market is expected to grow steadily at a CAGR of 6.8% from 2026 to 2032, driven by urbanisation, rising incomes and a growing middle class. The market is also influenced by global trends toward sustainability and energy-efficient appliances.</p>
+  <p>The forecast covers small electrical appliances, household cooking appliances, household refrigerators and other segments, with local manufacturing capacity expanding to meet domestic demand.</p>
+  <div class="impact"><div class="impact-label">Market Signal</div><p>Steady mid-single-digit manufacturing growth supports continued localisation of appliance assembly in Indonesia.</p></div>
+  <div class="src">2026 · 6Wresearch · <a href="https://www.6wresearch.com/industry-report/indonesia-household-appliances-manufacturing-market-outlook">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-event">Event</span><h3>HOMEDEC Indonesia home design and interior exhibition set for 22 October 2026</h3></div>
+  <p>The Indonesian Home Design &amp; Interior Exhibition (HOMEDEC) is scheduled for 22 October 2026 at the ICE - Indonesian Convention Exhibition in Jakarta, running four days. HOMEDEC is an annual home show positioned as a one-stop home solution and reference point for homeowners.</p>
+  <p>The event brings together appliance, kitchen and interior product suppliers targeting Indonesian consumers and trade buyers.</p>
+  <div class="impact"><div class="impact-label">Market Signal</div><p>Appliance brands use HOMEDEC as a channel to reach Indonesian homeowners directly, complementing marketplace distribution.</p></div>
+  <div class="src">2026 · EventsEye · <a href="https://www.eventseye.com/fairs/zst1_trade-shows_asia-pacific_household-appliances-domestic-appliance-technology.html">source</a></div>
+</div>
+
+<div class="section-rule"><span class="section-icon">🇹🇭</span><h2>Thailand</h2><div class="section-sub">Manufacturing · Supply Chain</div></div>
+
+<div class="card breaking">
+  <div class="card-header"><span class="breaking-badge">BREAKING</span><span class="btag b-hisense">Hisense</span><h3>Hisense invests THB 4.7 billion in Chonburi smart manufacturing industrial park</h3></div>
+  <p>Hisense has invested THB 4.7 billion in a smart manufacturing industrial park in Chonburi targeting refrigerator and washing machine production, with the goal of building ASEAN's largest white goods manufacturing base. Phase one will exceed 2.6 million units of annual capacity, with completion expected by mid-2026.</p>
+  <p>Prior to this, Hisense had already built an air conditioner factory in Rayong with an annual design capacity of 3 million units. TCL Smart Home is also advancing its own Thai investment, having announced plans in June to invest 680 million to build a factory in Chonburi Prefecture.</p>
+  <div class="impact"><div class="impact-label">Strategic Read</div><p>Chonburi is consolidating as the white-goods anchor of the "Iron Triangle" of Chinese appliance manufacturing in Thailand, alongside Rayong AC capacity.</p></div>
+  <div class="src">2026 · China (Ningbo) International Home Appliances Expo · <a href="https://www.cxchae.com/En/jdz-article-d.html?cid=12&amp;id=4121">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-supply">Supply</span><h3>Midea Thailand RAC factory becomes industry's first Lighthouse Factory outside home market</h3></div>
+  <p>Midea's Thailand RAC factory, strategically located in Chonburi within Thailand's Eastern Economic Corridor, spans 208,000 sqm with a total investment of approximately USD 168 million. It is the largest residential air conditioner production hub in Thailand and Southeast Asia, and in 2026 its annual output is expected to reach 6 million units.</p>
+  <p>The site is described as Southeast Asia's first fully 5G-connected factory and the home appliance industry's first Lighthouse Factory beyond Midea's home market. The President of Midea Group Asia-Pacific stated that Thailand has become an important manufacturing centre in Southeast Asia.</p>
+  <div class="impact"><div class="impact-label">Strategic Read</div><p>Lighthouse designation signals that Thai RAC capacity is now a reference plant for Midea's global smart manufacturing standard, raising the local supplier quality bar.</p></div>
+  <div class="src">2026 · Yahoo Finance Singapore · <a href="https://sg.finance.yahoo.com/news/midea-achieved-another-global-first-030000177.html">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-supply">Supply</span><h3>Thailand approves plan to establish domestic chipset ecosystem by 2050</h3></div>
+  <p>Thailand has approved a plan to establish a domestic chipset ecosystem by 2050, reported on 25 September 2026. The long-horizon plan targets domestic semiconductor capability building.</p>
+  <p>The approval comes as Southeast Asia's semiconductor supply chain continues to attract investment in manufacturing and assembly activities across Singapore, Malaysia and Vietnam.</p>
+  <div class="impact"><div class="impact-label">Strategic Read</div><p>A 2050 horizon is long-dated, but the approval signals Thailand's intent to move beyond appliance and automotive assembly into chip capability.</p></div>
+  <div class="src">25 Sep 2026 · Developing Telecoms · <a href="https://developingtelecoms.com/telecom-technology/telecom-devices-platforms/18500-southeast-asia-smartphone-market-slips-after-five-quarters-of-growth.html">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-supply">Supply</span><h3>Kulthorn Kirby supplies reciprocating compressors across broad refrigerant range</h3></div>
+  <p>Kulthorn Kirby Public Company Limited manufactures and sells reciprocating motor compressors for refrigeration products including refrigerators, freezers, water coolers, commercial refrigerators and air conditioners. Sizes range from 1/20 horsepower to 10 horsepower.</p>
+  <p>The compressors are compatible with R22, R290, R134a, R404A, R407C, R410A, R507, R600a and R744 (CO2) refrigerants, giving Thai white-goods assemblers a locally-sourced compressor option across refrigerant transitions.</p>
+  <div class="impact"><div class="impact-label">Sourcing Implication</div><p>Broad refrigerant compatibility positions Kulthorn as a drop-in supplier for lines migrating to lower-GWP refrigerants.</p></div>
+  <div class="src">2026 · Kulthorn Kirby · <a href="https://compressor.kulthorn.com/ir_company">source</a></div>
+</div>
+
+<div class="section-rule"><span class="section-icon">🇻🇳</span><h2>Vietnam</h2><div class="section-sub">Manufacturing &amp; Supply Chain · OEM/EMS</div></div>
+
+<div class="card breaking">
+  <div class="card-header"><span class="breaking-badge">BREAKING</span><span class="btag b-ems">EMS</span><h3>Foxconn's Fushan Technology Vietnam runs line trials ahead of November operations</h3></div>
+  <p>Fushan Technology plans to install and complete new production lines between May and August 2026, conduct a trial run in September–October 2026, and begin official operations in November 2026. Fushan Technology (Vietnam) was established in November 2011 as Nokia Vietnam, renamed Microsoft Mobile Vietnam in December 2014, and sold to FIH Mobile, part of the Foxconn ecosystem, in 2017.</p>
+  <p>Foxconn is also seeking a fourth permit renewal for its factory in VSIP Bac Ninh Industrial Park, indicating significant expansion plans in northern Vietnam. The company is accelerating investment in Vietnam and moving toward humanoid robot manufacturing.</p>
+  <div class="impact"><div class="impact-label">Sourcing Implication</div><p>New line capacity coming online in November 2026 expands Foxconn's Vietnamese footprint for consumer device assembly and adjacent robotics work.</p></div>
+  <div class="src">2026 · The Investor Vietnam · <a href="https://theinvestor.vn/foxconn-accelerates-investment-in-vietnam-moves-toward-humanoid-robot-manufacturing-d18929.html">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-apple">Apple</span><h3>Luxshare to maintain Vietnam production hub to serve the US market</h3></div>
+  <p>Luxshare Precision Industry, a key assembler of the iPhone and other Apple products, said it will maintain large-scale production in Vietnam and continue exports from there to the US, responding to tariffs. Tariffs of more than 100% apply to Chinese goods while the rate for Vietnam is 46%.</p>
+  <p>Luxshare has invested $504 million in a plant in Vietnam's Bac Giang province producing cables for smart devices and other components, and has received environmental licences for additional projects in northern Vietnam.</p>
+  <div class="impact"><div class="impact-label">Strategic Read</div><p>Luxshare's Vietnam commitment anchors northern Vietnam as the primary non-China export base for Apple accessory and component supply.</p></div>
+  <div class="src">2026 · WSJ · <a href="https://www.wsj.com/business/apple-supplier-luxshare-to-maintain-vietnam-production-hub-to-support-u-s-market-91805760">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-supply">Supply</span><h3>Luxshare-ICT to invest a further $209 million in central Vietnam</h3></div>
+  <p>China's Luxshare-ICT is to invest $209 million more in central Vietnam, adding to its existing northern Vietnam footprint. The company has also received environmental licences for additional projects in the north.</p>
+  <p>The expansion aligns with the broader diversification of Apple-linked manufacturing away from China into Vietnamese provinces.</p>
+  <div class="impact"><div class="impact-label">Sourcing Implication</div><p>Central Vietnam is emerging as a second Luxshare cluster, widening the geographic spread of Apple supply chain capacity beyond Bac Giang.</p></div>
+  <div class="src">18 Sep 2026 · The Investor Vietnam · <a href="https://theinvestor.vn/chinas-luxshare-ict-to-invest-209-mln-more-in-central-vietnam-d13916.html">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-supply">Supply</span><h3>Vietnam PCB base spans Korean, Taiwanese and local manufacturers</h3></div>
+  <p>Vietnam's PCB manufacturing base includes Young Poong (South Korea) producing PCBs and FPCBs for consumer electronics and battery/EV applications, Tripod Technology Vietnam (Taiwan) offering multilayer and HDI at scale, and Sunching Electronics Vietnam operating in Bac Ninh since October 2001.</p>
+  <p>Jing Gong Electronics offers PCB manufacturing across a wide range of materials including aluminium PCBs, catering to diverse industry needs.</p>
+  <div class="impact"><div class="impact-label">Sourcing Implication</div><p>Multilayer, HDI and flex capability now coexist in Vietnam, reducing the need to dual-source boards out of Greater China.</p></div>
+  <div class="src">2026 · Inorsen / OurPCB · <a href="https://www.inorsen.com/guides/top-pcb-manufacturers-in-vietnam">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-supply">Supply</span><h3>LG Innotek V3 Haiphong plant doubles camera module capacity</h3></div>
+  <p>LG Innotek has commenced operations at its newly completed V3 factory in Haiphong, Vietnam, effectively doubling its camera module production capacity. The factory is expected to produce more general-purpose modules to better compete against rivals on price.</p>
+  <p>The company aims for Vietnam to account for up to 70% to 80% of its total camera module production output in the next two to three years. Gumi in Korea is retained as a "mother factory" specialising in R&amp;D and high-value-added modules, with Paju handling advanced camera modules and 3D sensing.</p>
+  <div class="impact"><div class="impact-label">Sourcing Implication</div><p>Doubled Vietnamese camera module capacity intensifies price competition on general-purpose modules for mid-tier smartphone programmes.</p></div>
+  <div class="src">22 Sep 2025 · The Elec · <a href="https://www.thelec.net/news/articleView.html?idxno=5437">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-policy">Policy</span><h3>Vietnam electric motorcycle battery regulation QCVN 31:2026/BXD takes effect 9 October 2026</h3></div>
+  <p>Vietnam's new electric motorcycle battery regulation QCVN 31:2026/BXD will take effect on 9 October 2026, per a compliance alert covering the regulation.</p>
+  <p>The rule adds a further certification layer to Vietnam's battery and light electric vehicle supply chain.</p>
+  <div class="impact"><div class="impact-label">Compliance Alert</div><p>Battery pack suppliers into Vietnam's e-mobility segment must confirm conformity before the 9 October effective date.</p></div>
+  <div class="src">2026 · ZRLK Lab · <a href="https://www.zrlklab.com/en/show-99-1528.html">source</a></div>
+</div>
+
+<div class="section-rule"><span class="section-icon">🇵🇭</span><h2>Philippines</h2><div class="section-sub">Consumer Electronics · Manufacturing</div></div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-policy">Policy</span><h3>Philippines faces 12.5% US Section 301 duty but retains ATIGA zero-tariff access</h3></div>
+  <p>The Philippines is subject to an additional 12.5% US Section 301 forced-labour duty on covered merchandise entered on or after 24 July 2026. However, under the ASEAN Trade in Goods Agreement (ATIGA), the Philippines has eliminated tariffs on approximately 99% of all goods from ASEAN trading partners, including Vietnam and Thailand, provided correct documentation is in place.</p>
+  <p>The Philippines also maintains a de minimis threshold of PHP 10,000 FOB value per consignment, below which both customs duty and VAT are exempt.</p>
+  <div class="impact"><div class="impact-label">Compliance Alert</div><p>Importers should separate US-bound export costing from intra-ASEAN sourcing, where ATIGA documentation preserves zero-tariff treatment.</p></div>
+  <div class="src">2026 · Carra Globe / DFDL · <a href="https://carraglobe.com/reduce-import-duty-philippines">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-data">Data</span><h3>Philippines flagged as rapid-growth smart appliance market on younger demographics</h3></div>
+  <p>Emerging markets including Indonesia and the Philippines are showing rapid growth in smart appliance interest, driven by younger demographics and increasing digital literacy, according to the 2026 Southeast Asia Home Appliances Export Strategy White Paper.</p>
+  <p>Adoption of smart home appliances is strongest in Singapore, Malaysia and Thailand, where high smartphone penetration, reliable internet infrastructure and tech-savvy consumer bases create ideal conditions for connected device adoption.</p>
+  <div class="impact"><div class="impact-label">Market Signal</div><p>Philippine smart appliance demand is rising from a lower base, favouring entry-level connected SKUs over premium tiers.</p></div>
+  <div class="src">2026 · Alibaba.com Seller Blog · <a href="https://seller.alibaba.com/blogs/2026/southeast-asia/home-appliances/certification-compliance-smart-home-strategy">source</a></div>
+</div>
+
+<div class="section-rule"><span class="section-icon">🇮🇳</span><h2>India</h2><div class="section-sub">Manufacturing · PLI &amp; Policy · Supply Chain · OEM/EMS</div></div>
+
+<div class="card breaking">
+  <div class="card-header"><span class="breaking-badge">BREAKING</span><span class="btag b-policy">Policy</span><h3>India's BIS QCO for 90+ electrical appliance categories takes effect 1 October 2026</h3></div>
+  <p>India's Safety of Household, Commercial and Similar Electrical Appliances (Quality Control) Order, 2026 requires more than 90 categories of household, commercial and industrial electrical appliances to obtain BIS certification and bear the ISI mark prior to market entry in India, effective 1 October 2026. Covered products include shavers, trimmers, toothbrushes, blenders and air appliances.</p>
+  <p>For foreign manufacturers, BIS certification is a precondition for market access. Failure to comply can result in import restrictions, product seizures and financial penalties. The order affects both consumer electronics and industrial supply chains.</p>
+  <div class="impact"><div class="impact-label">Compliance Alert</div><p>Shipments without ISI marking risk being blocked at Indian customs from the effective date — a hard gate for appliance importers.</p></div>
+  <div class="src">2026 · India Briefing · <a href="https://www.india-briefing.com/news/india-electrical-appliances-qco-2026-bis-certification-guide-for-foreign-manufacturers-44541.html">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-policy">Policy</span><h3>PLI scheme generates ₹7.5 lakh crore production and 14.39 lakh jobs</h3></div>
+  <p>As of 2026, India's Production Linked Incentive scheme has generated ₹7.5 lakh crore in production, attracted ₹3.2 lakh crore in investments and created 14.39 lakh jobs. First introduced in April 2020 for mobile phone and electronics manufacturing, the scheme later expanded to 14 sectors and is administered by the Department for Promotion of Industry and Internal Trade.</p>
+  <p>Despite the incentives, a large percentage of key components for mobile and electronics manufacturing are still imported, indicating continued reliance on foreign suppliers. The Electronics Component Manufacturing Scheme (ECMS) offers 5–10% on qualifying production for 5–8 years, with higher incentives for capital-intensive, high-difficulty components.</p>
+  <div class="impact"><div class="impact-label">Strategic Read</div><p>ECMS is building the component supply chain beneath the assembly capacity PLI created — lower competition and longer incentive windows than the original PLI.</p></div>
+  <div class="src">2026 · Wikipedia / Zetwerk · <a href="https://www.zetwerk.com/blog/manufacturing-technology/pli-scheme-electronics-manufacturing-india">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-policy">Policy</span><h3>PLI windows closing as successor frameworks reshape India's incentive landscape</h3></div>
+  <p>2026 marks a strategic transition point for India's PLI scheme, with original PLI windows closing across multiple industries even as successor frameworks, including the Electronics Component Manufacturing Scheme and a proposed Component Manufacturing Scheme with INR 22,919 crore outlay, begin to reshape the next phase of incentives.</p>
+  <p>For companies evaluating PLI investment opportunities in India, this overlap creates a narrow but highly important decision window.</p>
+  <div class="impact"><div class="impact-label">Strategic Read</div><p>Manufacturers weighing Indian plant setup face a time-boxed decision between expiring PLI windows and emerging component-scheme incentives.</p></div>
+  <div class="src">2026 · IMARC Engineering · <a href="https://www.imarcengineering.com/news/pli-scheme-manufacturing-incentives-in-india">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-supply">Supply</span><h3>India PCB market grows on Make in India and supply chain diversification</h3></div>
+  <p>India's PCB industry is at an inflection point, driven by government initiatives including Make in India and PLI schemes, combined with global supply chain diversification away from China. The market is estimated at approximately $4–5 billion, with major players including AT&amp;S India, Tata Electronics and Foxconn.</p>
+  <p>Significant demand comes from smartphone, automotive electronics and defence sectors, with calls to increase government incentives for semiconductor and PCB fabrication in India.</p>
+  <div class="impact"><div class="impact-label">Sourcing Implication</div><p>India's PCB base remains small relative to SEA but is scaling on domestic demand — relevant for India-for-India programmes rather than export.</p></div>
+  <div class="src">2026 · Zbotic · <a href="https://zbotic.in/pcb-industry-india-market-size-players-and-trends-2026">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-supply">Supply</span><h3>India Semiconductor Mission backs 28nm fab and Tata OSAT in Assam</h3></div>
+  <p>India's semiconductor programme targets 28nm and above mature-node production on 300mm wafers, with a target capacity of 50,000 wafer starts per month at full ramp and an investment of Rs 91,000 crore (approximately $11 billion) with India Semiconductor Mission support. Target markets are automotive ICs, power management, display drivers, microcontrollers and IoT devices.</p>
+  <p>The India Semiconductor Mission is supporting initiatives including Tata Electronics' OSAT facility in Jagiroad, Assam, focusing on mature-node chip packaging and test. The Union cabinet approved Semicon 2.0 with an allocation of INR 1.275 trillion (US$13.23 billion), announced on 15 July 2026, spanning chip design, fabrication, display manufacturing, advanced packaging, semiconductor equipment, speciality materials, R&amp;D and talent development.</p>
+  <div class="impact"><div class="impact-label">Strategic Read</div><p>Mature-node focus aligns Indian capacity with consumer IoT and display driver demand rather than cutting-edge logic.</p></div>
+  <div class="src">2026 · Zetwerk / India Briefing · <a href="https://www.zetwerk.com/blog/manufacturing-technology/india-semiconductor-manufacturing-2026">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-dixon">Dixon</span><h3>Dixon Technologies expands beyond smartphones toward global EMS top 10</h3></div>
+  <p>Dixon Technologies is expanding into components, IT hardware and new manufacturing categories as it seeks a place among the world's 10 largest electronics manufacturing services providers, reported 23 September 2026. Dixon is highlighted as a prominent Indian electronics manufacturer rivalling Taiwanese firms including Foxconn and Pegatron.</p>
+  <p>India's electronics exports reached $47.98 billion in FY26, with electronics shipments to China growing more than 15% in April–August 2026.</p>
+  <div class="impact"><div class="impact-label">Strategic Read</div><p>Dixon's category expansion signals Indian EMS moving up the value chain from handset assembly into components and IT hardware.</p></div>
+  <div class="src">23 Sep 2026 · DIGITIMES · <a href="https://www.digitimes.com/tag/electronics/0014503.html">source</a></div>
+</div>
+
+<div class="card">
+  <div class="card-header"><span class="btag b-tata">Tata</span><h3>Tata Electronics and Kelington collaborate on Dholera fab operational readiness</h3></div
+</body>
+</html>
