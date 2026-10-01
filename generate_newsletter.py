@@ -445,6 +445,10 @@ IMPORTANT — DATE FILTERING (strictly enforce):
 4. If an article has no date at all, include it only if the content clearly
    describes events from this specific week.
 
+IMPORTANT: Only include news published within the coverage period below.
+Discard any article whose date falls outside {start_date} – {end_date}.
+If an article has no date, include it only if the content clearly refers to this week's events.
+
 COVERAGE : {start_date} – {end_date}
 COMPILED  : {end_date}
 
