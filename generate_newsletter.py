@@ -26,7 +26,7 @@ import os
 import smtplib
 import sys
 import time
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from email import encoders
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
@@ -209,8 +209,27 @@ def make_output_path(end: datetime) -> Path:
 # WEB SEARCH  —  Tavily API
 # ══════════════════════════════════════════════════════════════════════════════
 
+def _parse_published_date(raw: str) -> datetime | None:
+    """Best-effort parse of Tavily published_date strings."""
+    if not raw or raw == "n/d":
+        return None
+    for pattern in ("%Y-%m-%dT%H:%M:%S", "%Y-%m-%dT%H:%M:%SZ",
+                    "%Y-%m-%dT%H:%M:%S%z", "%Y-%m-%d", "%d %b %Y",
+                    "%B %d, %Y", "%b %d, %Y"):
+        try:
+            dt = datetime.strptime(raw.strip()[:19] if "T" in raw else raw.strip(), pattern)
+            return dt
+        except ValueError:
+            continue
+    return None
+
+
 def tavily_search(query: str, days_back: int = 7) -> str:
-    """Run one Tavily search; returns a formatted text block."""
+    """Run one Tavily search; returns a formatted text block.
+
+    Results with a published_date older than ``days_back`` are discarded
+    so that the newsletter only contains news from the past week.
+    """
     payload = {
         "api_key": TAVILY_API_KEY,
         "query": query,
@@ -228,15 +247,25 @@ def tavily_search(query: str, days_back: int = 7) -> str:
         log.warning(f"    ⚠ Search failed: {exc}")
         return f"[Search unavailable for: {query}]"
 
+    cutoff = datetime.now() - timedelta(days=days_back)
+
     lines = []
     if data.get("answer"):
         lines.append(f"SUMMARY: {data['answer']}")
+    skipped = 0
     for item in data.get("results", []):
-        pub   = item.get("published_date") or "n/d"
+        pub_raw = item.get("published_date") or "n/d"
+        pub_dt  = _parse_published_date(pub_raw)
+        if pub_dt and pub_dt < cutoff:
+            skipped += 1
+            continue
         title = item.get("title", "(no title)")
         url   = item.get("url", "")
         body  = item.get("content", "")[:480]
-        lines.append(f"• [{pub}] {title}\n  URL: {url}\n  {body}")
+        lines.append(f"• [{pub_raw}] {title}\n  URL: {url}\n  {body}")
+
+    if skipped:
+        log.info(f"    ↳ filtered out {skipped} result(s) older than {days_back} days")
 
     return "\n".join(lines) if lines else "[No results]"
 
@@ -352,6 +381,18 @@ Generate the BODY CONTENT of a weekly SEA consumer electronics newsletter.
 Use ONLY the news from the search results below.
 Do NOT invent facts. If a section has no relevant results, write:
 <p class="no-news">No significant developments reported this week.</p>
+
+IMPORTANT — DATE FILTERING (strictly enforce):
+1. Only include news where the EVENT ITSELF occurred within {start_date} – {end_date}.
+2. An article may be recently published but describe old events (e.g. a 2026
+   article summarising a policy announced in 2025). Such articles must be EXCLUDED
+   because the underlying event is stale — the article publication date alone is
+   NOT sufficient to qualify.
+3. Check dates, years, and temporal language in each article. If the key facts
+   (product launch, policy effective date, factory opening, deal signing) happened
+   before {start_date}, discard it.
+4. If an article has no date at all, include it only if the content clearly
+   describes events from this specific week.
 
 COVERAGE : {start_date} – {end_date}
 COMPILED  : {end_date}
@@ -579,6 +620,78 @@ def generate_body(search_results: str, start: datetime, end: datetime) -> str:
 
 
 # ══════════════════════════════════════════════════════════════════════════════
+# DATE VALIDATION PASS  — remove stale news items via a second LLM call
+# ══════════════════════════════════════════════════════════════════════════════
+
+VALIDATION_SYSTEM = (
+    "You are a strict date-validation editor for a weekly newsletter. "
+    "Your ONLY job is to remove news items whose underlying EVENT is outside "
+    "the given coverage period. Output the cleaned HTML and nothing else."
+)
+
+VALIDATION_PROMPT = """\
+Below is the HTML body of a weekly newsletter.
+Coverage period: {start_date} – {end_date}
+
+TASK — for EVERY news card (.card, .g-card, .s-card, .p-card) and every
+row in the source index (.itable):
+1. Read the card content and identify when the EVENT ITSELF happened
+   (policy signed, product launched, factory opened, deal closed, etc.).
+2. If the event happened BEFORE {start_date}, REMOVE the entire card
+   and its corresponding source-index row.
+3. If a card only says a month/year (e.g. "June 2025") and that month
+   ended before {start_date}, remove it.
+4. If you cannot determine a date at all, KEEP the card (benefit of the doubt).
+5. After removing stale cards, if a section has no cards left, insert:
+   <p class="no-news">No significant developments reported this week.</p>
+6. Update the KEY HIGHLIGHTS section to reflect only the remaining cards.
+7. Re-number the source-index rows sequentially.
+
+Output ONLY the cleaned HTML body. No markdown fences. No explanations.
+
+─── HTML BODY ───
+{body}
+"""
+
+
+def validate_dates(body: str, start: datetime, end: datetime) -> str:
+    """Run a second LLM pass to strip news items with stale event dates."""
+    user_content = VALIDATION_PROMPT.format(
+        start_date=fmt(start),
+        end_date=fmt(end),
+        body=body,
+    )
+    messages = [
+        {"role": "system", "content": VALIDATION_SYSTEM},
+        {"role": "user",   "content": user_content},
+    ]
+
+    log.info(f"Calling {PROVIDER.upper()} ({MODEL}) — date validation pass...\n" + "─" * 60)
+
+    if PROVIDER == "anthropic":
+        cleaned = generate_body_anthropic(messages)
+    else:
+        cleaned = generate_body_deepseek(messages)
+
+    log.info("─" * 60)
+
+    # Strip markdown fences if present
+    cleaned = cleaned.strip()
+    if cleaned.startswith("```"):
+        cleaned = cleaned.split("```", 2)[-1] if cleaned.count("```") >= 2 else cleaned[3:]
+        if cleaned.startswith("html\n"):
+            cleaned = cleaned[5:]
+    if cleaned.endswith("```"):
+        cleaned = cleaned[: cleaned.rfind("```")]
+
+    if len(cleaned) < len(body) * 0.5:
+        log.warning("Validation removed >50%% of content — keeping original to be safe")
+        return body
+
+    return cleaned.strip()
+
+
+# ══════════════════════════════════════════════════════════════════════════════
 # EMAIL DELIVERY
 # ══════════════════════════════════════════════════════════════════════════════
 
@@ -711,13 +824,13 @@ def main() -> None:
     log.info(f"Coverage : {fmt(start)} – {fmt(end)}")
     log.info(f"Output   : {out_path}")
 
-    # ── Step 1/4: searches ───────────────────────────────────────────────────
+    # ── Step 1/5: searches ───────────────────────────────────────────────────
     if args.search_cache:
         cache = Path(args.search_cache)
-        log.info(f"\n[1/4] Loading search cache from {cache} ...")
+        log.info(f"\n[1/5] Loading search cache from {cache} ...")
         search_results = cache.read_text(encoding="utf-8")
     else:
-        log.info("\n[1/4] Running web searches...")
+        log.info("\n[1/5] Running web searches...")
         search_results = run_all_searches(start, end)
 
     log.info(f"✓ Search data: {len(search_results):,} chars")
@@ -730,12 +843,16 @@ def main() -> None:
         log.info("\n--dry-run: skipping LLM generation. Done.")
         return
 
-    # ── Step 2: generate ─────────────────────────────────────────────────────
-    log.info("\n[2/4] Generating newsletter body...")
+    # ── Step 2/5: generate ───────────────────────────────────────────────────
+    log.info("\n[2/5] Generating newsletter body...")
     body = generate_body(search_results, start, end)
 
-    # ── Step 3: assemble & save ───────────────────────────────────────────────
-    log.info("\n[3/4] Assembling HTML document and saving...")
+    # ── Step 3/5: validate dates ─────────────────────────────────────────────
+    log.info("\n[3/5] Validating news dates (removing stale events)...")
+    body = validate_dates(body, start, end)
+
+    # ── Step 4/5: assemble & save ────────────────────────────────────────────
+    log.info("\n[4/5] Assembling HTML document and saving...")
     html = wrap_html(body, start, end)
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -748,8 +865,8 @@ def main() -> None:
     log.info(f"  Size : {len(html):,} bytes ({kb} KB)")
     log.info(f"{'═'*50}\n")
 
-    # ── Step 4: send email ────────────────────────────────────────────────────
-    log.info("[4/4] Sending newsletter by email...")
+    # ── Step 5/5: send email ─────────────────────────────────────────────────
+    log.info("[5/5] Sending newsletter by email...")
     send_email(html, out_path, start, end)
 
 
