@@ -131,6 +131,10 @@ a{color:var(--navy)}a:hover{text-decoration:underline}
 .b-tcl{background:#e31837}.b-tata{background:#486aae}.b-dixon{background:#1a6b3c}.b-voltas{background:#e65100}
 .b-foxconn{background:#2d5f2e}.b-luxshare{background:#1a237e}.b-goertek{background:#00695c}
 .b-pegatron{background:#4a148c}.b-murata{background:#1b5e20}.b-boe{background:#004d99}.b-jabil{background:#006838}
+.b-avc{background:#0d47a1}.b-salcomp{background:#2e7d32}.b-corning{background:#c62828}
+.b-catcher{background:#4e342e}.b-everwin{background:#37474f}.b-aac{background:#6a1b9a}
+.b-radiant{background:#00838f}.b-coretronic{background:#1565c0}.b-amphenol{background:#ad1457}
+.b-molex{background:#e65100}.b-nitto{background:#283593}.b-biel{background:#558b2f}
 .b-policy{background:#374151}.b-event{background:#065f46}
 .b-supply{background:#5b21b6}.b-data{background:#0369a1}.b-ems{background:#5b21b6}
 .card h3{font-family:'Playfair Display',serif;font-size:17.5px;font-weight:700;line-height:1.3;color:var(--ink)}
@@ -327,39 +331,67 @@ def build_queries(start: datetime, end: datetime) -> list[dict]:
          "q": f"Murata Taiyo Yuden Samsung Electro-Mechanics MLCC factory Thailand Malaysia India {week_str}"},
         {"r": 6, "label": "Battery cell factory SEA India",
          "q": f"ATL Sunwoda Desay BYD battery cell factory Vietnam Thailand India {week_str}"},
-        {"r": 6, "label": "Connector Lite-On TD Connex SEA India",
-         "q": f"Lite-On TD Connex connector electronic component factory Vietnam India {week_str}"},
+        {"r": 6, "label": "Connector Amphenol Molex Lite-On SEA India",
+         "q": f"Amphenol Molex Lite-On TD Connex connector factory Vietnam India expansion {week_str}"},
         {"r": 6, "label": "Compressor motor Kulthorn Nidec SEA",
          "q": f"Kulthorn Nidec Welling Embraco compressor motor factory Thailand Vietnam {week_str}"},
 
-        # ── Round 7 — Chinese Supplier Migration to SEA ─────────────────
-        {"r": 7, "label": "Chinese electronics supplier Vietnam factory",
+        # ── Round 7 — Thermal / Cooling / Power Supply ──────────────────
+        {"r": 7, "label": "AVC Auras thermal cooling Vietnam",
+         "q": f"AVC Asia Vital Components Auras cooling fan heat sink factory Vietnam {week_str}"},
+        {"r": 7, "label": "Delta thermal cooling Thailand India",
+         "q": f"Delta Electronics cooling thermal management factory Thailand India {week_str}"},
+        {"r": 7, "label": "Salcomp charger adapter India",
+         "q": f"Salcomp charger power adapter factory India expansion {week_str}"},
+
+        # ── Round 8 — Metal Casing / Glass Cover / Precision Parts ──────
+        {"r": 8, "label": "BYD Electronic Catcher casing Vietnam",
+         "q": f"BYD Electronic Catcher Technology Everwin metal casing factory Vietnam expansion {week_str}"},
+        {"r": 8, "label": "Corning BIEL glass cover India Vietnam",
+         "q": f"Corning Gorilla Glass BIEL Crystal cover glass factory India Vietnam {week_str}"},
+
+        # ── Round 9 — Backlight / LED / Acoustic / Adhesive ────────────
+        {"r": 9, "label": "Radiant Coretronic backlight Vietnam",
+         "q": f"Radiant Coretronic GLT Longli backlight LED module factory Vietnam {week_str}"},
+        {"r": 9, "label": "AAC Technologies acoustic Vietnam",
+         "q": f"AAC Technologies speaker acoustic component factory Vietnam expansion {week_str}"},
+        {"r": 9, "label": "Nitto Denko adhesive optical film SEA India",
+         "q": f"Nitto Denko adhesive tape optical film factory Vietnam India Malaysia {week_str}"},
+
+        # ── Round 10 — Wire Harness / Insulation / Stamping ─────────────
+        {"r": 10, "label": "Motherson Yazaki wire harness India",
+         "q": f"Motherson Sumi Yazaki wire harness cable factory India expansion {week_str}"},
+        {"r": 10, "label": "SRF Armacell insulation India",
+         "q": f"SRF refrigerant Armacell insulation material factory India expansion {week_str}"},
+
+        # ── Round 11 — Chinese Supplier Migration to SEA ────────────────
+        {"r": 11, "label": "Chinese electronics supplier Vietnam factory",
          "q": f"Chinese electronics supplier factory Vietnam relocation expansion investment {week_str}"},
-        {"r": 7, "label": "Chinese supplier Thailand Indonesia factory",
+        {"r": 11, "label": "Chinese supplier Thailand Indonesia factory",
          "q": f"Chinese manufacturer factory Thailand Indonesia electronics component investment {week_str}"},
-        {"r": 7, "label": "DBG Lingyi BYD Electronic SEA factory",
+        {"r": 11, "label": "DBG Lingyi BYD Electronic SEA factory",
          "q": f"DBG Technology Lingyi iTech BYD Electronic factory Southeast Asia Batam {week_str}"},
 
-        # ── Round 8 — Policy & Regulatory ───────────────────────────────
-        {"r": 8, "label": "Indonesia TKDN electronics policy",
+        # ── Round 12 — Policy & Regulatory ──────────────────────────────
+        {"r": 12, "label": "Indonesia TKDN electronics policy",
          "q": f"Indonesia TKDN electronics regulation policy {week_str}"},
-        {"r": 8, "label": "Malaysia MIDA electronics incentive",
+        {"r": 12, "label": "Malaysia MIDA electronics incentive",
          "q": f"Malaysia MIDA electronics investment incentive SIRIM MCMC {week_str}"},
-        {"r": 8, "label": "Singapore IMDA regulation",
+        {"r": 12, "label": "Singapore IMDA regulation",
          "q": f"Singapore IMDA CSA cybersecurity certification electronics {week_str}"},
-        {"r": 8, "label": "Vietnam FDI electronics policy",
+        {"r": 12, "label": "Vietnam FDI electronics policy",
          "q": f"Vietnam FDI electronics manufacturing policy regulation {week_str}"},
-        {"r": 8, "label": "Thailand BOI EEC electronics",
+        {"r": 12, "label": "Thailand BOI EEC electronics",
          "q": f"Thailand BOI EEC electronics factory investment incentive {week_str}"},
-        {"r": 8, "label": "India PLI BIS ECMS policy",
+        {"r": 12, "label": "India PLI BIS ECMS policy",
          "q": f"India PLI ECMS BIS electronics manufacturing regulation {week_str}"},
 
-        # ── Round 9 — Global / Supply Chain Intelligence ───────────────
-        {"r": 9, "label": "China+1 supply chain SEA India",
+        # ── Round 13 — Global / Supply Chain Intelligence ───────────────
+        {"r": 13, "label": "China+1 supply chain SEA India",
          "q": f"China plus one supply chain diversification Southeast Asia India electronics {week_str}"},
-        {"r": 9, "label": "SEA India factory investment data",
+        {"r": 13, "label": "SEA India factory investment data",
          "q": f"Southeast Asia India electronics factory investment FDI data {week_str}"},
-        {"r": 9, "label": "US tariff impact SEA India manufacturing",
+        {"r": 13, "label": "US tariff impact SEA India manufacturing",
          "q": f"US tariff Section 301 impact Southeast Asia India electronics manufacturing {week_str}"},
     ]
 
@@ -483,7 +515,9 @@ Brand tag classes (use exact names):
 b-samsung b-apple b-huawei b-oppo b-xiaomi b-vivo b-honor b-realme
 b-iqoo b-transsion b-motorola b-dyson b-panasonic b-hisense b-haier
 b-tcl b-tata b-dixon b-voltas b-foxconn b-luxshare b-goertek
-b-pegatron b-murata b-boe b-jabil
+b-pegatron b-murata b-boe b-jabil b-avc b-salcomp b-corning
+b-catcher b-everwin b-aac b-radiant b-coretronic b-amphenol
+b-molex b-nitto b-biel
 b-policy b-event b-supply b-data b-ems
 
 ── 13. SOURCE INDEX (.src-index) ────────────────────────────
