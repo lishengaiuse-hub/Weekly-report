@@ -272,79 +272,77 @@ def tavily_search(query: str, days_back: int = 7) -> str:
 
 
 def build_queries(start: datetime, end: datetime) -> list[dict]:
-    my = end.strftime("%B %Y")
+    week_str = f"{fmt(start, '%d %B')} to {fmt(end, '%d %B %Y')}"
     return [
-        # Round 1 — Home Appliance Manufacturing
+        # Round 1 — Home Appliance Manufacturing (factory/investment only, NOT sales/events)
         {"r": 1, "label": "Home Appliance SG/MY/ID factories",
-         "q": f"home appliance factory Singapore Malaysia Indonesia {my}"},
-        {"r": 1, "label": "Home Appliance TH/VN/PH factories",
-         "q": f"home appliance factory Thailand Vietnam Philippines {my}"},
-        {"r": 1, "label": "Samsung LG Panasonic Daikin SEA appliance",
-         "q": f"Samsung LG Panasonic Sharp Hitachi Daikin Carrier appliance factory Southeast Asia {my}"},
+         "q": f"home appliance factory investment Singapore Malaysia Indonesia {week_str}"},
+        {"r": 1, "label": "Home Appliance TH/VN factories",
+         "q": f"home appliance factory investment Thailand Vietnam {week_str}"},
+        {"r": 1, "label": "Samsung LG Panasonic Daikin SEA appliance factory",
+         "q": f"Samsung LG Panasonic Daikin Carrier appliance factory investment Southeast Asia {week_str}"},
         {"r": 1, "label": "Haier Hisense TCL Midea SEA factory",
-         "q": f"Haier Hisense TCL Midea GREE home appliance factory Southeast Asia {my}"},
-        {"r": 1, "label": "Electrolux Dyson Bosch SEA",
-         "q": f"Electrolux Whirlpool Dyson Bosch Philips home appliance Southeast Asia {my}"},
+         "q": f"Haier Hisense TCL Midea GREE home appliance factory investment Southeast Asia {week_str}"},
 
         # Round 2 — India Manufacturing & Supply Chain
         {"r": 2, "label": "India electronics manufacturing",
-         "q": f"India electronics manufacturing factory consumer electronics {my}"},
+         "q": f"India electronics manufacturing factory investment {week_str}"},
         {"r": 2, "label": "India home appliance factory",
-         "q": f"India home appliance factory Samsung LG Haier Voltas Daikin {my}"},
+         "q": f"India home appliance factory Samsung LG Haier Voltas Daikin investment {week_str}"},
         {"r": 2, "label": "Foxconn Tata Pegatron India factory",
-         "q": f"Foxconn Tata Electronics Pegatron Dixon Technologies factory India {my}"},
+         "q": f"Foxconn Tata Electronics Pegatron Dixon Technologies factory India {week_str}"},
         {"r": 2, "label": "India PLI scheme electronics",
-         "q": f"India PLI production linked incentive electronics manufacturing policy {my}"},
+         "q": f"India PLI production linked incentive electronics manufacturing {week_str}"},
         {"r": 2, "label": "India supply chain components",
-         "q": f"India PCB semiconductor battery display component manufacturing {my}"},
+         "q": f"India PCB semiconductor battery display component manufacturing {week_str}"},
 
         # Round 3 — OEM / EMS
         {"r": 3, "label": "Foxconn Pegatron Jabil EMS SEA",
-         "q": f"Foxconn Pegatron Wistron Jabil Flex Celestica factory Vietnam Malaysia Thailand {my}"},
+         "q": f"Foxconn Pegatron Wistron Jabil Flex Celestica factory Vietnam Malaysia Thailand {week_str}"},
         {"r": 3, "label": "Luxshare BYD Goertek Chinese EMS Vietnam",
-         "q": f"Luxshare BYD Goertek AAC Lingyi Changying Foxlink factory Vietnam Southeast Asia {my}"},
+         "q": f"Luxshare BYD Goertek AAC Lingyi Changying Foxlink factory Vietnam Southeast Asia {week_str}"},
         {"r": 3, "label": "VS Industry Nationgate Inari Hana MY EMS",
-         "q": f"VS Industry Nationgate Inari Amertron UWC Hana Microelectronics earnings Malaysia {my}"},
+         "q": f"VS Industry Nationgate Inari Amertron UWC Hana Microelectronics Malaysia {week_str}"},
         {"r": 3, "label": "Cal-Comp Fabrinet Venture Hi-P SEA EMS",
-         "q": f"Cal-Comp Fabrinet Venture Corporation Hi-P electronics manufacturing Southeast Asia {my}"},
+         "q": f"Cal-Comp Fabrinet Venture Corporation Hi-P electronics manufacturing Southeast Asia {week_str}"},
 
         # Round 4 — Core Component Supply Chain
         {"r": 4, "label": "PCB FPC Vietnam Malaysia",
-         "q": f"PCB FPC printed circuit board factory Vietnam Malaysia consumer electronics {my}"},
+         "q": f"PCB FPC printed circuit board factory Vietnam Malaysia {week_str}"},
         {"r": 4, "label": "Display panels SEA Samsung BOE LG",
-         "q": f"Samsung Display LG Display BOE CSOT OLED display panel Vietnam Southeast Asia {my}"},
+         "q": f"Samsung Display LG Display BOE CSOT OLED display panel Vietnam Southeast Asia {week_str}"},
         {"r": 4, "label": "Camera modules LG Innotek Largan Sunny Optical",
-         "q": f"LG Innotek Largan Sunny Optical camera module factory Vietnam Southeast Asia {my}"},
+         "q": f"LG Innotek Largan Sunny Optical camera module factory Vietnam Southeast Asia {week_str}"},
         {"r": 4, "label": "MLCC passive Yageo Murata TDK SEA",
-         "q": f"Yageo Murata TDK Samsung Electro-Mechanics MLCC passive component Malaysia Thailand Philippines {my}"},
+         "q": f"Yageo Murata TDK Samsung Electro-Mechanics MLCC passive component Malaysia Thailand {week_str}"},
         {"r": 4, "label": "Battery ATL Amperex Sunwoda SEA",
-         "q": f"ATL Amperex Sunwoda Desay battery cell factory Malaysia Vietnam Southeast Asia {my}"},
+         "q": f"ATL Amperex Sunwoda Desay battery cell factory Malaysia Vietnam Southeast Asia {week_str}"},
         {"r": 4, "label": "Compressors Kulthorn Nidec motor SEA",
-         "q": f"Kulthorn Nidec Welling Embraco compressor motor home appliance Thailand Vietnam {my}"},
+         "q": f"Kulthorn Nidec Welling Embraco compressor motor Thailand Vietnam {week_str}"},
 
         # Round 5 — Brand Structure
-        {"r": 5, "label": "Brand merger acquisition SEA",
-         "q": f"smartphone brand merger acquisition restructure distributor Southeast Asia {my}"},
+        {"r": 5, "label": "Brand merger acquisition SEA India",
+         "q": f"electronics brand merger acquisition restructure Southeast Asia India {week_str}"},
 
         # Round 6 — Policy & Regulatory
         {"r": 6, "label": "Indonesia TKDN ecommerce policy",
-         "q": f"Indonesia TKDN electronics ecommerce regulation policy {my}"},
+         "q": f"Indonesia TKDN electronics regulation policy {week_str}"},
         {"r": 6, "label": "Malaysia SIRIM tax incentive",
-         "q": f"Malaysia consumer electronics policy SIRIM MCMC regulation tax MIDA {my}"},
+         "q": f"Malaysia electronics policy SIRIM MCMC regulation MIDA {week_str}"},
         {"r": 6, "label": "Singapore IMDA CSA regulation",
-         "q": f"Singapore IMDA CSA consumer device cybersecurity certification {my}"},
-        {"r": 6, "label": "Vietnam Thailand Philippines CE policy",
-         "q": f"Vietnam Thailand Philippines consumer electronics import tariff regulation {my}"},
+         "q": f"Singapore IMDA CSA device cybersecurity certification {week_str}"},
+        {"r": 6, "label": "Vietnam Thailand CE policy",
+         "q": f"Vietnam Thailand consumer electronics import tariff regulation {week_str}"},
         {"r": 6, "label": "India PLI BIS electronics policy",
-         "q": f"India PLI electronics manufacturing BIS regulation tariff policy {my}"},
+         "q": f"India PLI electronics manufacturing BIS regulation tariff {week_str}"},
 
         # Round 7 — Global Context
         {"r": 7, "label": "China+1 supply chain SEA India",
-         "q": f"consumer electronics supply chain China plus one Southeast Asia India manufacturing {my}"},
+         "q": f"electronics supply chain China plus one Southeast Asia India manufacturing {week_str}"},
         {"r": 7, "label": "SEA India manufacturing market data",
-         "q": f"electronics manufacturing market data Southeast Asia India {my} IDC Canalys Omdia"},
+         "q": f"electronics manufacturing market data Southeast Asia India {week_str}"},
         {"r": 7, "label": "Global shifts affecting SEA India manufacturing",
-         "q": f"consumer electronics manufacturing globalisation Southeast Asia India Japanese Korean Chinese factory {my}"},
+         "q": f"electronics manufacturing globalisation Southeast Asia India factory {week_str}"},
     ]
 
 
@@ -413,7 +411,7 @@ OUTPUT ORDER (HTML elements only, no wrapping tags)
 <div class="masthead"><div class="wrap">
   <div class="mast-eyebrow">Southeast Asia &amp; India · Manufacturing Intelligence</div>
   <div class="mast-title">Southeast Asia &amp; India<br><em>Manufacturing Watch</em></div>
-  <div class="mast-flags">🇸🇬 🇲🇾 🇮🇩 🇹🇭 🇻🇳 🇵🇭 🇮🇳 🇲🇲 🇰🇭 🇱🇦 🇧🇳 🇹🇱</div>
+  <div class="mast-flags">🇸🇬 🇲🇾 🇮🇩 🇹🇭 🇻🇳 🇮🇳</div>
   <div class="mast-tags"><!-- 6 .mast-tag spans: Home Appliances | OEM/EMS | Supply Chain | Policy & Regulation | Market Intelligence | Manufacturing --></div>
   <div class="mast-meta"><!-- 📅 coverage period | 🗓 compiled date | 🎯 audience --></div>
 </div></div>
@@ -437,20 +435,22 @@ Passive · Cables · LED · Compressors/Motors · Touch/Glass · Steel
 Each country with news: .p-card > h4 + <p>+ + .p-status + optional .p-alert
 End with .ptable: Market | Policy | CE Impact | Effective Date
 
-── 6–13. COUNTRY SECTIONS ───────────────────────────────────
+── 6–11. COUNTRY SECTIONS ───────────────────────────────────
 For each: .section-rule (with .section-icon flag + h2 name + .section-sub)
 then .card items. Use class="breaking" + .breaking-badge for top 2–3 stories.
-DO NOT include product launch / smartphone launch news in any section.
-Focus on manufacturing, supply chain, factory, OEM/EMS, and policy news only.
+
+EXCLUSION RULES (strictly enforce):
+- DO NOT include product launch / smartphone launch news.
+- DO NOT include home appliance sales events, warehouse sales, or retail promotions.
+- DO NOT include Philippines, Cambodia, Myanmar, or Laos news.
+- Focus ONLY on: manufacturing, factory investment, supply chain, OEM/EMS, and policy.
 
 6. 🇲🇾 Malaysia   — Manufacturing · OEM/EMS · Market Data · Policy
-7. 🇸🇬 Singapore  — Home Appliances · Manufacturing · Events
-8. 🇮🇩 Indonesia  — TKDN · Home Appliances · Manufacturing
+7. 🇸🇬 Singapore  — Manufacturing · Policy
+8. 🇮🇩 Indonesia  — TKDN · Manufacturing
 9. 🇹🇭 Thailand   — Manufacturing · Supply Chain
 10. 🇻🇳 Vietnam    — Manufacturing & Supply Chain · OEM/EMS
-11. 🇵🇭 Philippines — Consumer Electronics · Manufacturing
-12. 🇮🇳 India      — Manufacturing · PLI & Policy · Supply Chain · OEM/EMS
-13. 🌏 Other SEA  — Myanmar/Cambodia/Laos/Brunei/Timor-Leste (if newsworthy)
+11. 🇮🇳 India      — Manufacturing · PLI & Policy · Supply Chain · OEM/EMS
 
 ── EVERY .card MUST HAVE ────────────────────────────────────
 .card-header: .btag (colour-coded pill, e.g. class="btag b-samsung") + h3 (10-20 words)
@@ -641,17 +641,30 @@ Coverage period: {start_date} – {end_date}
 
 TASK — for EVERY news card (.card, .g-card, .s-card, .p-card) and every
 row in the source index (.itable):
-1. Read the card content and identify when the EVENT ITSELF happened
-   (policy signed, product launched, factory opened, deal closed, etc.).
-2. If the event happened BEFORE {start_date}, REMOVE the entire card
-   and its corresponding source-index row.
-3. If a card only says a month/year (e.g. "June 2025") and that month
-   ended before {start_date}, remove it.
-4. If you cannot determine a date at all, KEEP the card (benefit of the doubt).
-5. After removing stale cards, if a section has no cards left, insert:
+
+1. Read the card content and the .src date line. Identify when the
+   EVENT ITSELF happened (not the article publication date).
+2. REMOVE the card if ANY of these apply:
+   a. The event happened BEFORE {start_date} (e.g. a policy signed
+      months ago, a factory opened last quarter, an earnings report
+      from a prior quarter).
+   b. The source date (.src line) is before {start_date}.
+   c. The card describes a general market overview, evergreen company
+      profile, or product catalogue with no specific event this week.
+   d. The card is about a home appliance sale, warehouse sale, retail
+      promotion, product launch, or consumer event.
+   e. The card is about Philippines, Cambodia, Myanmar, or Laos.
+3. If a card only says a month/year (e.g. "July 2026") and that month
+   ended before {start_date}, REMOVE it.
+4. If you cannot determine ANY date at all AND the content reads like
+   a general profile rather than breaking news, REMOVE it.
+   Only KEEP dateless cards if the text explicitly describes a new
+   development happening "this week" or "today".
+5. Also remove the corresponding source-index row for every removed card.
+6. After removing stale cards, if a section has no cards left, insert:
    <p class="no-news">No significant developments reported this week.</p>
-6. Update the KEY HIGHLIGHTS section to reflect only the remaining cards.
-7. Re-number the source-index rows sequentially.
+7. Update the KEY HIGHLIGHTS section to reflect only the remaining cards.
+8. Re-number the source-index rows sequentially.
 
 Output ONLY the cleaned HTML body. No markdown fences. No explanations.
 
