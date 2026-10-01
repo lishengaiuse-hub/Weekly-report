@@ -129,6 +129,9 @@ a{color:var(--navy)}a:hover{text-decoration:underline}
 .b-transsion{background:#7c3aed}.b-motorola{background:#003087}.b-dyson{background:#c34a00}
 .b-panasonic{background:#003087}.b-hisense{background:#0a3d6b}.b-haier{background:#00529b}
 .b-tcl{background:#e31837}.b-tata{background:#486aae}.b-dixon{background:#1a6b3c}.b-voltas{background:#e65100}
+.b-foxconn{background:#2d5f2e}.b-luxshare{background:#1a237e}.b-goertek{background:#00695c}
+.b-pegatron{background:#4a148c}.b-amkor{background:#bf360c}.b-infineon{background:#0069b4}
+.b-murata{background:#1b5e20}.b-boe{background:#004d99}.b-jabil{background:#006838}
 .b-policy{background:#374151}.b-event{background:#065f46}
 .b-supply{background:#5b21b6}.b-data{background:#0369a1}.b-ems{background:#5b21b6}
 .card h3{font-family:'Playfair Display',serif;font-size:17.5px;font-weight:700;line-height:1.3;color:var(--ink)}
@@ -274,75 +277,99 @@ def tavily_search(query: str, days_back: int = 7) -> str:
 def build_queries(start: datetime, end: datetime) -> list[dict]:
     week_str = f"{fmt(start, '%d %B')} to {fmt(end, '%d %B %Y')}"
     return [
-        # Round 1 — Home Appliance Manufacturing (factory/investment only, NOT sales/events)
-        {"r": 1, "label": "Home Appliance SG/MY/ID factories",
-         "q": f"home appliance factory investment Singapore Malaysia Indonesia {week_str}"},
-        {"r": 1, "label": "Home Appliance TH/VN factories",
-         "q": f"home appliance factory investment Thailand Vietnam {week_str}"},
-        {"r": 1, "label": "Samsung LG Panasonic Daikin SEA appliance factory",
-         "q": f"Samsung LG Panasonic Daikin Carrier appliance factory investment Southeast Asia {week_str}"},
-        {"r": 1, "label": "Haier Hisense TCL Midea SEA factory",
-         "q": f"Haier Hisense TCL Midea GREE home appliance factory investment Southeast Asia {week_str}"},
+        # ── Round 1 — Brand Manufacturer Factories (SEA) ─────────────────
+        {"r": 1, "label": "Samsung LG factory SEA",
+         "q": f"Samsung LG factory expansion investment Vietnam Thailand Malaysia Indonesia {week_str}"},
+        {"r": 1, "label": "Haier Hisense TCL Midea factory SEA",
+         "q": f"Haier Hisense TCL Midea GREE factory expansion capacity Southeast Asia {week_str}"},
+        {"r": 1, "label": "Panasonic Daikin Electrolux appliance factory SEA",
+         "q": f"Panasonic Daikin Sharp Electrolux Dyson appliance factory investment Southeast Asia {week_str}"},
+        {"r": 1, "label": "Xiaomi OPPO vivo factory SEA",
+         "q": f"Xiaomi OPPO vivo Realme factory manufacturing expansion Southeast Asia India {week_str}"},
 
-        # Round 2 — India Manufacturing & Supply Chain
-        {"r": 2, "label": "India electronics manufacturing",
-         "q": f"India electronics manufacturing factory investment {week_str}"},
-        {"r": 2, "label": "India home appliance factory",
-         "q": f"India home appliance factory Samsung LG Haier Voltas Daikin investment {week_str}"},
-        {"r": 2, "label": "Foxconn Tata Pegatron India factory",
-         "q": f"Foxconn Tata Electronics Pegatron Dixon Technologies factory India {week_str}"},
-        {"r": 2, "label": "India PLI scheme electronics",
-         "q": f"India PLI production linked incentive electronics manufacturing {week_str}"},
-        {"r": 2, "label": "India supply chain components",
-         "q": f"India PCB semiconductor battery display component manufacturing {week_str}"},
+        # ── Round 2 — Brand Manufacturer Factories (India) ───────────────
+        {"r": 2, "label": "Samsung LG factory India",
+         "q": f"Samsung LG factory expansion investment India Chennai Sri City {week_str}"},
+        {"r": 2, "label": "Haier Voltas Daikin appliance India",
+         "q": f"Haier Voltas Daikin Blue Star Godrej appliance factory India expansion {week_str}"},
+        {"r": 2, "label": "Apple iPhone India manufacturing",
+         "q": f"Apple iPhone India manufacturing export Foxconn Tata Pegatron {week_str}"},
+        {"r": 2, "label": "vivo Dixon India JV",
+         "q": f"vivo Dixon Technologies India joint venture smartphone factory capacity {week_str}"},
 
-        # Round 3 — OEM / EMS
-        {"r": 3, "label": "Foxconn Pegatron Jabil EMS SEA",
-         "q": f"Foxconn Pegatron Wistron Jabil Flex Celestica factory Vietnam Malaysia Thailand {week_str}"},
-        {"r": 3, "label": "Luxshare BYD Goertek Chinese EMS Vietnam",
-         "q": f"Luxshare BYD Goertek AAC Lingyi Changying Foxlink factory Vietnam Southeast Asia {week_str}"},
-        {"r": 3, "label": "VS Industry Nationgate Inari Hana MY EMS",
-         "q": f"VS Industry Nationgate Inari Amertron UWC Hana Microelectronics Malaysia {week_str}"},
-        {"r": 3, "label": "Cal-Comp Fabrinet Venture Hi-P SEA EMS",
-         "q": f"Cal-Comp Fabrinet Venture Corporation Hi-P electronics manufacturing Southeast Asia {week_str}"},
+        # ── Round 3 — Tier-1 EMS/OEM (global players in SEA) ────────────
+        {"r": 3, "label": "Foxconn Vietnam expansion",
+         "q": f"Foxconn factory expansion Vietnam investment Bac Ninh Quang Ninh {week_str}"},
+        {"r": 3, "label": "Foxconn India display Chennai",
+         "q": f"Foxconn India factory display module Chennai investment {week_str}"},
+        {"r": 3, "label": "Luxshare Goertek Vietnam factory",
+         "q": f"Luxshare Goertek factory expansion Vietnam capacity production line {week_str}"},
+        {"r": 3, "label": "Pegatron Jabil Flex SEA factory",
+         "q": f"Pegatron Jabil Flex Celestica factory expansion Vietnam Malaysia Indonesia Batam {week_str}"},
+        {"r": 3, "label": "Tata Dixon India EMS expansion",
+         "q": f"Tata Electronics Dixon Technologies Hosur Noida factory expansion capacity {week_str}"},
 
-        # Round 4 — Core Component Supply Chain
-        {"r": 4, "label": "PCB FPC Vietnam Malaysia",
-         "q": f"PCB FPC printed circuit board factory Vietnam Malaysia {week_str}"},
-        {"r": 4, "label": "Display panels SEA Samsung BOE LG",
-         "q": f"Samsung Display LG Display BOE CSOT OLED display panel Vietnam Southeast Asia {week_str}"},
-        {"r": 4, "label": "Camera modules LG Innotek Largan Sunny Optical",
-         "q": f"LG Innotek Largan Sunny Optical camera module factory Vietnam Southeast Asia {week_str}"},
-        {"r": 4, "label": "MLCC passive Yageo Murata TDK SEA",
-         "q": f"Yageo Murata TDK Samsung Electro-Mechanics MLCC passive component Malaysia Thailand {week_str}"},
-        {"r": 4, "label": "Battery ATL Amperex Sunwoda SEA",
-         "q": f"ATL Amperex Sunwoda Desay battery cell factory Malaysia Vietnam Southeast Asia {week_str}"},
-        {"r": 4, "label": "Compressors Kulthorn Nidec motor SEA",
-         "q": f"Kulthorn Nidec Welling Embraco compressor motor Thailand Vietnam {week_str}"},
+        # ── Round 4 — Tier-1 EMS/OEM (SEA local players) ────────────────
+        {"r": 4, "label": "VS Industry Nationgate Inari MY EMS",
+         "q": f"VS Industry Nationgate Inari Amertron UWC factory expansion Malaysia {week_str}"},
+        {"r": 4, "label": "Hana Cal-Comp Fabrinet Hi-P TH SG",
+         "q": f"Hana Microelectronics Cal-Comp Fabrinet Hi-P Venture factory Thailand Singapore {week_str}"},
 
-        # Round 5 — Brand Structure
-        {"r": 5, "label": "Brand merger acquisition SEA India",
-         "q": f"electronics brand merger acquisition restructure Southeast Asia India {week_str}"},
+        # ── Round 5 — Semiconductor & Chip Packaging (SEA/India) ────────
+        {"r": 5, "label": "Amkor Hana Micron Vietnam chip packaging",
+         "q": f"Amkor Hana Micron semiconductor packaging factory Vietnam expansion {week_str}"},
+        {"r": 5, "label": "Infineon semiconductor Thailand Malaysia",
+         "q": f"Infineon Intel Texas Instruments semiconductor factory Thailand Malaysia {week_str}"},
+        {"r": 5, "label": "India semiconductor fab OSAT",
+         "q": f"India semiconductor fab OSAT Tata Micron LAM Research Semicon India {week_str}"},
 
-        # Round 6 — Policy & Regulatory
-        {"r": 6, "label": "Indonesia TKDN ecommerce policy",
+        # ── Round 6 — Core Components: PCB / Display / Camera ───────────
+        {"r": 6, "label": "PCB factory Vietnam Thailand",
+         "q": f"PCB printed circuit board factory Vietnam Thailand Wus Aoshikang Victory Giant {week_str}"},
+        {"r": 6, "label": "Samsung BOE display factory Vietnam",
+         "q": f"Samsung Display LG Display BOE CSOT OLED display factory Vietnam India {week_str}"},
+        {"r": 6, "label": "Camera module LG Innotek Sunny Optical",
+         "q": f"LG Innotek Sunny Optical Largan camera module factory Vietnam {week_str}"},
+
+        # ── Round 7 — Core Components: MLCC / Battery / Connector ───────
+        {"r": 7, "label": "MLCC Murata Taiyo Yuden SEA India",
+         "q": f"Murata Taiyo Yuden Samsung Electro-Mechanics MLCC factory Thailand Malaysia India {week_str}"},
+        {"r": 7, "label": "Battery cell factory SEA India",
+         "q": f"ATL Sunwoda Desay BYD battery cell factory Vietnam Thailand India {week_str}"},
+        {"r": 7, "label": "Connector Lite-On TD Connex SEA India",
+         "q": f"Lite-On TD Connex connector electronic component factory Vietnam India {week_str}"},
+        {"r": 7, "label": "Compressor motor Kulthorn Nidec SEA",
+         "q": f"Kulthorn Nidec Welling Embraco compressor motor factory Thailand Vietnam {week_str}"},
+
+        # ── Round 8 — Chinese Supplier Migration to SEA ─────────────────
+        {"r": 8, "label": "Chinese electronics supplier Vietnam factory",
+         "q": f"Chinese electronics supplier factory Vietnam relocation expansion investment {week_str}"},
+        {"r": 8, "label": "Chinese supplier Thailand Indonesia factory",
+         "q": f"Chinese manufacturer factory Thailand Indonesia electronics component investment {week_str}"},
+        {"r": 8, "label": "DBG Lingyi BYD Electronic SEA factory",
+         "q": f"DBG Technology Lingyi iTech BYD Electronic factory Southeast Asia Batam {week_str}"},
+
+        # ── Round 9 — Policy & Regulatory ───────────────────────────────
+        {"r": 9, "label": "Indonesia TKDN electronics policy",
          "q": f"Indonesia TKDN electronics regulation policy {week_str}"},
-        {"r": 6, "label": "Malaysia SIRIM tax incentive",
-         "q": f"Malaysia electronics policy SIRIM MCMC regulation MIDA {week_str}"},
-        {"r": 6, "label": "Singapore IMDA CSA regulation",
-         "q": f"Singapore IMDA CSA device cybersecurity certification {week_str}"},
-        {"r": 6, "label": "Vietnam Thailand CE policy",
-         "q": f"Vietnam Thailand consumer electronics import tariff regulation {week_str}"},
-        {"r": 6, "label": "India PLI BIS electronics policy",
-         "q": f"India PLI electronics manufacturing BIS regulation tariff {week_str}"},
+        {"r": 9, "label": "Malaysia MIDA electronics incentive",
+         "q": f"Malaysia MIDA electronics investment incentive SIRIM MCMC {week_str}"},
+        {"r": 9, "label": "Singapore IMDA regulation",
+         "q": f"Singapore IMDA CSA cybersecurity certification electronics {week_str}"},
+        {"r": 9, "label": "Vietnam FDI electronics policy",
+         "q": f"Vietnam FDI electronics manufacturing policy regulation {week_str}"},
+        {"r": 9, "label": "Thailand BOI EEC electronics",
+         "q": f"Thailand BOI EEC electronics factory investment incentive {week_str}"},
+        {"r": 9, "label": "India PLI BIS ECMS policy",
+         "q": f"India PLI ECMS BIS electronics manufacturing regulation {week_str}"},
 
-        # Round 7 — Global Context
-        {"r": 7, "label": "China+1 supply chain SEA India",
-         "q": f"electronics supply chain China plus one Southeast Asia India manufacturing {week_str}"},
-        {"r": 7, "label": "SEA India manufacturing market data",
-         "q": f"electronics manufacturing market data Southeast Asia India {week_str}"},
-        {"r": 7, "label": "Global shifts affecting SEA India manufacturing",
-         "q": f"electronics manufacturing globalisation Southeast Asia India factory {week_str}"},
+        # ── Round 10 — Global / Supply Chain Intelligence ───────────────
+        {"r": 10, "label": "China+1 supply chain SEA India",
+         "q": f"China plus one supply chain diversification Southeast Asia India electronics {week_str}"},
+        {"r": 10, "label": "SEA India factory investment data",
+         "q": f"Southeast Asia India electronics factory investment FDI data {week_str}"},
+        {"r": 10, "label": "US tariff impact SEA India manufacturing",
+         "q": f"US tariff Section 301 impact Southeast Asia India electronics manufacturing {week_str}"},
     ]
 
 
@@ -463,7 +490,9 @@ EXCLUSION RULES (strictly enforce):
 Brand tag classes (use exact names):
 b-samsung b-apple b-huawei b-oppo b-xiaomi b-vivo b-honor b-realme
 b-iqoo b-transsion b-motorola b-dyson b-panasonic b-hisense b-haier
-b-tcl b-tata b-dixon b-voltas b-policy b-event b-supply b-data b-ems
+b-tcl b-tata b-dixon b-voltas b-foxconn b-luxshare b-goertek
+b-pegatron b-amkor b-infineon b-murata b-boe b-jabil
+b-policy b-event b-supply b-data b-ems
 
 ── 13. SOURCE INDEX (.src-index) ────────────────────────────
 .itable: No. | Market (flag emoji) | Story Topic | Source Media | Date
