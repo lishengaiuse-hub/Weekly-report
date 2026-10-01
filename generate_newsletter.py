@@ -135,6 +135,7 @@ a{color:var(--navy)}a:hover{text-decoration:underline}
 .b-catcher{background:#4e342e}.b-everwin{background:#37474f}.b-aac{background:#6a1b9a}
 .b-radiant{background:#00838f}.b-coretronic{background:#1565c0}.b-amphenol{background:#ad1457}
 .b-molex{background:#e65100}.b-nitto{background:#283593}.b-biel{background:#558b2f}
+.b-changhong{background:#d32f2f}.b-huaqin{background:#00695c}.b-wingtech{background:#4527a0}
 .b-policy{background:#374151}.b-event{background:#065f46}
 .b-supply{background:#5b21b6}.b-data{background:#0369a1}.b-ems{background:#5b21b6}
 .card h3{font-family:'Playfair Display',serif;font-size:17.5px;font-weight:700;line-height:1.3;color:var(--ink)}
@@ -285,6 +286,8 @@ def build_queries(start: datetime, end: datetime) -> list[dict]:
          "q": f"Samsung LG factory expansion investment Vietnam Thailand Malaysia Indonesia {week_str}"},
         {"r": 1, "label": "Haier Hisense TCL Midea factory SEA",
          "q": f"Haier Hisense TCL Midea GREE factory expansion capacity Southeast Asia {week_str}"},
+        {"r": 1, "label": "TCL Changhong Thailand Chonburi factory",
+         "q": f"TCL Smart Home Changhong factory Chonburi Thailand refrigerator freezer battery {week_str}"},
         {"r": 1, "label": "Panasonic Daikin Electrolux appliance factory SEA",
          "q": f"Panasonic Daikin Sharp Electrolux Dyson appliance factory investment Southeast Asia {week_str}"},
         {"r": 1, "label": "Xiaomi OPPO vivo factory SEA",
@@ -293,8 +296,10 @@ def build_queries(start: datetime, end: datetime) -> list[dict]:
         # ── Round 2 — Brand Manufacturer Factories (India) ───────────────
         {"r": 2, "label": "Samsung LG factory India",
          "q": f"Samsung LG factory expansion investment India Chennai Sri City {week_str}"},
-        {"r": 2, "label": "Haier Voltas Daikin appliance India",
-         "q": f"Haier Voltas Daikin Blue Star Godrej appliance factory India expansion {week_str}"},
+        {"r": 2, "label": "Haier India third factory investment",
+         "q": f"Haier India new factory investment third manufacturing facility expansion {week_str}"},
+        {"r": 2, "label": "Voltas Daikin Blue Star appliance India",
+         "q": f"Voltas Daikin Blue Star Godrej appliance factory India expansion {week_str}"},
         {"r": 2, "label": "Apple iPhone India manufacturing",
          "q": f"Apple iPhone India manufacturing export Foxconn Tata Pegatron {week_str}"},
         {"r": 2, "label": "vivo Dixon India JV",
@@ -309,6 +314,8 @@ def build_queries(start: datetime, end: datetime) -> list[dict]:
          "q": f"Luxshare Goertek factory expansion Vietnam capacity production line {week_str}"},
         {"r": 3, "label": "Pegatron Jabil Flex SEA factory",
          "q": f"Pegatron Jabil Flex Celestica factory expansion Vietnam Malaysia Indonesia Batam {week_str}"},
+        {"r": 3, "label": "Huaqin Wingtech ODM Vietnam Indonesia",
+         "q": f"Huaqin Technology Wingtech factory Vietnam Indonesia expansion capacity {week_str}"},
         {"r": 3, "label": "Tata Dixon India EMS expansion",
          "q": f"Tata Electronics Dixon Technologies Hosur Noida factory expansion capacity {week_str}"},
 
@@ -517,7 +524,7 @@ b-iqoo b-transsion b-motorola b-dyson b-panasonic b-hisense b-haier
 b-tcl b-tata b-dixon b-voltas b-foxconn b-luxshare b-goertek
 b-pegatron b-murata b-boe b-jabil b-avc b-salcomp b-corning
 b-catcher b-everwin b-aac b-radiant b-coretronic b-amphenol
-b-molex b-nitto b-biel
+b-molex b-nitto b-biel b-changhong b-huaqin b-wingtech
 b-policy b-event b-supply b-data b-ems
 
 ── 13. SOURCE INDEX (.src-index) ────────────────────────────
