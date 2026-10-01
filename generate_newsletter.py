@@ -130,8 +130,7 @@ a{color:var(--navy)}a:hover{text-decoration:underline}
 .b-panasonic{background:#003087}.b-hisense{background:#0a3d6b}.b-haier{background:#00529b}
 .b-tcl{background:#e31837}.b-tata{background:#486aae}.b-dixon{background:#1a6b3c}.b-voltas{background:#e65100}
 .b-foxconn{background:#2d5f2e}.b-luxshare{background:#1a237e}.b-goertek{background:#00695c}
-.b-pegatron{background:#4a148c}.b-amkor{background:#bf360c}.b-infineon{background:#0069b4}
-.b-murata{background:#1b5e20}.b-boe{background:#004d99}.b-jabil{background:#006838}
+.b-pegatron{background:#4a148c}.b-murata{background:#1b5e20}.b-boe{background:#004d99}.b-jabil{background:#006838}
 .b-policy{background:#374151}.b-event{background:#065f46}
 .b-supply{background:#5b21b6}.b-data{background:#0369a1}.b-ems{background:#5b21b6}
 .card h3{font-family:'Playfair Display',serif;font-size:17.5px;font-weight:700;line-height:1.3;color:var(--ink)}
@@ -315,60 +314,52 @@ def build_queries(start: datetime, end: datetime) -> list[dict]:
         {"r": 4, "label": "Hana Cal-Comp Fabrinet Hi-P TH SG",
          "q": f"Hana Microelectronics Cal-Comp Fabrinet Hi-P Venture factory Thailand Singapore {week_str}"},
 
-        # ── Round 5 — Semiconductor & Chip Packaging (SEA/India) ────────
-        {"r": 5, "label": "Amkor Hana Micron Vietnam chip packaging",
-         "q": f"Amkor Hana Micron semiconductor packaging factory Vietnam expansion {week_str}"},
-        {"r": 5, "label": "Infineon semiconductor Thailand Malaysia",
-         "q": f"Infineon Intel Texas Instruments semiconductor factory Thailand Malaysia {week_str}"},
-        {"r": 5, "label": "India semiconductor fab OSAT",
-         "q": f"India semiconductor fab OSAT Tata Micron LAM Research Semicon India {week_str}"},
-
-        # ── Round 6 — Core Components: PCB / Display / Camera ───────────
-        {"r": 6, "label": "PCB factory Vietnam Thailand",
+        # ── Round 5 — Core Components: PCB / Display / Camera ───────────
+        {"r": 5, "label": "PCB factory Vietnam Thailand",
          "q": f"PCB printed circuit board factory Vietnam Thailand Wus Aoshikang Victory Giant {week_str}"},
-        {"r": 6, "label": "Samsung BOE display factory Vietnam",
+        {"r": 5, "label": "Samsung BOE display factory Vietnam",
          "q": f"Samsung Display LG Display BOE CSOT OLED display factory Vietnam India {week_str}"},
-        {"r": 6, "label": "Camera module LG Innotek Sunny Optical",
+        {"r": 5, "label": "Camera module LG Innotek Sunny Optical",
          "q": f"LG Innotek Sunny Optical Largan camera module factory Vietnam {week_str}"},
 
-        # ── Round 7 — Core Components: MLCC / Battery / Connector ───────
-        {"r": 7, "label": "MLCC Murata Taiyo Yuden SEA India",
+        # ── Round 6 — Core Components: MLCC / Battery / Connector ───────
+        {"r": 6, "label": "MLCC Murata Taiyo Yuden SEA India",
          "q": f"Murata Taiyo Yuden Samsung Electro-Mechanics MLCC factory Thailand Malaysia India {week_str}"},
-        {"r": 7, "label": "Battery cell factory SEA India",
+        {"r": 6, "label": "Battery cell factory SEA India",
          "q": f"ATL Sunwoda Desay BYD battery cell factory Vietnam Thailand India {week_str}"},
-        {"r": 7, "label": "Connector Lite-On TD Connex SEA India",
+        {"r": 6, "label": "Connector Lite-On TD Connex SEA India",
          "q": f"Lite-On TD Connex connector electronic component factory Vietnam India {week_str}"},
-        {"r": 7, "label": "Compressor motor Kulthorn Nidec SEA",
+        {"r": 6, "label": "Compressor motor Kulthorn Nidec SEA",
          "q": f"Kulthorn Nidec Welling Embraco compressor motor factory Thailand Vietnam {week_str}"},
 
-        # ── Round 8 — Chinese Supplier Migration to SEA ─────────────────
-        {"r": 8, "label": "Chinese electronics supplier Vietnam factory",
+        # ── Round 7 — Chinese Supplier Migration to SEA ─────────────────
+        {"r": 7, "label": "Chinese electronics supplier Vietnam factory",
          "q": f"Chinese electronics supplier factory Vietnam relocation expansion investment {week_str}"},
-        {"r": 8, "label": "Chinese supplier Thailand Indonesia factory",
+        {"r": 7, "label": "Chinese supplier Thailand Indonesia factory",
          "q": f"Chinese manufacturer factory Thailand Indonesia electronics component investment {week_str}"},
-        {"r": 8, "label": "DBG Lingyi BYD Electronic SEA factory",
+        {"r": 7, "label": "DBG Lingyi BYD Electronic SEA factory",
          "q": f"DBG Technology Lingyi iTech BYD Electronic factory Southeast Asia Batam {week_str}"},
 
-        # ── Round 9 — Policy & Regulatory ───────────────────────────────
-        {"r": 9, "label": "Indonesia TKDN electronics policy",
+        # ── Round 8 — Policy & Regulatory ───────────────────────────────
+        {"r": 8, "label": "Indonesia TKDN electronics policy",
          "q": f"Indonesia TKDN electronics regulation policy {week_str}"},
-        {"r": 9, "label": "Malaysia MIDA electronics incentive",
+        {"r": 8, "label": "Malaysia MIDA electronics incentive",
          "q": f"Malaysia MIDA electronics investment incentive SIRIM MCMC {week_str}"},
-        {"r": 9, "label": "Singapore IMDA regulation",
+        {"r": 8, "label": "Singapore IMDA regulation",
          "q": f"Singapore IMDA CSA cybersecurity certification electronics {week_str}"},
-        {"r": 9, "label": "Vietnam FDI electronics policy",
+        {"r": 8, "label": "Vietnam FDI electronics policy",
          "q": f"Vietnam FDI electronics manufacturing policy regulation {week_str}"},
-        {"r": 9, "label": "Thailand BOI EEC electronics",
+        {"r": 8, "label": "Thailand BOI EEC electronics",
          "q": f"Thailand BOI EEC electronics factory investment incentive {week_str}"},
-        {"r": 9, "label": "India PLI BIS ECMS policy",
+        {"r": 8, "label": "India PLI BIS ECMS policy",
          "q": f"India PLI ECMS BIS electronics manufacturing regulation {week_str}"},
 
-        # ── Round 10 — Global / Supply Chain Intelligence ───────────────
-        {"r": 10, "label": "China+1 supply chain SEA India",
+        # ── Round 9 — Global / Supply Chain Intelligence ───────────────
+        {"r": 9, "label": "China+1 supply chain SEA India",
          "q": f"China plus one supply chain diversification Southeast Asia India electronics {week_str}"},
-        {"r": 10, "label": "SEA India factory investment data",
+        {"r": 9, "label": "SEA India factory investment data",
          "q": f"Southeast Asia India electronics factory investment FDI data {week_str}"},
-        {"r": 10, "label": "US tariff impact SEA India manufacturing",
+        {"r": 9, "label": "US tariff impact SEA India manufacturing",
          "q": f"US tariff Section 301 impact Southeast Asia India electronics manufacturing {week_str}"},
     ]
 
@@ -470,6 +461,7 @@ EXCLUSION RULES (strictly enforce):
 - DO NOT include product launch / smartphone launch news.
 - DO NOT include home appliance sales events, warehouse sales, or retail promotions.
 - DO NOT include Philippines, Cambodia, Myanmar, or Laos news.
+- DO NOT include semiconductor fab, chip packaging, OSAT, memory chip, or semiconductor equipment news (e.g. Micron, Infineon, LAM Research, Amkor, TSMC).
 - Focus ONLY on: manufacturing, factory investment, supply chain, OEM/EMS, and policy.
 
 6. 🇲🇾 Malaysia   — Manufacturing · OEM/EMS · Market Data · Policy
@@ -491,7 +483,7 @@ Brand tag classes (use exact names):
 b-samsung b-apple b-huawei b-oppo b-xiaomi b-vivo b-honor b-realme
 b-iqoo b-transsion b-motorola b-dyson b-panasonic b-hisense b-haier
 b-tcl b-tata b-dixon b-voltas b-foxconn b-luxshare b-goertek
-b-pegatron b-amkor b-infineon b-murata b-boe b-jabil
+b-pegatron b-murata b-boe b-jabil
 b-policy b-event b-supply b-data b-ems
 
 ── 13. SOURCE INDEX (.src-index) ────────────────────────────
@@ -683,6 +675,7 @@ row in the source index (.itable):
    d. The card is about a home appliance sale, warehouse sale, retail
       promotion, product launch, or consumer event.
    e. The card is about Philippines, Cambodia, Myanmar, or Laos.
+   f. The card is about semiconductor fab, chip packaging, OSAT, memory chips, or semiconductor equipment (e.g. Micron, Infineon, LAM Research, Amkor, TSMC).
 3. If a card only says a month/year (e.g. "July 2026") and that month
    ended before {start_date}, REMOVE it.
 4. If you cannot determine ANY date at all AND the content reads like
