@@ -314,7 +314,7 @@ def tavily_search(query: str, days_back: int = 7) -> str:
             continue
         title = item.get("title", "(no title)")
         url   = item.get("url", "")
-        body  = item.get("content", "")[:480]
+        body  = item.get("content", "")[:320]
         lines.append(f"• [{pub_raw}] {title}\n  URL: {url}\n  {body}")
 
     if skipped:
@@ -756,22 +756,32 @@ def generate_body_deepseek(messages: list[dict]) -> str:
         sys.exit(1)
 
     client = OpenAI(api_key=DEEPSEEK_API_KEY, base_url="https://api.deepseek.com")
-    chunks: list[str] = []
 
-    with client.chat.completions.create(
-        model=MODEL,
-        messages=messages,
-        max_tokens=MAX_TOKENS,
-        temperature=0.2,
-        stream=True,
-    ) as stream:
-        for chunk in stream:
-            delta = chunk.choices[0].delta.content
-            if delta:
-                chunks.append(delta)
-                print(delta, end="", flush=True)
+    for attempt in range(1, 4):
+        chunks: list[str] = []
+        try:
+            with client.chat.completions.create(
+                model=MODEL,
+                messages=messages,
+                max_tokens=MAX_TOKENS,
+                temperature=0.2 + (attempt - 1) * 0.1,
+                stream=True,
+            ) as stream:
+                for chunk in stream:
+                    delta = chunk.choices[0].delta.content
+                    if delta:
+                        chunks.append(delta)
+                        print(delta, end="", flush=True)
+            print()
+            return "".join(chunks)
+        except Exception as e:
+            err_msg = str(e)
+            if "Content Exists Risk" in err_msg and attempt < 3:
+                log.warning(f"DeepSeek content filter triggered (attempt {attempt}/3), retrying with higher temperature...")
+                time.sleep(2)
+                continue
+            raise
 
-    print()
     return "".join(chunks)
 
 
