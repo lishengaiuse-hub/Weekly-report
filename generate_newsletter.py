@@ -165,6 +165,21 @@ a{color:var(--navy)}a:hover{text-decoration:underline}
 .b-bse{background:#4527a0}.b-sumitomo{background:#0d47a1}.b-prysmian{background:#37474f}
 .b-jsw{background:#1a237e}.b-tatasteel{background:#486aae}.b-henkel{background:#c62828}
 .b-dow{background:#e65100}.b-3m{background:#c62828}.b-shinei{background:#004d40}
+.b-wistron{background:#283593}
+.b-quanta{background:#33691e}.b-compal{background:#37474f}.b-inventec{background:#6a1b9a}
+.b-epack{background:#c62828}.b-amber{background:#e65100}.b-kaynes{background:#004d40}
+.b-sihui{background:#1565c0}.b-shennan{background:#0d47a1}.b-aohong{background:#ad1457}
+.b-allfavor{background:#4527a0}.b-shengyi{background:#00838f}
+.b-midea{background:#0277bd}.b-mitsubishi{background:#c62828}.b-embraco{background:#1a237e}
+.b-hitachienergy{background:#c62828}.b-seoul{background:#1565c0}.b-mls{background:#e65100}
+.b-leoni{background:#0d47a1}.b-delfingen{background:#37474f}.b-jabil{background:#33691e}
+.b-deren{background:#004d40}.b-ect{background:#283593}.b-jonhon{background:#1a237e}
+.b-kaiwang{background:#6a1b9a}.b-huntkey{background:#0277bd}.b-haineng{background:#33691e}
+.b-highly{background:#37474f}.b-aux{background:#c62828}.b-btr{background:#0d47a1}
+.b-putailai{background:#004d40}.b-longcheer{background:#4527a0}.b-tinno{background:#ad1457}
+.b-tongda{background:#1565c0}.b-silverbasis{background:#283593}
+.b-ztt{background:#0277bd}.b-hengtong{background:#1a237e}.b-yuto{background:#e65100}
+.b-hexing{background:#33691e}.b-nanshan{background:#37474f}
 .b-policy{background:#374151}.b-event{background:#065f46}
 .b-supply{background:#5b21b6}.b-data{background:#0369a1}.b-ems{background:#5b21b6}
 .card h3{font-family:'Playfair Display',serif;font-size:17.5px;font-weight:700;line-height:1.3;color:var(--ink)}
@@ -346,8 +361,14 @@ def build_queries(start: datetime, end: datetime) -> list[dict]:
          "q": f"Pegatron Jabil Flex Celestica factory expansion Vietnam Malaysia Indonesia Batam {week_str}"},
         {"r": 3, "label": "Huaqin Wingtech ODM Vietnam Indonesia",
          "q": f"Huaqin Technology Wingtech factory Vietnam Indonesia expansion capacity {week_str}"},
+        {"r": 3, "label": "Wistron Quanta Compal Inventec ODM Vietnam",
+         "q": f"Wistron Quanta Computer Compal Inventec ODM factory Vietnam Thailand expansion {week_str}"},
         {"r": 3, "label": "Tata Dixon India EMS expansion",
          "q": f"Tata Electronics Dixon Technologies Hosur Noida factory expansion capacity {week_str}"},
+        {"r": 3, "label": "Jabil Epack India EMS expansion",
+         "q": f"Jabil Epack Durable Amber Enterprises India EMS contract manufacturing factory expansion PLI {week_str}"},
+        {"r": 3, "label": "Longcheer Tinno Chinese ODM Vietnam India",
+         "q": f"Longcheer Tinno ODM smartphone factory Vietnam India Indonesia expansion {week_str}"},
 
         # ── Round 4 — Tier-1 EMS/OEM (SEA local players) ────────────────
         {"r": 4, "label": "VS Industry Nationgate Inari MY EMS",
@@ -364,16 +385,14 @@ def build_queries(start: datetime, end: datetime) -> list[dict]:
          "q": f"Compeq Unimicron Tripod Zhen Ding Flexium PCB FPC factory Vietnam Thailand Malaysia expansion {week_str}"},
         {"r": 5, "label": "PCB Chin Poon Meiko Olympic SEA",
          "q": f"Chin Poon Meiko Electronics Olympic Circuit PCB factory Vietnam Thailand expansion {week_str}"},
-        {"r": 5, "label": "CCL Doosan ITEQ TUC Syrma SEA India",
-         "q": f"Doosan ITEQ TUC Taiwan Union CCL copper clad laminate Syrma SGS PCB factory Thailand India expansion {week_str}"},
-        {"r": 5, "label": "IC substrate AT&S ASE leadframe SEA",
-         "q": f"AT&S ASE IC substrate ABF leadframe factory Malaysia Vietnam India Penang Kulim expansion {week_str}"},
+        {"r": 5, "label": "PCB Sihui Fuji Shennan Aohong Thailand",
+         "q": f"Sihui Fuji Shennan Circuits Aohong Allfavor PCB factory Thailand Rayong Ayutthaya expansion {week_str}"},
+        {"r": 5, "label": "CCL Doosan ITEQ TUC Shengyi Syrma SEA India",
+         "q": f"Doosan ITEQ TUC Taiwan Union Shengyi Technology CCL copper clad laminate Syrma SGS PCB factory Thailand India expansion {week_str}"},
         {"r": 5, "label": "Polarizer Shanjin display film Vietnam",
          "q": f"Shanjin Optoelectronics polarizer film display component factory Vietnam Southeast Asia expansion {week_str}"},
         {"r": 5, "label": "Lens Technology glass casing Vietnam",
          "q": f"Lens Technology cover glass metal casing factory Vietnam Thailand expansion {week_str}"},
-        {"r": 5, "label": "Samsung BOE display factory Vietnam",
-         "q": f"Samsung Display LG Display BOE CSOT OLED display factory Vietnam India {week_str}"},
         {"r": 5, "label": "Camera module LG Innotek Sunny Optical",
          "q": f"LG Innotek Sunny Optical Largan camera module factory Vietnam {week_str}"},
 
@@ -388,8 +407,16 @@ def build_queries(start: datetime, end: datetime) -> list[dict]:
          "q": f"Samsung SDI LG Energy Solution battery cell factory Indonesia Malaysia expansion {week_str}"},
         {"r": 6, "label": "Connector Amphenol Molex Lite-On SEA India",
          "q": f"Amphenol Molex Lite-On TD Connex connector factory Vietnam India expansion {week_str}"},
+        {"r": 6, "label": "Connector Deren ECT JONHON Chinese Vietnam",
+         "q": f"Deren Electronics ECT Electric Connector JONHON Kaiwang connector factory Vietnam Thailand expansion {week_str}"},
         {"r": 6, "label": "Compressor motor Kulthorn Nidec SEA",
          "q": f"Kulthorn Nidec Welling Embraco compressor motor factory Thailand Vietnam {week_str}"},
+        {"r": 6, "label": "Nidec Embraco Mitsubishi compressor India",
+         "q": f"Nidec Embraco Mitsubishi Electric compressor air conditioner factory India expansion {week_str}"},
+        {"r": 6, "label": "Highly AUX compressor AC Thailand India",
+         "q": f"Shanghai Highly Haili AUX Chunlan compressor air conditioner factory Thailand India expansion {week_str}"},
+        {"r": 6, "label": "Battery material BTR Putailai Indonesia",
+         "q": f"BTR Putailai anode material battery factory Indonesia Central Java expansion {week_str}"},
         {"r": 6, "label": "Motor Mabuchi MinebeaMitsumi GMCC SEA India",
          "q": f"Mabuchi Motor MinebeaMitsumi GMCC micro motor factory Vietnam Thailand India expansion {week_str}"},
         {"r": 6, "label": "Magnetic Sumida Kyocera AVX passive SEA",
@@ -416,6 +443,8 @@ def build_queries(start: datetime, end: datetime) -> list[dict]:
          "q": f"ebm-papst Sunon fan blower motor factory India Southeast Asia expansion {week_str}"},
         {"r": 7, "label": "Chicony power supply charger Thailand",
          "q": f"Chicony Power charger power supply adapter factory Thailand expansion {week_str}"},
+        {"r": 7, "label": "Huntkey Haineng power supply Vietnam",
+         "q": f"Huntkey Haineng CE-LINK power supply charger adapter factory Vietnam expansion {week_str}"},
         {"r": 7, "label": "Salcomp charger adapter India",
          "q": f"Salcomp charger power adapter factory India expansion {week_str}"},
 
@@ -424,6 +453,8 @@ def build_queries(start: datetime, end: datetime) -> list[dict]:
          "q": f"BYD Electronic Catcher Technology Everwin metal casing factory Vietnam expansion {week_str}"},
         {"r": 8, "label": "Corning BIEL glass cover India Vietnam",
          "q": f"Corning Gorilla Glass BIEL Crystal cover glass factory India Vietnam {week_str}"},
+        {"r": 8, "label": "Tongda Silver Basis precision mold Vietnam India",
+         "q": f"Tongda Group Silver Basis precision mold structural parts factory Vietnam India expansion {week_str}"},
 
         # ── Round 9 — Backlight / LED / Acoustic / Adhesive ────────────
         {"r": 9, "label": "Radiant Coretronic backlight Vietnam",
@@ -442,10 +473,20 @@ def build_queries(start: datetime, end: datetime) -> list[dict]:
          "q": f"Ju Teng Rosti plastic injection molding casing factory Vietnam India expansion {week_str}"},
         {"r": 9, "label": "Nitto Denko adhesive optical film SEA India",
          "q": f"Nitto Denko adhesive tape optical film factory Vietnam India Malaysia {week_str}"},
+        {"r": 9, "label": "Hitachi Energy transformer Thailand Vietnam",
+         "q": f"Hitachi Energy transformer power equipment factory Thailand Vietnam India expansion {week_str}"},
+        {"r": 9, "label": "Seoul Semi MLS LED module Vietnam India",
+         "q": f"Seoul Semiconductor MLS MuLinsen LED module lighting component factory Vietnam India expansion {week_str}"},
 
         # ── Round 10 — Wire Harness / Insulation / Stamping ─────────────
-        {"r": 10, "label": "Motherson Yazaki Sumitomo wire harness SEA India",
-         "q": f"Motherson Sumi Yazaki Sumitomo Electric Prysmian wire harness cable factory Vietnam Thailand India expansion {week_str}"},
+        {"r": 10, "label": "Motherson Yazaki Sumitomo Leoni wire harness SEA India",
+         "q": f"Motherson Sumi Yazaki Sumitomo Electric Prysmian Leoni Delfingen wire harness cable factory Vietnam Thailand India expansion {week_str}"},
+        {"r": 10, "label": "ZTT Hengtong cable fiber optic Indonesia India",
+         "q": f"Zhongtian Technology ZTT Hengtong fiber optic cable factory Indonesia India Malaysia expansion {week_str}"},
+        {"r": 10, "label": "Yuto Hexing packaging Vietnam Thailand",
+         "q": f"Yuto Hexing packaging corrugated box color box factory Vietnam Thailand Indonesia expansion {week_str}"},
+        {"r": 10, "label": "Nanshan aluminum alumina Indonesia",
+         "q": f"Nanshan Aluminum alumina smelter factory Indonesia expansion {week_str}"},
         {"r": 10, "label": "SRF Armacell insulation India",
          "q": f"SRF refrigerant Armacell insulation material factory India expansion {week_str}"},
         {"r": 10, "label": "Wacker Momentive Shin-Etsu silicone SEA India",
@@ -465,26 +506,32 @@ def build_queries(start: datetime, end: datetime) -> list[dict]:
         {"r": 11, "label": "DBG Lingyi BYD Electronic SEA factory",
          "q": f"DBG Technology Lingyi iTech BYD Electronic factory Southeast Asia Batam {week_str}"},
 
-        # ── Round 12 — Policy & Regulatory ──────────────────────────────
-        {"r": 12, "label": "Indonesia TKDN electronics policy",
+        # ── Round 12 — Indian PLI Electronics / Appliance ───────────────
+        {"r": 12, "label": "Kaynes Amber PCB HDI India PLI",
+         "q": f"Kaynes Technology Amber Enterprises Ascent Circuits HDI PCB factory India PLI ECMS expansion {week_str}"},
+        {"r": 12, "label": "Midea Mitsubishi appliance factory SEA India",
+         "q": f"Midea Mitsubishi Electric appliance refrigerator air conditioner factory Indonesia India expansion {week_str}"},
+
+        # ── Round 13 — Policy & Regulatory ──────────────────────────────
+        {"r": 13, "label": "Indonesia TKDN electronics policy",
          "q": f"Indonesia TKDN electronics regulation policy {week_str}"},
-        {"r": 12, "label": "Malaysia MIDA electronics incentive",
+        {"r": 13, "label": "Malaysia MIDA electronics incentive",
          "q": f"Malaysia MIDA electronics investment incentive SIRIM MCMC {week_str}"},
-        {"r": 12, "label": "Singapore IMDA regulation",
+        {"r": 13, "label": "Singapore IMDA regulation",
          "q": f"Singapore IMDA CSA cybersecurity certification electronics {week_str}"},
-        {"r": 12, "label": "Vietnam FDI electronics policy",
+        {"r": 13, "label": "Vietnam FDI electronics policy",
          "q": f"Vietnam FDI electronics manufacturing policy regulation {week_str}"},
-        {"r": 12, "label": "Thailand BOI EEC electronics",
+        {"r": 13, "label": "Thailand BOI EEC electronics",
          "q": f"Thailand BOI EEC electronics factory investment incentive {week_str}"},
-        {"r": 12, "label": "India PLI BIS ECMS policy",
+        {"r": 13, "label": "India PLI BIS ECMS policy",
          "q": f"India PLI ECMS BIS electronics manufacturing regulation {week_str}"},
 
-        # ── Round 13 — Global / Supply Chain Intelligence ───────────────
-        {"r": 13, "label": "China+1 supply chain SEA India",
+        # ── Round 14 — Global / Supply Chain Intelligence ───────────────
+        {"r": 14, "label": "China+1 supply chain SEA India",
          "q": f"China plus one supply chain diversification Southeast Asia India electronics {week_str}"},
-        {"r": 13, "label": "SEA India factory investment data",
+        {"r": 14, "label": "SEA India factory investment data",
          "q": f"Southeast Asia India electronics factory investment FDI data {week_str}"},
-        {"r": 13, "label": "US tariff impact SEA India manufacturing",
+        {"r": 14, "label": "US tariff impact SEA India manufacturing",
          "q": f"US tariff Section 301 impact Southeast Asia India electronics manufacturing {week_str}"},
     ]
 
