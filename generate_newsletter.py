@@ -174,6 +174,13 @@ a{color:var(--navy)}a:hover{text-decoration:underline}
 .b-midea{background:#0277bd}.b-mitsubishi{background:#c62828}.b-embraco{background:#1a237e}
 .b-hitachienergy{background:#c62828}.b-seoul{background:#1565c0}.b-mls{background:#e65100}
 .b-leoni{background:#0d47a1}.b-delfingen{background:#37474f}.b-jabil{background:#33691e}
+.b-deren{background:#004d40}.b-ect{background:#283593}.b-jonhon{background:#1a237e}
+.b-kaiwang{background:#6a1b9a}.b-huntkey{background:#0277bd}.b-haineng{background:#33691e}
+.b-highly{background:#37474f}.b-aux{background:#c62828}.b-btr{background:#0d47a1}
+.b-putailai{background:#004d40}.b-longcheer{background:#4527a0}.b-tinno{background:#ad1457}
+.b-changxin{background:#00695c}.b-tongda{background:#1565c0}.b-silverbasis{background:#283593}
+.b-ztt{background:#0277bd}.b-hengtong{background:#1a237e}.b-yuto{background:#e65100}
+.b-hexing{background:#33691e}.b-nanshan{background:#37474f}
 .b-policy{background:#374151}.b-event{background:#065f46}
 .b-supply{background:#5b21b6}.b-data{background:#0369a1}.b-ems{background:#5b21b6}
 .card h3{font-family:'Playfair Display',serif;font-size:17.5px;font-weight:700;line-height:1.3;color:var(--ink)}
@@ -361,6 +368,8 @@ def build_queries(start: datetime, end: datetime) -> list[dict]:
          "q": f"Tata Electronics Dixon Technologies Hosur Noida factory expansion capacity {week_str}"},
         {"r": 3, "label": "Jabil Epack India EMS expansion",
          "q": f"Jabil Epack Durable Amber Enterprises India EMS contract manufacturing factory expansion PLI {week_str}"},
+        {"r": 3, "label": "Longcheer Tinno Chinese ODM Vietnam India",
+         "q": f"Longcheer Tinno ODM smartphone factory Vietnam India Indonesia expansion {week_str}"},
 
         # ── Round 4 — Tier-1 EMS/OEM (SEA local players) ────────────────
         {"r": 4, "label": "VS Industry Nationgate Inari MY EMS",
@@ -389,6 +398,8 @@ def build_queries(start: datetime, end: datetime) -> list[dict]:
          "q": f"Lens Technology cover glass metal casing factory Vietnam Thailand expansion {week_str}"},
         {"r": 5, "label": "Samsung BOE display factory Vietnam",
          "q": f"Samsung Display LG Display BOE CSOT OLED display factory Vietnam India {week_str}"},
+        {"r": 5, "label": "Changxin CSOT display module Vietnam",
+         "q": f"Changxin Technology CSOT TCL display module touch panel factory Vietnam expansion {week_str}"},
         {"r": 5, "label": "AUO display module Vietnam Thailand",
          "q": f"AUO AU Optronics display module factory Vietnam Thailand expansion {week_str}"},
         {"r": 5, "label": "Camera module LG Innotek Sunny Optical",
@@ -405,10 +416,16 @@ def build_queries(start: datetime, end: datetime) -> list[dict]:
          "q": f"Samsung SDI LG Energy Solution battery cell factory Indonesia Malaysia expansion {week_str}"},
         {"r": 6, "label": "Connector Amphenol Molex Lite-On SEA India",
          "q": f"Amphenol Molex Lite-On TD Connex connector factory Vietnam India expansion {week_str}"},
+        {"r": 6, "label": "Connector Deren ECT JONHON Chinese Vietnam",
+         "q": f"Deren Electronics ECT Electric Connector JONHON Kaiwang connector factory Vietnam Thailand expansion {week_str}"},
         {"r": 6, "label": "Compressor motor Kulthorn Nidec SEA",
          "q": f"Kulthorn Nidec Welling Embraco compressor motor factory Thailand Vietnam {week_str}"},
         {"r": 6, "label": "Nidec Embraco Mitsubishi compressor India",
          "q": f"Nidec Embraco Mitsubishi Electric compressor air conditioner factory India expansion {week_str}"},
+        {"r": 6, "label": "Highly AUX compressor AC Thailand India",
+         "q": f"Shanghai Highly Haili AUX Chunlan compressor air conditioner factory Thailand India expansion {week_str}"},
+        {"r": 6, "label": "Battery material BTR Putailai Indonesia",
+         "q": f"BTR Putailai anode material battery factory Indonesia Central Java expansion {week_str}"},
         {"r": 6, "label": "Motor Mabuchi MinebeaMitsumi GMCC SEA India",
          "q": f"Mabuchi Motor MinebeaMitsumi GMCC micro motor factory Vietnam Thailand India expansion {week_str}"},
         {"r": 6, "label": "Magnetic Sumida Kyocera AVX passive SEA",
@@ -435,6 +452,8 @@ def build_queries(start: datetime, end: datetime) -> list[dict]:
          "q": f"ebm-papst Sunon fan blower motor factory India Southeast Asia expansion {week_str}"},
         {"r": 7, "label": "Chicony power supply charger Thailand",
          "q": f"Chicony Power charger power supply adapter factory Thailand expansion {week_str}"},
+        {"r": 7, "label": "Huntkey Haineng power supply Vietnam",
+         "q": f"Huntkey Haineng CE-LINK power supply charger adapter factory Vietnam expansion {week_str}"},
         {"r": 7, "label": "Salcomp charger adapter India",
          "q": f"Salcomp charger power adapter factory India expansion {week_str}"},
 
@@ -443,6 +462,8 @@ def build_queries(start: datetime, end: datetime) -> list[dict]:
          "q": f"BYD Electronic Catcher Technology Everwin metal casing factory Vietnam expansion {week_str}"},
         {"r": 8, "label": "Corning BIEL glass cover India Vietnam",
          "q": f"Corning Gorilla Glass BIEL Crystal cover glass factory India Vietnam {week_str}"},
+        {"r": 8, "label": "Tongda Silver Basis precision mold Vietnam India",
+         "q": f"Tongda Group Silver Basis precision mold structural parts factory Vietnam India expansion {week_str}"},
 
         # ── Round 9 — Backlight / LED / Acoustic / Adhesive ────────────
         {"r": 9, "label": "Radiant Coretronic backlight Vietnam",
@@ -469,6 +490,12 @@ def build_queries(start: datetime, end: datetime) -> list[dict]:
         # ── Round 10 — Wire Harness / Insulation / Stamping ─────────────
         {"r": 10, "label": "Motherson Yazaki Sumitomo Leoni wire harness SEA India",
          "q": f"Motherson Sumi Yazaki Sumitomo Electric Prysmian Leoni Delfingen wire harness cable factory Vietnam Thailand India expansion {week_str}"},
+        {"r": 10, "label": "ZTT Hengtong cable fiber optic Indonesia India",
+         "q": f"Zhongtian Technology ZTT Hengtong fiber optic cable factory Indonesia India Malaysia expansion {week_str}"},
+        {"r": 10, "label": "Yuto Hexing packaging Vietnam Thailand",
+         "q": f"Yuto Hexing packaging corrugated box color box factory Vietnam Thailand Indonesia expansion {week_str}"},
+        {"r": 10, "label": "Nanshan aluminum alumina Indonesia",
+         "q": f"Nanshan Aluminum alumina smelter factory Indonesia expansion {week_str}"},
         {"r": 10, "label": "SRF Armacell insulation India",
          "q": f"SRF refrigerant Armacell insulation material factory India expansion {week_str}"},
         {"r": 10, "label": "Wacker Momentive Shin-Etsu silicone SEA India",
