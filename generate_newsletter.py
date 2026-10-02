@@ -138,6 +138,7 @@ a{color:var(--navy)}a:hover{text-decoration:underline}
 .b-changhong{background:#d32f2f}.b-huaqin{background:#00695c}.b-wingtech{background:#4527a0}
 .b-bluestar{background:#1565c0}.b-inari{background:#00838f}.b-uwc{background:#4e342e}
 .b-nidec{background:#2e7d32}.b-victorygiant{background:#1b5e20}.b-click{background:#37474f}
+.b-suntak{background:#0d47a1}.b-shenghong{background:#1a237e}.b-kinwong{background:#004d40}.b-wus{background:#33691e}
 .b-policy{background:#374151}.b-event{background:#065f46}
 .b-supply{background:#5b21b6}.b-data{background:#0369a1}.b-ems{background:#5b21b6}
 .card h3{font-family:'Playfair Display',serif;font-size:17.5px;font-weight:700;line-height:1.3;color:var(--ink)}
@@ -329,8 +330,10 @@ def build_queries(start: datetime, end: datetime) -> list[dict]:
          "q": f"Hana Microelectronics Cal-Comp Fabrinet Hi-P Venture factory Thailand Singapore {week_str}"},
 
         # ── Round 5 — Core Components: PCB / Display / Camera ───────────
-        {"r": 5, "label": "PCB factory Vietnam Thailand",
+        {"r": 5, "label": "PCB factory Vietnam Thailand Wus Aoshikang Victory Giant",
          "q": f"PCB printed circuit board factory Vietnam Thailand Wus Aoshikang Victory Giant {week_str}"},
+        {"r": 5, "label": "PCB Suntak Shenghong Kinwong SEA",
+         "q": f"Suntak Chongda Shenghong Kinwong PCB factory Vietnam Thailand Southeast Asia expansion {week_str}"},
         {"r": 5, "label": "Samsung BOE display factory Vietnam",
          "q": f"Samsung Display LG Display BOE CSOT OLED display factory Vietnam India {week_str}"},
         {"r": 5, "label": "Camera module LG Innotek Sunny Optical",
@@ -552,6 +555,7 @@ b-pegatron b-murata b-boe b-jabil b-avc b-salcomp b-corning
 b-catcher b-everwin b-aac b-radiant b-coretronic b-amphenol
 b-molex b-nitto b-biel b-changhong b-huaqin b-wingtech
 b-bluestar b-inari b-uwc b-nidec b-victorygiant b-click
+b-suntak b-shenghong b-kinwong b-wus
 b-policy b-event b-supply b-data b-ems
 
 ── 13. SOURCE INDEX (.src-index) ────────────────────────────
