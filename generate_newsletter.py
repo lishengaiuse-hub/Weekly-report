@@ -55,7 +55,7 @@ TAVILY_API_KEY    = os.getenv("TAVILY_API_KEY", "")
 
 _DEFAULT_MODELS = {"deepseek": "deepseek-chat", "anthropic": "claude-opus-4-7"}
 MODEL      = os.getenv("MODEL") or _DEFAULT_MODELS.get(PROVIDER, "deepseek-chat")
-MAX_TOKENS = int(os.getenv("MAX_TOKENS") or "7000")   # DeepSeek hard limit 8192; "or" handles empty string
+MAX_TOKENS = int(os.getenv("MAX_TOKENS") or "12000")  # "or" handles empty string
 SEARCH_N   = int(os.getenv("SEARCH_RESULTS_PER_QUERY") or "6")
 
 # Default to ./output so GitHub Actions works out of the box;
@@ -136,6 +136,8 @@ a{color:var(--navy)}a:hover{text-decoration:underline}
 .b-radiant{background:#00838f}.b-coretronic{background:#1565c0}.b-amphenol{background:#ad1457}
 .b-molex{background:#e65100}.b-nitto{background:#283593}.b-biel{background:#558b2f}
 .b-changhong{background:#d32f2f}.b-huaqin{background:#00695c}.b-wingtech{background:#4527a0}
+.b-bluestar{background:#1565c0}.b-inari{background:#00838f}.b-uwc{background:#4e342e}
+.b-nidec{background:#2e7d32}.b-victorygiant{background:#1b5e20}.b-click{background:#37474f}
 .b-policy{background:#374151}.b-event{background:#065f46}
 .b-supply{background:#5b21b6}.b-data{background:#0369a1}.b-ems{background:#5b21b6}
 .card h3{font-family:'Playfair Display',serif;font-size:17.5px;font-weight:700;line-height:1.3;color:var(--ink)}
@@ -163,6 +165,7 @@ a{color:var(--navy)}a:hover{text-decoration:underline}
 .s-card .s-meta{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--supply-accent);margin-top:8px;text-transform:uppercase}
 .s-impact{background:#ede9fe;border-left:3px solid #7c3aed;padding:9px 13px;margin-top:10px}
 .s-impact p{font-size:12.5px;color:#3b0764;margin:0}
+.s-src{font-family:'Space Mono',monospace;font-size:9px;color:var(--supply-accent);margin-top:8px}
 .policy-wrap{background:var(--gold-light);border:1px solid #e8c44a;padding:28px 32px;margin:40px 0}
 .policy-wrap h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#78350f;margin-bottom:22px;display:flex;align-items:center;gap:10px}
 .p-card{background:#fff;border-left:4px solid #d97706;padding:16px 20px;margin-bottom:16px}
@@ -481,10 +484,10 @@ OUTPUT ORDER (HTML elements only, no wrapping tags)
 
 ── 3. GLOBAL INDUSTRY SHIFTS (.global-wrap, navy bg) ────────
 Inside .wrap. Only items with a named direct SEA-country impact.
-Each: .g-card > h4 + <p> + .g-link (→ downstream SEA impact) + .g-src
+Each: .g-card > h4 + <p> + .g-link (→ downstream SEA impact) + .g-src (SPECIFIC date · <a href="URL">media name</a>)
 
 ── 4. CORE COMPONENT SUPPLY CHAIN UPDATE (.supply-wrap) ─────
-Each: .s-card > h4 + <p> + .s-meta (📍 location · status) + .s-impact > <p>
+Each: .s-card > h4 + <p> + .s-meta (📍 location · status) + .s-impact > <p> + .s-src (SPECIFIC date · <a href="URL">media name</a>)
 Sub-sections where newsworthy: PCB/FPC · Display · Camera · Battery ·
 Passive · Cables · LED · Compressors/Motors · Touch/Glass · Steel
 
@@ -503,6 +506,26 @@ EXCLUSION RULES (strictly enforce):
 - DO NOT include semiconductor fab, chip packaging, OSAT, memory chip, or semiconductor equipment news (e.g. Micron, Infineon, LAM Research, Amkor, TSMC).
 - Focus ONLY on: manufacturing, factory investment, supply chain, OEM/EMS, and policy.
 
+GEOGRAPHIC FILTER (strictly enforce):
+- The EVENT itself must be physically located in or directly about
+  Southeast Asia (Singapore, Malaysia, Indonesia, Thailand, Vietnam)
+  or India.
+- DO NOT include news where the event happens in Japan, Korea, China,
+  Taiwan, US, or Europe, even if it has indirect supply-chain impact
+  on SEA/India (e.g. a Japanese company's capex plan at HQ, a Korean
+  company's pricing action, global market analysis).
+- Exception: Section 3 "Global Industry Shifts" may include
+  cross-border policy or trade actions (e.g. US tariffs) that
+  DIRECTLY and specifically name SEA/India countries as targets.
+- For Section 4 "Supply Chain Update", only include items where the
+  factory, plant, or facility is IN Southeast Asia or India.
+
+NO-DUPLICATION RULE (strictly enforce):
+- Each news story must appear ONLY ONCE in the entire newsletter.
+- If a story appears in "Core Component Supply Chain Update" (section 4),
+  DO NOT repeat it in any country section (sections 6–11), and vice versa.
+- Choose the MOST appropriate single section for each story.
+
 6. 🇲🇾 Malaysia   — Manufacturing · OEM/EMS · Market Data · Policy
 7. 🇸🇬 Singapore  — Manufacturing · Policy
 8. 🇮🇩 Indonesia  — TKDN · Manufacturing
@@ -516,7 +539,10 @@ EXCLUSION RULES (strictly enforce):
 .impact: .impact-label + <p> — label must be one of:
   "Sourcing Implication" / "Market Signal" / "Strategic Read" /
   "Brand Watch" / "Compliance Alert"
-.src: date · media · <a href="REAL-URL-FROM-SEARCH">source name</a>
+.src: SPECIFIC date (e.g. "28 Sep 2026", NOT just "2026") · media name · <a href="REAL-URL-FROM-SEARCH">source name</a>
+  ── The date MUST be the article's publication date from the search result, as specific as possible.
+  ── If only month/year is available, use that (e.g. "Sep 2026"). Never use just a year like "2026".
+  ── The URL MUST be copied exactly from the search results — never fabricate URLs.
 
 Brand tag classes (use exact names):
 b-samsung b-apple b-huawei b-oppo b-xiaomi b-vivo b-honor b-realme
@@ -525,6 +551,7 @@ b-tcl b-tata b-dixon b-voltas b-foxconn b-luxshare b-goertek
 b-pegatron b-murata b-boe b-jabil b-avc b-salcomp b-corning
 b-catcher b-everwin b-aac b-radiant b-coretronic b-amphenol
 b-molex b-nitto b-biel b-changhong b-huaqin b-wingtech
+b-bluestar b-inari b-uwc b-nidec b-victorygiant b-click
 b-policy b-event b-supply b-data b-ems
 
 ── 13. SOURCE INDEX (.src-index) ────────────────────────────
@@ -717,6 +744,9 @@ row in the source index (.itable):
       promotion, product launch, or consumer event.
    e. The card is about Philippines, Cambodia, Myanmar, or Laos.
    f. The card is about semiconductor fab, chip packaging, OSAT, memory chips, or semiconductor equipment (e.g. Micron, Infineon, LAM Research, Amkor, TSMC).
+   g. The event takes place in Japan, Korea, China, Taiwan, US, or Europe
+      — not in Southeast Asia or India (exception: Section 301 or tariff
+      actions in "Global Industry Shifts" that directly name SEA/India).
 3. If a card only says a month/year (e.g. "July 2026") and that month
    ended before {start_date}, REMOVE it.
 4. If you cannot determine ANY date at all AND the content reads like
@@ -728,6 +758,13 @@ row in the source index (.itable):
    that entire section from the output.
 7. Update the KEY HIGHLIGHTS section to reflect only the remaining cards.
 8. Re-number the source-index rows sequentially.
+9. DEDUPLICATION: If the same news story appears in BOTH a thematic section
+   (Global Industry Shifts, Supply Chain Update, Policy Focus) AND a country
+   section, REMOVE the duplicate from the country section. Each story must
+   appear only once.
+10. SOURCE DATES: If any .src line shows only a year (e.g. "Date: 2026"),
+    check the search result for a more specific date and update it.
+    If no specific date is available, use the month and year at minimum.
 
 Output ONLY the cleaned HTML body. No markdown fences. No explanations.
 
