@@ -148,6 +148,9 @@ a{color:var(--navy)}a:hover{text-decoration:underline}
 .b-suntak{background:#0d47a1}.b-shenghong{background:#1a237e}.b-kinwong{background:#004d40}.b-wus{background:#33691e}
 .b-compeq{background:#0277bd}.b-unimicron{background:#00695c}.b-tripod{background:#4527a0}.b-zhending{background:#1565c0}
 .b-flexium{background:#6a1b9a}.b-ofilm{background:#c62828}.b-gis{background:#2e7d32}.b-sunway{background:#e65100}.b-coxon{background:#37474f}
+.b-catl{background:#004d40}.b-eve{background:#1a237e}.b-gotion{background:#33691e}.b-rept{background:#0d47a1}
+.b-sumida{background:#4527a0}.b-kyocera{background:#00695c}.b-doosan{background:#1565c0}.b-iteq{background:#2e7d32}
+.b-tuc{background:#004d40}.b-syrma{background:#6a1b9a}.b-johnson{background:#37474f}.b-coolermaster{background:#c62828}
 .b-policy{background:#374151}.b-event{background:#065f46}
 .b-supply{background:#5b21b6}.b-data{background:#0369a1}.b-ems{background:#5b21b6}
 .card h3{font-family:'Playfair Display',serif;font-size:17.5px;font-weight:700;line-height:1.3;color:var(--ink)}
@@ -345,6 +348,8 @@ def build_queries(start: datetime, end: datetime) -> list[dict]:
          "q": f"Suntak Chongda Shenghong Kinwong PCB factory Vietnam Thailand Southeast Asia expansion {week_str}"},
         {"r": 5, "label": "PCB Compeq Unimicron Tripod Zhen Ding SEA",
          "q": f"Compeq Unimicron Tripod Zhen Ding Flexium PCB FPC factory Vietnam Thailand Malaysia expansion {week_str}"},
+        {"r": 5, "label": "CCL Doosan ITEQ TUC Syrma SEA India",
+         "q": f"Doosan ITEQ TUC Taiwan Union CCL copper clad laminate Syrma SGS PCB factory Thailand India expansion {week_str}"},
         {"r": 5, "label": "Samsung BOE display factory Vietnam",
          "q": f"Samsung Display LG Display BOE CSOT OLED display factory Vietnam India {week_str}"},
         {"r": 5, "label": "Camera module LG Innotek Sunny Optical",
@@ -355,10 +360,14 @@ def build_queries(start: datetime, end: datetime) -> list[dict]:
          "q": f"Murata Taiyo Yuden Samsung Electro-Mechanics MLCC factory Thailand Malaysia India {week_str}"},
         {"r": 6, "label": "Battery cell factory SEA India",
          "q": f"ATL Sunwoda Desay BYD battery cell factory Vietnam Thailand India {week_str}"},
+        {"r": 6, "label": "EV battery CATL EVE Gotion REPT SEA",
+         "q": f"CATL EVE Energy Gotion REPT Battero battery factory Vietnam Indonesia Thailand Malaysia expansion {week_str}"},
         {"r": 6, "label": "Connector Amphenol Molex Lite-On SEA India",
          "q": f"Amphenol Molex Lite-On TD Connex connector factory Vietnam India expansion {week_str}"},
         {"r": 6, "label": "Compressor motor Kulthorn Nidec SEA",
          "q": f"Kulthorn Nidec Welling Embraco compressor motor factory Thailand Vietnam {week_str}"},
+        {"r": 6, "label": "Magnetic Sumida Kyocera AVX passive SEA",
+         "q": f"Sumida inductor transformer Kyocera AVX passive component factory Vietnam Thailand expansion {week_str}"},
 
         # ── Round 7 — Thermal / Cooling / Power Supply ──────────────────
         {"r": 7, "label": "AVC Auras thermal cooling Vietnam",
@@ -383,6 +392,8 @@ def build_queries(start: datetime, end: datetime) -> list[dict]:
          "q": f"O-film Ofilm GIS touch sensor module factory Vietnam India Southeast Asia expansion {week_str}"},
         {"r": 9, "label": "Sunway Coxon antenna stamping SEA",
          "q": f"Shenzhen Sunway Xinwei antenna Coxon Precise stamping factory Vietnam Southeast Asia expansion {week_str}"},
+        {"r": 9, "label": "Johnson Electric motor Cooler Master SEA India",
+         "q": f"Johnson Electric motor Cooler Master cooling factory Vietnam Thailand India expansion {week_str}"},
         {"r": 9, "label": "Nitto Denko adhesive optical film SEA India",
          "q": f"Nitto Denko adhesive tape optical film factory Vietnam India Malaysia {week_str}"},
 
@@ -573,6 +584,8 @@ b-bluestar b-inari b-uwc b-nidec b-victorygiant b-click
 b-suntak b-shenghong b-kinwong b-wus
 b-compeq b-unimicron b-tripod b-zhending b-flexium
 b-ofilm b-gis b-sunway b-coxon
+b-catl b-eve b-gotion b-rept b-sumida b-kyocera
+b-doosan b-iteq b-tuc b-syrma b-johnson b-coolermaster
 b-policy b-event b-supply b-data b-ems
 
 ── 13. SOURCE INDEX (.src-index) ────────────────────────────
