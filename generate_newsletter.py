@@ -44,6 +44,11 @@ except ImportError as e:
 
 load_dotenv()
 
+# Force UTF-8 stdout on Windows to avoid GBK encoding errors with emoji
+if sys.stdout.encoding and sys.stdout.encoding.lower() not in ("utf-8", "utf8"):
+    sys.stdout = open(sys.stdout.fileno(), mode="w", encoding="utf-8", closefd=False)
+    sys.stderr = open(sys.stderr.fileno(), mode="w", encoding="utf-8", closefd=False)
+
 # ══════════════════════════════════════════════════════════════════════════════
 # CONFIGURATION
 # ══════════════════════════════════════════════════════════════════════════════
@@ -76,7 +81,9 @@ logging.basicConfig(
     datefmt="%H:%M:%S",
     handlers=[
         logging.StreamHandler(sys.stdout),
-        logging.FileHandler(Path(__file__).parent / "newsletter_generator.log"),
+        logging.FileHandler(
+            Path(__file__).parent / "newsletter_generator.log", encoding="utf-8"
+        ),
     ],
 )
 log = logging.getLogger(__name__)
