@@ -747,8 +747,16 @@ def _stream_to_str(stream_iter) -> str:
     return "".join(chunks)
 
 
-def generate_body_deepseek(messages: list[dict]) -> str:
-    """Call DeepSeek chat API (OpenAI-compatible) with streaming."""
+def generate_body_deepseek(messages_or_builder, search_results: str | None = None) -> str:
+    """Call DeepSeek chat API (OpenAI-compatible) with streaming.
+
+    When *search_results* is provided, *messages_or_builder* must be a callable
+    that accepts a string and returns a message list.  On content-filter failure
+    the search data is progressively shrunk before each retry.
+
+    When *search_results* is None, *messages_or_builder* is a plain message list
+    and retries only bump the temperature.
+    """
     try:
         from openai import OpenAI
     except ImportError:
@@ -757,7 +765,18 @@ def generate_body_deepseek(messages: list[dict]) -> str:
 
     client = OpenAI(api_key=DEEPSEEK_API_KEY, base_url="https://api.deepseek.com")
 
+    can_shrink = search_results is not None and callable(messages_or_builder)
+    if can_shrink:
+        caps = [len(search_results), 80_000, 50_000]
+
     for attempt in range(1, 4):
+        if can_shrink:
+            cap = caps[attempt - 1]
+            data = search_results[:cap] if len(search_results) > cap else search_results
+            messages = messages_or_builder(data)
+        else:
+            messages = messages_or_builder
+
         chunks: list[str] = []
         try:
             with client.chat.completions.create(
@@ -777,7 +796,13 @@ def generate_body_deepseek(messages: list[dict]) -> str:
         except Exception as e:
             err_msg = str(e)
             if "Content Exists Risk" in err_msg and attempt < 3:
-                log.warning(f"DeepSeek content filter triggered (attempt {attempt}/3), retrying with higher temperature...")
+                if can_shrink:
+                    log.warning(
+                        f"DeepSeek content filter triggered (attempt {attempt}/3), "
+                        f"reducing data to {caps[attempt]:,} chars and retrying..."
+                    )
+                else:
+                    log.warning(f"DeepSeek content filter triggered (attempt {attempt}/3), retrying...")
                 time.sleep(2)
                 continue
             raise
@@ -825,22 +850,23 @@ def generate_body(search_results: str, start: datetime, end: datetime) -> str:
                     f"truncating to {max_search_chars:,} chars")
         search_results = search_results[:max_search_chars]
 
-    user_content = USER_PROMPT.format(
-        start_date=fmt(start),
-        end_date=fmt(end),
-        search_results=search_results,
-    )
-    messages = [
-        {"role": "system", "content": SYSTEM_PROMPT},
-        {"role": "user",   "content": user_content},
-    ]
+    def _build_messages(data: str) -> list[dict]:
+        user_content = USER_PROMPT.format(
+            start_date=fmt(start),
+            end_date=fmt(end),
+            search_results=data,
+        )
+        return [
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user",   "content": user_content},
+        ]
 
     log.info(f"Calling {PROVIDER.upper()} ({MODEL}) — streaming body HTML...\n" + "─" * 60)
 
     if PROVIDER == "anthropic":
-        body = generate_body_anthropic(messages)
+        body = generate_body_anthropic(_build_messages(search_results))
     else:
-        body = generate_body_deepseek(messages)
+        body = generate_body_deepseek(_build_messages, search_results)
 
     log.info("─" * 60)
 
