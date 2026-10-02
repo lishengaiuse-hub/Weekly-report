@@ -151,6 +151,11 @@ a{color:var(--navy)}a:hover{text-decoration:underline}
 .b-catl{background:#004d40}.b-eve{background:#1a237e}.b-gotion{background:#33691e}.b-rept{background:#0d47a1}
 .b-sumida{background:#4527a0}.b-kyocera{background:#00695c}.b-doosan{background:#1565c0}.b-iteq{background:#2e7d32}
 .b-tuc{background:#004d40}.b-syrma{background:#6a1b9a}.b-johnson{background:#37474f}.b-coolermaster{background:#c62828}
+.b-ats{background:#0277bd}.b-ase{background:#4a148c}.b-shanjin{background:#1565c0}.b-tdk{background:#c62828}
+.b-yageo{background:#00695c}.b-chemicom{background:#283593}.b-rubycon{background:#ad1457}.b-txc{background:#0d47a1}
+.b-omron{background:#004d40}.b-hongfa{background:#1a237e}.b-gseo{background:#33691e}.b-juteng{background:#37474f}
+.b-rosti{background:#4527a0}.b-wacker{background:#0277bd}.b-momentive{background:#6a1b9a}.b-basf{background:#1565c0}
+.b-posco{background:#0d47a1}.b-uacj{background:#004d40}.b-chemours{background:#2e7d32}.b-infineon{background:#0277bd}
 .b-policy{background:#374151}.b-event{background:#065f46}
 .b-supply{background:#5b21b6}.b-data{background:#0369a1}.b-ems{background:#5b21b6}
 .card h3{font-family:'Playfair Display',serif;font-size:17.5px;font-weight:700;line-height:1.3;color:var(--ink)}
@@ -350,6 +355,10 @@ def build_queries(start: datetime, end: datetime) -> list[dict]:
          "q": f"Compeq Unimicron Tripod Zhen Ding Flexium PCB FPC factory Vietnam Thailand Malaysia expansion {week_str}"},
         {"r": 5, "label": "CCL Doosan ITEQ TUC Syrma SEA India",
          "q": f"Doosan ITEQ TUC Taiwan Union CCL copper clad laminate Syrma SGS PCB factory Thailand India expansion {week_str}"},
+        {"r": 5, "label": "IC substrate AT&S ASE leadframe SEA",
+         "q": f"AT&S ASE IC substrate ABF leadframe factory Malaysia Vietnam India Penang Kulim expansion {week_str}"},
+        {"r": 5, "label": "Polarizer Shanjin display film Vietnam",
+         "q": f"Shanjin Optoelectronics polarizer film display component factory Vietnam Southeast Asia expansion {week_str}"},
         {"r": 5, "label": "Samsung BOE display factory Vietnam",
          "q": f"Samsung Display LG Display BOE CSOT OLED display factory Vietnam India {week_str}"},
         {"r": 5, "label": "Camera module LG Innotek Sunny Optical",
@@ -368,6 +377,14 @@ def build_queries(start: datetime, end: datetime) -> list[dict]:
          "q": f"Kulthorn Nidec Welling Embraco compressor motor factory Thailand Vietnam {week_str}"},
         {"r": 6, "label": "Magnetic Sumida Kyocera AVX passive SEA",
          "q": f"Sumida inductor transformer Kyocera AVX passive component factory Vietnam Thailand expansion {week_str}"},
+        {"r": 6, "label": "TDK inductor Chilisin Yageo passive SEA India",
+         "q": f"TDK inductor Chilisin Yageo passive component factory Vietnam Thailand India expansion {week_str}"},
+        {"r": 6, "label": "Electrolytic cap Nippon Chemi-Con Rubycon SEA India",
+         "q": f"Nippon Chemi-Con Rubycon Nichicon aluminum electrolytic capacitor factory Thailand Indonesia India expansion {week_str}"},
+        {"r": 6, "label": "Crystal oscillator TXC NDK Epson SEA",
+         "q": f"TXC NDK Epson crystal oscillator quartz factory Southeast Asia expansion {week_str}"},
+        {"r": 6, "label": "Relay switch Omron Hongfa TE SEA",
+         "q": f"Omron Hongfa TE Connectivity relay switch factory Vietnam Indonesia Thailand India expansion {week_str}"},
 
         # ── Round 7 — Thermal / Cooling / Power Supply ──────────────────
         {"r": 7, "label": "AVC Auras thermal cooling Vietnam",
@@ -394,6 +411,10 @@ def build_queries(start: datetime, end: datetime) -> list[dict]:
          "q": f"Shenzhen Sunway Xinwei antenna Coxon Precise stamping factory Vietnam Southeast Asia expansion {week_str}"},
         {"r": 9, "label": "Johnson Electric motor Cooler Master SEA India",
          "q": f"Johnson Electric motor Cooler Master cooling factory Vietnam Thailand India expansion {week_str}"},
+        {"r": 9, "label": "GSEO Asia Optical lens SEA",
+         "q": f"GSEO Genius Electronic Optical Asia Optical lens prism factory Vietnam Southeast Asia expansion {week_str}"},
+        {"r": 9, "label": "Ju Teng Rosti plastic molding Vietnam India",
+         "q": f"Ju Teng Rosti plastic injection molding casing factory Vietnam India expansion {week_str}"},
         {"r": 9, "label": "Nitto Denko adhesive optical film SEA India",
          "q": f"Nitto Denko adhesive tape optical film factory Vietnam India Malaysia {week_str}"},
 
@@ -402,6 +423,12 @@ def build_queries(start: datetime, end: datetime) -> list[dict]:
          "q": f"Motherson Sumi Yazaki wire harness cable factory India expansion {week_str}"},
         {"r": 10, "label": "SRF Armacell insulation India",
          "q": f"SRF refrigerant Armacell insulation material factory India expansion {week_str}"},
+        {"r": 10, "label": "Wacker Momentive silicone rubber SEA India",
+         "q": f"Wacker Momentive BASF silicone rubber polyurethane factory Thailand India expansion {week_str}"},
+        {"r": 10, "label": "POSCO UACJ steel aluminum SEA India",
+         "q": f"POSCO UACJ Novelis steel aluminum sheet factory Vietnam Thailand India expansion {week_str}"},
+        {"r": 10, "label": "Chemours Honeywell refrigerant India",
+         "q": f"Chemours Honeywell Navin Fluorine refrigerant cooling fluid factory India expansion {week_str}"},
 
         # ── Round 11 — Chinese Supplier Migration to SEA ────────────────
         {"r": 11, "label": "Chinese electronics supplier Vietnam factory",
@@ -586,6 +613,9 @@ b-compeq b-unimicron b-tripod b-zhending b-flexium
 b-ofilm b-gis b-sunway b-coxon
 b-catl b-eve b-gotion b-rept b-sumida b-kyocera
 b-doosan b-iteq b-tuc b-syrma b-johnson b-coolermaster
+b-ats b-ase b-shanjin b-tdk b-yageo b-chemicom b-rubycon
+b-txc b-omron b-hongfa b-gseo b-juteng b-rosti
+b-wacker b-momentive b-basf b-posco b-uacj b-chemours
 b-policy b-event b-supply b-data b-ems
 
 ── 13. SOURCE INDEX (.src-index) ────────────────────────────
