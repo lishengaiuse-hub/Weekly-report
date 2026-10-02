@@ -314,7 +314,7 @@ def tavily_search(query: str, days_back: int = 7) -> str:
             continue
         title = item.get("title", "(no title)")
         url   = item.get("url", "")
-        body  = item.get("content", "")[:320]
+        body  = item.get("content", "")[:200]
         lines.append(f"• [{pub_raw}] {title}\n  URL: {url}\n  {body}")
 
     if skipped:
@@ -819,6 +819,12 @@ def generate_body(search_results: str, start: datetime, end: datetime) -> str:
     Ask the LLM to produce HTML body content only.
     If the response appears truncated, request a continuation (one retry).
     """
+    max_search_chars = 180_000
+    if len(search_results) > max_search_chars:
+        log.warning(f"Search data too large ({len(search_results):,} chars), "
+                    f"truncating to {max_search_chars:,} chars")
+        search_results = search_results[:max_search_chars]
+
     user_content = USER_PROMPT.format(
         start_date=fmt(start),
         end_date=fmt(end),
