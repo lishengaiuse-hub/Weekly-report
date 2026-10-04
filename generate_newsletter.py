@@ -892,7 +892,7 @@ def generate_body(search_results: str, start: datetime, end: datetime) -> str:
     Ask the LLM to produce HTML body content only.
     If the response appears truncated, request a continuation (one retry).
     """
-    max_search_chars = 120_000
+    max_search_chars = {"deepseek": 120_000, "gemini": 900_000, "anthropic": 900_000}.get(PROVIDER, 120_000)
     if len(search_results) > max_search_chars:
         log.warning(f"Search data too large ({len(search_results):,} chars), "
                     f"truncating to {max_search_chars:,} chars")
