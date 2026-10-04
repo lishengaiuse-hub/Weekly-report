@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEA & India Manufacturing Watch | 28–04 Oct 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+
+:root{--navy:#1a3a5c;--red:#c0392b;--cream:#f5f0e8;--white:#ffffff;
+--yellow-bg:#fdf6e3;--new-bg:#fff8f0;--ink:#0d0d0d;--muted:#6b5f50;
+--rule:#d4c9b5;--supply-bg:#f0eaf8;--supply-accent:#6d28d9;
+--supply-border:#c4b5fd;--gold:#b8860b;--gold-light:#fdf3d0;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}a:hover{text-decoration:underline}
+.wrap{max-width:880px;margin:0 auto;padding:0 24px 80px}
+.masthead{background:var(--navy);color:#fff;padding:52px 40px 40px;position:relative;overflow:hidden}
+.masthead::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-55deg,transparent,transparent 8px,rgba(255,255,255,.03) 8px,rgba(255,255,255,.03) 9px);pointer-events:none}
+.masthead::before{content:'';position:absolute;bottom:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--red) 0%,#e84040 50%,var(--red) 100%)}
+.mast-eyebrow{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:12px}
+.mast-title{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:16px}
+.mast-title em{font-style:italic;font-weight:400;color:rgba(255,255,255,.75)}
+.mast-flags{font-size:22px;letter-spacing:3px;margin:14px 0 10px;opacity:.9}
+.mast-tags{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 0}
+.mast-tag{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(255,255,255,.28);color:rgba(255,255,255,.68);padding:3px 9px;border-radius:2px}
+.mast-meta{font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,.6);margin-top:18px;display:flex;flex-wrap:wrap;gap:20px}
+.highlights{background:var(--red);color:#fff;padding:30px 32px}
+.highlights-label{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;opacity:.75;margin-bottom:18px}
+.hl-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.hl-grid{grid-template-columns:1fr}}
+.hl-item{display:flex;gap:12px;align-items:flex-start}
+.hl-num{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;line-height:1;opacity:.3;flex-shrink:0;width:26px}
+.hl-text{font-size:13.5px;font-weight:600;line-height:1.45}
+.section-rule{display:flex;align-items:center;gap:12px;margin:40px 0 20px;padding-bottom:12px;border-bottom:2.5px solid var(--navy)}
+.section-icon{font-size:22px}
+.section-rule h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--navy);flex:1}
+.section-sub{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.card{background:var(--white);border-top:3px solid var(--navy);padding:22px 24px;margin-bottom:20px;position:relative;box-shadow:0 1px 6px rgba(0,0,0,.05),0 0 0 1px rgba(0,0,0,.04)}
+.card.breaking{border-top-color:var(--red)}
+.card.new-item{background:var(--new-bg)}
+.breaking-badge{position:absolute;top:0;right:0;background:var(--red);color:#fff;font-family:'Space Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.14em;padding:3px 9px;text-transform:uppercase}
+.card-header{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px}
+.btag{font-family:'Space Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#fff;padding:3px 9px;border-radius:2px;flex-shrink:0;margin-top:3px}
+.b-samsung{background:#1428a0}.b-apple{background:#555}.b-huawei{background:#c82333}
+.b-oppo{background:#1e4a8c}.b-xiaomi{background:#f97316}.b-vivo{background:#415fff}
+.b-honor{background:#b8000e}.b-realme{background:#d97706}.b-iqoo{background:#0050a0}
+.b-transsion{background:#7c3aed}.b-motorola{background:#003087}.b-dyson{background:#c34a00}
+.b-panasonic{background:#003087}.b-hisense{background:#0a3d6b}.b-haier{background:#00529b}
+.b-tcl{background:#e31837}.b-tata{background:#486aae}.b-dixon{background:#1a6b3c}.b-voltas{background:#e65100}
+.b-foxconn{background:#2d5f2e}.b-luxshare{background:#1a237e}.b-goertek{background:#00695c}
+.b-pegatron{background:#4a148c}.b-murata{background:#1b5e20}.b-boe{background:#004d99}.b-jabil{background:#006838}
+.b-avc{background:#0d47a1}.b-salcomp{background:#2e7d32}.b-corning{background:#c62828}
+.b-catcher{background:#4e342e}.b-everwin{background:#37474f}.b-aac{background:#6a1b9a}
+.b-radiant{background:#00838f}.b-coretronic{background:#1565c0}.b-amphenol{background:#ad1457}
+.b-molex{background:#e65100}.b-nitto{background:#283593}.b-biel{background:#558b2f}
+.b-changhong{background:#d32f2f}.b-huaqin{background:#00695c}.b-wingtech{background:#4527a0}
+.b-bluestar{background:#1565c0}.b-inari{background:#00838f}.b-uwc{background:#4e342e}
+.b-nidec{background:#2e7d32}.b-victorygiant{background:#1b5e20}.b-click{background:#37474f}
+.b-suntak{background:#0d47a1}.b-shenghong{background:#1a237e}.b-kinwong{background:#004d40}.b-wus{background:#33691e}
+.b-compeq{background:#0277bd}.b-unimicron{background:#00695c}.b-tripod{background:#4527a0}.b-zhending{background:#1565c0}
+.b-flexium{background:#6a1b9a}.b-ofilm{background:#c62828}.b-gis{background:#2e7d32}.b-sunway{background:#e65100}.b-coxon{background:#37474f}
+.b-catl{background:#004d40}.b-eve{background:#1a237e}.b-gotion{background:#33691e}.b-rept{background:#0d47a1}
+.b-sumida{background:#4527a0}.b-kyocera{background:#00695c}.b-doosan{background:#1565c0}.b-iteq{background:#2e7d32}
+.b-tuc{background:#004d40}.b-syrma{background:#6a1b9a}.b-johnson{background:#37474f}.b-coolermaster{background:#c62828}
+.b-ats{background:#0277bd}.b-ase{background:#4a148c}.b-shanjin{background:#1565c0}.b-tdk{background:#c62828}
+.b-yageo{background:#00695c}.b-chemicom{background:#283593}.b-rubycon{background:#ad1457}.b-txc{background:#0d47a1}
+.b-omron{background:#004d40}.b-hongfa{background:#1a237e}.b-gseo{background:#33691e}.b-juteng{background:#37474f}
+.b-rosti{background:#4527a0}.b-wacker{background:#0277bd}.b-momentive{background:#6a1b9a}.b-basf{background:#1565c0}
+.b-posco{background:#0d47a1}.b-uacj{background:#004d40}.b-chemours{background:#2e7d32}.b-infineon{background:#0277bd}
+.b-chinpoon{background:#1a237e}.b-meiko{background:#00695c}.b-olympic{background:#4527a0}
+.b-lens{background:#c62828}.b-walsin{background:#0d47a1}.b-knowles{background:#4a148c}
+.b-samsungsdi{background:#1428a0}.b-lges{background:#c62828}.b-hirose{background:#00838f}
+.b-jae{background:#283593}.b-mabuchi{background:#33691e}.b-minebea{background:#0277bd}
+.b-ebmpapst{background:#c62828}.b-sunon{background:#2e7d32}.b-chicony{background:#37474f}
+.b-cowell{background:#6a1b9a}.b-partron{background:#1565c0}.b-foster{background:#004d40}
+.b-bse{background:#4527a0}.b-sumitomo{background:#0d47a1}.b-prysmian{background:#37474f}
+.b-jsw{background:#1a237e}.b-tatasteel{background:#486aae}.b-henkel{background:#c62828}
+.b-dow{background:#e65100}.b-3m{background:#c62828}.b-shinei{background:#004d40}
+.b-wistron{background:#283593}
+.b-quanta{background:#33691e}.b-compal{background:#37474f}.b-inventec{background:#6a1b9a}
+.b-epack{background:#c62828}.b-amber{background:#e65100}.b-kaynes{background:#004d40}
+.b-sihui{background:#1565c0}.b-shennan{background:#0d47a1}.b-aohong{background:#ad1457}
+.b-allfavor{background:#4527a0}.b-shengyi{background:#00838f}
+.b-midea{background:#0277bd}.b-mitsubishi{background:#c62828}.b-embraco{background:#1a237e}
+.b-hitachienergy{background:#c62828}.b-seoul{background:#1565c0}.b-mls{background:#e65100}
+.b-leoni{background:#0d47a1}.b-delfingen{background:#37474f}.b-jabil{background:#33691e}
+.b-deren{background:#004d40}.b-ect{background:#283593}.b-jonhon{background:#1a237e}
+.b-kaiwang{background:#6a1b9a}.b-huntkey{background:#0277bd}.b-haineng{background:#33691e}
+.b-highly{background:#37474f}.b-aux{background:#c62828}.b-btr{background:#0d47a1}
+.b-putailai{background:#004d40}.b-longcheer{background:#4527a0}.b-tinno{background:#ad1457}
+.b-tongda{background:#1565c0}.b-silverbasis{background:#283593}
+.b-ztt{background:#0277bd}.b-hengtong{background:#1a237e}.b-yuto{background:#e65100}
+.b-hexing{background:#33691e}.b-nanshan{background:#37474f}
+.b-policy{background:#374151}.b-event{background:#065f46}
+.b-supply{background:#5b21b6}.b-data{background:#0369a1}.b-ems{background:#5b21b6}
+.card h3{font-family:'Playfair Display',serif;font-size:17.5px;font-weight:700;line-height:1.3;color:var(--ink)}
+.card p{font-size:14px;color:#2c2620;line-height:1.7;margin-top:10px}
+.card p+p{margin-top:8px}
+.impact{background:var(--yellow-bg);border-left:3px solid var(--gold);padding:11px 15px;margin-top:16px}
+.impact-label{font-family:'Space Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+.impact p{font-size:13px;color:#3d2c00;line-height:1.6;margin-top:0}
+.src{font-family:'Space Mono',monospace;font-size:9.5px;color:var(--muted);margin-top:14px;padding-top:10px;border-top:1px solid var(--rule);line-height:1.6}
+.src a{color:var(--navy);text-decoration:none}.src a:hover{text-decoration:underline}
+.no-news{display:none}
+.global-wrap{background:var(--navy);color:#fff;padding:34px 36px;margin:40px 0}
+.global-wrap h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:22px;display:flex;align-items:center;gap:10px}
+.g-card{border-left:3px solid rgba(255,255,255,.25);padding:13px 18px;margin-bottom:18px}
+.g-card:last-child{margin-bottom:0}
+.g-card h4{font-family:'Playfair Display',serif;font-size:15.5px;font-weight:700;margin-bottom:7px}
+.g-card p{font-size:13.5px;color:rgba(255,255,255,.82)}
+.g-link{display:inline-block;margin-top:8px;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#fbbf24}
+.g-src{font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.45);margin-top:8px}
+.supply-wrap{background:var(--supply-bg);border:1px solid var(--supply-border);padding:28px 32px;margin:40px 0}
+.supply-wrap h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#3b0764;margin-bottom:22px;display:flex;align-items:center;gap:10px}
+.s-card{background:#fff;border-left:4px solid var(--supply-accent);padding:15px 18px;margin-bottom:15px}
+.s-card h4{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:#3b0764;margin-bottom:6px}
+.s-card p{font-size:13.5px;color:#2e1065;line-height:1.65}
+.s-card .s-meta{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--supply-accent);margin-top:8px;text-transform:uppercase}
+.s-impact{background:#ede9fe;border-left:3px solid #7c3aed;padding:9px 13px;margin-top:10px}
+.s-impact p{font-size:12.5px;color:#3b0764;margin:0}
+.s-src{font-family:'Space Mono',monospace;font-size:9px;color:var(--supply-accent);margin-top:8px}
+.policy-wrap{background:var(--gold-light);border:1px solid #e8c44a;padding:28px 32px;margin:40px 0}
+.policy-wrap h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#78350f;margin-bottom:22px;display:flex;align-items:center;gap:10px}
+.p-card{background:#fff;border-left:4px solid #d97706;padding:16px 20px;margin-bottom:16px}
+.p-card h4{font-family:'Playfair Display',serif;font-size:15.5px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.p-card p{font-size:13.5px;color:#2c1800;line-height:1.65}.p-card p+p{margin-top:6px}
+.p-status{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;color:#92400e;margin-top:9px;text-transform:uppercase}
+.p-alert{background:#fef3c7;border:1px solid #fcd34d;padding:9px 13px;margin-top:10px;font-size:13px;color:#78350f}
+.ptable{width:100%;border-collapse:collapse;margin-top:22px;font-size:12.5px}
+.ptable th{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;background:var(--navy);color:#fff;padding:9px 11px;text-align:left}
+.ptable td{padding:9px 11px;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.5}
+.ptable tr:nth-child(even) td{background:rgba(255,255,255,.6)}
+.src-index{margin:40px 0}
+.src-index h2{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--navy);margin-bottom:14px;padding-bottom:10px;border-bottom:2.5px solid var(--navy);display:flex;align-items:center;gap:8px}
+.itable{width:100%;border-collapse:collapse;font-size:12px}
+.itable th{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;background:var(--navy);color:#fff;padding:9px 11px;text-align:left}
+.itable td{padding:8px 11px;border-bottom:1px solid var(--rule);vertical-align:top}
+.itable tr.r-supply td{background:#f5f0ff}.itable tr.r-policy td{background:#fff8e1}
+.itable tr.r-global td{background:#eef2ff}.itable tr.r-new td{background:var(--new-bg)}
+.itable a{color:var(--navy);font-size:11px}
+.divider{height:1px;background:var(--rule);margin:28px 0}
+footer{border-top:2.5px solid var(--navy);padding-top:26px;margin-top:44px;font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);line-height:1.9}
+footer strong{color:var(--ink)}
+
+</style>
+</head>
+<body>
+<div class="masthead"><div class="wrap">
+  <div class="mast-eyebrow">Southeast Asia &amp; India · Manufacturing Intelligence</div>
+  <div class="mast-title">Southeast Asia &amp; India<br><em>Manufacturing Watch</em></div>
+  <div class="mast-flags">🇸🇬 🇲🇾 🇮🇩 🇹🇭 🇻🇳 🇮🇳</div>
+  <div class="mast-tags">
+    <span class="mast-tag">Home Appliances</span>
+    <span class="mast-tag">OEM/EMS</span>
+    <span class="mast-tag">Supply Chain</span>
+    <span class="mast-tag">Policy &amp; Regulation</span>
+    <span class="mast-tag">Market Intelligence</span>
+    <span class="mast-tag">Manufacturing</span>
+  </div>
+  <div class="mast-meta">📅 Coverage: 28 September 2026 – 04 October 2026 &nbsp;|&nbsp; 🗓 Compiled: 04 October 2026 &nbsp;|&nbsp; 🎯 Target: Hardware Supply Chain &amp; Sourcing Executives</div>
+</div></div>
+
+<div class="highlights"><div class="wrap">
+  <div class="highlights-label">⚡ Key Highlights — This Week</div>
+  <div class="hl-grid">
+    <div class="hl-item">
+      <div class="hl-num">1</div>
+      <div class="hl-text">Suntak Technology broke ground on an RMB 1.2 billion multilayer and HDI PCB facility in Thailand.</div>
+    </div>
+    <div class="hl-item">
+      <div class="hl-num">2</div>
+      <div class="hl-text">BYD commenced construction on a $130 million dedicated battery manufacturing facility in northern Vietnam.</div>
+    </div>
+    <div class="hl-item">
+      <div class="hl-num">3</div>
+      <div class="hl-text">Foxconn allocated $383 million to expand printed circuit board output at its Bac Ninh complex.</div>
+    </div>
+    <div class="hl-item">
+      <div class="hl-num">4</div>
+      <div class="hl-text">Meiko Electronics broke ground on a $500 million electronic circuit board manufacturing plant in Vietnam.</div>
+    </div>
+  </div>
+</div><div class="supply-wrap"><div class="wrap">
+  <div class="highlights-label">🔌 Core Component Supply Chain Update</div>
+
+  <div class="s-card">
+    <h4>Suntak Technology Breaks Ground on RMB 1.2 Billion Printed Circuit Board Base in Thailand</h4>
+    <p>Suntak Technology initiated site construction on September 28, 2026, for its major printed circuit board production plant in Thailand. The development spans approximately 168 mu (112,000 square meters) and carries an initial capital expenditure of RMB 1.2 billion, forming the first phase of an overarching regional footprint strategy designed to scale up to RMB 10 billion across Southeast Asia.</p>
+    <p>Equipment installation and production commissioning are scheduled to conclude before the end of 2026. The industrial park will specialize in high-density interconnect (HDI) and high-layer rigid PCBs designed to serve high-mix electronics assemblies, telecom equipment, and server hardware, responding directly to hardware assembly lines shifting procurement orders away from mainland manufacturing hubs.</p>
+    <div class="s-meta">📍 Rayong / Chonburi Corridor, Thailand · Groundbreaking</div>
+    <div class="s-impact">
+      <p><strong>Sourcing Implication:</strong> Hardware procurement teams managing HDI and multi-layer boards will secure localized bare-board sourcing within ASEAN by late 2026, lowering export tariff overheads and lead times for regional Tier-1 box-builders.</p>
+    </div>
+    <div class="s-src">28 Sep 2026 · IC-PCB · <a href="https://www.ic-pcb.com/suntak-technology-breaks-ground-on-thailand-pcb-plant-advancing-global-expansion.html">Suntak Technology Breaks Ground On Thailand Pcb Plant, Advancing Global Expansion</a></div>
+  </div>
+
+  <div class="s-card">
+    <h4>BYD Breaks Ground on $130 Million Dedicated Battery Manufacturing Facility in Vietnam</h4>
+    <p>BYD officially broke ground on a $130 million energy storage and battery manufacturing plant in Vietnam on September 28, 2026. The new specialized complex will fabricate battery cells and packaged energy modules to support industrial energy systems, mobility hardware, and localized sub-assembly for consumer durables manufacturing chains operating within Southeast Asia.</p>
+    <p>The construction start represents an extension of BYD’s manufacturing diversification across northern Vietnam's electronics corridor. The investment adds critical domestic cell and power-pack capacity to a market previously dependent on imported modules from Chinese parent hubs, compressing customs transit windows and lowering balance-of-plant assembly costs.</p>
+    <div class="s-meta">📍 Northern Vietnam · Construction Underway</div>
+    <div class="s-impact">
+      <p><strong>Strategic Read:</strong> Captive and merchant battery capacity within Vietnam reduces transpacific supply friction for regional electronics assemblers requiring high-capacity lithium-ion cells for smart systems and backup power units.</p>
+    </div>
+    <div class="s-src">28 Sep 2026 · Electric Vehicles · <a href="https://eletric-vehicles.com/byd/byd-breaks-ground-on-130-million-battery-plant-in-vietnam">BYD Breaks Ground on $130 Million Battery Plant in Vietnam</a></div>
+  </div>
+
+  <div class="s-card">
+    <h4>Meiko Electronics Breaks Ground on $500 Million Circuit Board Complex in Northern Vietnam</h4>
+    <p>Japanese interconnect specialist Meiko Electronics broke ground on a $500 million electronic circuit facility in Vietnam on September 28, 2026. The large-scale manufacturing expansion reinforces Meiko’s production cluster in northern Vietnam, expanding output for advanced HDI circuit boards and surface-mount assemblies destined for global consumer device brands.</p>
+    <p>The capital injection expands high-spec electronic circuit manufacturing capacity to match rising local assembly demands from smartphone and consumer electronics plants. The plant incorporates dedicated cleanrooms and automated plating lines to deliver circuit components directly to neighboring Tier-1 final assembly operations.</p>
+    <div class="s-meta">📍 Northern Industrial Belt, Vietnam · Groundbreaking</div>
+    <div class="s-impact">
+      <p><strong>Market Signal:</strong> Japanese precision component vendors are solidifying captive assembly clusters in northern Vietnam to match Samsung and Apple supply-chain consolidation demands without crossing borders.</p>
+    </div>
+    <div class="s-src">28 Sep 2026 · Vietnam Investment Review · <a href="https://vir.com.vn/meiko-breaks-ground-on-500-million-electronic-circuit-factory-154672.html">Meiko breaks ground on $500 million electronic circuit factory</a></div>
+  </div>
+</div></div>
+
+<div class="section-rule">
+  <span class="section-icon">🇻🇳</span>
+  <h2>Vietnam</h2>
+  <span class="section-sub">Manufacturing &amp; Supply Chain · OEM/EMS</span>
+</div>
+<div class="wrap">
+  <div class="card breaking">
+    <div class="breaking-badge">BREAKING</div>
+    <div class="card-header">
+      <span class="btag b-foxconn">Foxconn</span>
+      <h3>Foxconn Commits $383 Million Expansion for Bac Ninh Circuit Board and Smart Component Facility</h3>
+    </div>
+    <p>Hon Hai Precision Industry (Foxconn) confirmed on September 29, 2026, an additional investment of $383 million into its manufacturing base in Bac Ninh province, Vietnam. The new capital commitment focuses on expanding specialized production lines for high-density printed circuit boards, surface-mount sub-assemblies, and precision peripheral modules required across the contractor's consumer client accounts.</p>
+    <p>The capital addition builds on Foxconn's aggregate industrial footprint in northern Vietnam, where the company already operates facilities spanning Bac Ninh, Bac Giang, and Quang Ninh. The accelerated expenditure allows Foxconn to deepen upstream parts fabrication in-house, shifting Vietnam operations from pure final system assembly (FATP) toward high-margin circuit and board fabrication.</p>
+    <div class="impact">
+      <span class="impact-label">Strategic Read</span>
+      <p>Foxconn is steadily vertically integrating its Vietnamese base, diminishing component supply risks from mainland China while maintaining tight inventory turns for regional laptop and tablet assembly contracts.</p>
+    </div>
+    <div class="src">29 Sep 2026 · Invest Vietnam · <a href="https://investvietnam.vn/foxconn-to-pour-036-383-million-into-bac-ninh-factory-n3021.html">Foxconn to pour $383 million into Bac Ninh factory</a></div>
+  </div>
+</div>
+
+<div class="src-index"><div class="wrap">
+  <div class="highlights-label">📋 Weekly Source Index</div>
+  <table class="itable">
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Market</th>
+        <th>Story Topic</th>
+        <th>Source Media</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="r-supply">
+        <td>1</td>
+        <td>🇹🇭 Thailand</td>
+        <td>Suntak Technology breaks ground on RMB 1.2B PCB plant</td>
+        <td>IC-PCB</td>
+        <td>28 Sep 2026</td>
+      </tr>
+      <tr class="r-supply">
+        <td>2</td>
+        <td>🇻🇳 Vietnam</td>
+        <td>BYD begins construction on $130M battery manufacturing plant</td>
+        <td>Electric Vehicles</td>
+        <td>28 Sep 2026</td>
+      </tr>
+      <tr class="r-supply">
+        <td>3</td>
+        <td>🇻🇳 Vietnam</td>
+        <td>Meiko Electronics breaks ground on $500M circuit board factory</td>
+        <td>Vietnam Investment Review</td>
+        <td>28 Sep 2026</td>
+      </tr>
+      <tr class="r-new">
+        <td>4</td>
+        <td>🇻🇳 Vietnam</td>
+        <td>Foxconn commits $383M expansion for Bac Ninh facility</td>
+        <td>Invest Vietnam</td>
+        <td>29 Sep 2026</td>
+      </tr>
+    </tbody>
+  </table>
+</div></div>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Southeast Asia &amp; India Manufacturing Watch</strong> &nbsp;|&nbsp; Coverage: 28 September 2026 – 04 October 2026 &nbsp;|&nbsp; Compiled: 04 October 2026</p>
+    <p>Professional manufacturing intelligence covering consumer electronics supply chains, factory expansions, OEM/EMS investments, and policy developments in Southeast Asia and India. Strictly verified against confirmed operations, site activity, and official regulatory filings.</p>
+    <p>Sources cited in this edition: IC-PCB, Electric Vehicles, Vietnam Investment Review (VIR), Invest Vietnam.</p>
+  </div>
+</footer>
+</div><!-- /wrap -->
+</body>
+</html>
