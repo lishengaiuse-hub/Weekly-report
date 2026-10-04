@@ -3,13 +3,14 @@
 SEA Consumer Electronics Intelligence Newsletter Generator
 =========================================================
 Runs 7 rounds of web searches via Tavily, then calls either
-DeepSeek or Anthropic Claude to write the newsletter body,
-and wraps it into a fully-styled HTML file.
+DeepSeek, Anthropic Claude, or Google Gemini to write the
+newsletter body, and wraps it into a fully-styled HTML file.
 
 Providers
 ---------
   deepseek   — default; uses openai-compatible API at api.deepseek.com
   anthropic  — uses the anthropic SDK
+  gemini     — uses Google Gemini via OpenAI-compatible endpoint
 
 Usage
 -----
@@ -56,9 +57,14 @@ if sys.stdout.encoding and sys.stdout.encoding.lower() not in ("utf-8", "utf8"):
 PROVIDER          = os.getenv("PROVIDER", "deepseek").lower()
 DEEPSEEK_API_KEY  = os.getenv("DEEPSEEK_API_KEY", "")
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
+GEMINI_API_KEY    = os.getenv("GEMINI_API_KEY", "")
 TAVILY_API_KEY    = os.getenv("TAVILY_API_KEY", "")
 
-_DEFAULT_MODELS = {"deepseek": "deepseek-chat", "anthropic": "claude-opus-4-7"}
+_DEFAULT_MODELS = {
+    "deepseek": "deepseek-chat",
+    "anthropic": "claude-opus-4-7",
+    "gemini": "gemini-2.5-flash",
+}
 MODEL      = os.getenv("MODEL") or _DEFAULT_MODELS.get(PROVIDER, "deepseek-chat")
 MAX_TOKENS = int(os.getenv("MAX_TOKENS") or "12000")  # "or" handles empty string
 SEARCH_N   = int(os.getenv("SEARCH_RESULTS_PER_QUERY") or "6")
@@ -839,6 +845,37 @@ def generate_body_anthropic(messages: list[dict]) -> str:
     return "".join(chunks)
 
 
+def generate_body_gemini(messages: list[dict]) -> str:
+    """Call Google Gemini API via OpenAI-compatible endpoint with streaming."""
+    try:
+        from openai import OpenAI
+    except ImportError:
+        log.error("openai package missing — run: pip install -r requirements.txt")
+        sys.exit(1)
+
+    client = OpenAI(
+        api_key=GEMINI_API_KEY,
+        base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
+    )
+    chunks: list[str] = []
+
+    with client.chat.completions.create(
+        model=MODEL,
+        messages=messages,
+        max_tokens=MAX_TOKENS,
+        temperature=0.2,
+        stream=True,
+    ) as stream:
+        for chunk in stream:
+            delta = chunk.choices[0].delta.content
+            if delta:
+                chunks.append(delta)
+                print(delta, end="", flush=True)
+
+    print()
+    return "".join(chunks)
+
+
 def generate_body(search_results: str, start: datetime, end: datetime) -> str:
     """
     Ask the LLM to produce HTML body content only.
@@ -865,6 +902,8 @@ def generate_body(search_results: str, start: datetime, end: datetime) -> str:
 
     if PROVIDER == "anthropic":
         body = generate_body_anthropic(_build_messages(search_results))
+    elif PROVIDER == "gemini":
+        body = generate_body_gemini(_build_messages(search_results))
     else:
         body = generate_body_deepseek(_build_messages, search_results)
 
@@ -873,7 +912,7 @@ def generate_body(search_results: str, start: datetime, end: datetime) -> str:
     # ── Truncation check & one continuation pass ──────────────────────────────
     if not body.rstrip().endswith("</html>") and "</footer>" not in body:
         log.warning("Output appears truncated — requesting continuation...")
-        cont_messages = messages + [
+        cont_messages = _build_messages(search_results) + [
             {"role": "assistant", "content": body},
             {"role": "user", "content":
              "The HTML was cut off. Continue from exactly where you stopped. "
@@ -882,6 +921,8 @@ def generate_body(search_results: str, start: datetime, end: datetime) -> str:
         log.info("Continuation stream:\n" + "─" * 60)
         if PROVIDER == "anthropic":
             continuation = generate_body_anthropic(cont_messages)
+        elif PROVIDER == "gemini":
+            continuation = generate_body_gemini(cont_messages)
         else:
             continuation = generate_body_deepseek(cont_messages)
         log.info("─" * 60)
@@ -974,6 +1015,8 @@ def validate_dates(body: str, start: datetime, end: datetime) -> str:
 
     if PROVIDER == "anthropic":
         cleaned = generate_body_anthropic(messages)
+    elif PROVIDER == "gemini":
+        cleaned = generate_body_gemini(messages)
     else:
         cleaned = generate_body_deepseek(messages)
 
@@ -1097,6 +1140,8 @@ def validate_config() -> None:
         errors.append("DEEPSEEK_API_KEY missing  →  https://platform.deepseek.com/api_keys")
     if PROVIDER == "anthropic" and not ANTHROPIC_API_KEY:
         errors.append("ANTHROPIC_API_KEY missing  →  https://console.anthropic.com")
+    if PROVIDER == "gemini" and not GEMINI_API_KEY:
+        errors.append("GEMINI_API_KEY missing  →  https://aistudio.google.com/apikey")
     if errors:
         log.error("\nConfiguration errors:")
         for e in errors:
