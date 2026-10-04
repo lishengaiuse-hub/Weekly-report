@@ -63,7 +63,7 @@ TAVILY_API_KEY    = os.getenv("TAVILY_API_KEY", "")
 _DEFAULT_MODELS = {
     "deepseek": "deepseek-chat",
     "anthropic": "claude-opus-4-7",
-    "gemini": "gemini-2.5-flash",
+    "gemini": "gemini-3.8-flash",
 }
 MODEL      = os.getenv("MODEL") or _DEFAULT_MODELS.get(PROVIDER, "deepseek-chat")
 MAX_TOKENS = int(os.getenv("MAX_TOKENS") or "12000")  # "or" handles empty string
