@@ -12,9 +12,9 @@ on:
       provider:
         description: 'LLM provider'
         required: false
-        default: 'deepseek'
+        default: 'gemini'
         type: choice
-        options: [deepseek, anthropic]
+        options: [gemini, deepseek, anthropic]
       dry_run:
         description: 'Dry run (search only, skip LLM + email)'
         required: false
@@ -53,6 +53,7 @@ jobs:
           # ── LLM API keys ────────────────────────────────────────────────
           DEEPSEEK_API_KEY:  ${{ secrets.DEEPSEEK_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GEMINI_API_KEY:    ${{ secrets.GEMINI_API_KEY }}
 
           # ── Web search ──────────────────────────────────────────────────
           TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
@@ -66,7 +67,7 @@ jobs:
           EMAIL_SMTP_PORT: ${{ vars.EMAIL_SMTP_PORT || '465' }}
 
           # ── Provider: manual input wins, else repo variable, else deepseek
-          PROVIDER: ${{ inputs.provider || vars.PROVIDER || 'deepseek' }}
+          PROVIDER: ${{ inputs.provider || vars.PROVIDER || 'gemini' }}
 
           # ── Output folder inside the repo
           OUTPUT_DIR: ./output
