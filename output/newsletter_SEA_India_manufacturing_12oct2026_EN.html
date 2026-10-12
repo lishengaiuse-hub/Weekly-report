@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEA & India Manufacturing Watch | 06–12 Oct 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+
+:root{--navy:#1a3a5c;--red:#c0392b;--cream:#f5f0e8;--white:#ffffff;
+--yellow-bg:#fdf6e3;--new-bg:#fff8f0;--ink:#0d0d0d;--muted:#6b5f50;
+--rule:#d4c9b5;--supply-bg:#f0eaf8;--supply-accent:#6d28d9;
+--supply-border:#c4b5fd;--gold:#b8860b;--gold-light:#fdf3d0;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}a:hover{text-decoration:underline}
+.wrap{max-width:880px;margin:0 auto;padding:0 24px 80px}
+.masthead{background:var(--navy);color:#fff;padding:52px 40px 40px;position:relative;overflow:hidden}
+.masthead::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-55deg,transparent,transparent 8px,rgba(255,255,255,.03) 8px,rgba(255,255,255,.03) 9px);pointer-events:none}
+.masthead::before{content:'';position:absolute;bottom:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--red) 0%,#e84040 50%,var(--red) 100%)}
+.mast-eyebrow{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:12px}
+.mast-title{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:16px}
+.mast-title em{font-style:italic;font-weight:400;color:rgba(255,255,255,.75)}
+.mast-flags{font-size:22px;letter-spacing:3px;margin:14px 0 10px;opacity:.9}
+.mast-tags{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 0}
+.mast-tag{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(255,255,255,.28);color:rgba(255,255,255,.68);padding:3px 9px;border-radius:2px}
+.mast-meta{font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,.6);margin-top:18px;display:flex;flex-wrap:wrap;gap:20px}
+.highlights{background:var(--red);color:#fff;padding:30px 32px}
+.highlights-label{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;opacity:.75;margin-bottom:18px}
+.hl-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.hl-grid{grid-template-columns:1fr}}
+.hl-item{display:flex;gap:12px;align-items:flex-start}
+.hl-num{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;line-height:1;opacity:.3;flex-shrink:0;width:26px}
+.hl-text{font-size:13.5px;font-weight:600;line-height:1.45}
+.section-rule{display:flex;align-items:center;gap:12px;margin:40px 0 20px;padding-bottom:12px;border-bottom:2.5px solid var(--navy);color:var(--ink)}
+.section-icon{font-size:22px}
+.section-rule h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--navy);flex:1}
+.section-sub{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.card{background:var(--white);border-top:3px solid var(--navy);padding:22px 24px;margin-bottom:20px;position:relative;box-shadow:0 1px 6px rgba(0,0,0,.05),0 0 0 1px rgba(0,0,0,.04);color:var(--ink)}
+.card.breaking{border-top-color:var(--red)}
+.card.new-item{background:var(--new-bg)}
+.breaking-badge{position:absolute;top:0;right:0;background:var(--red);color:#fff;font-family:'Space Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.14em;padding:3px 9px;text-transform:uppercase}
+.card-header{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px}
+.btag{font-family:'Space Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#fff;padding:3px 9px;border-radius:2px;flex-shrink:0;margin-top:3px}
+.b-samsung{background:#1428a0}.b-apple{background:#555}.b-huawei{background:#c82333}
+.b-oppo{background:#1e4a8c}.b-xiaomi{background:#f97316}.b-vivo{background:#415fff}
+.b-honor{background:#b8000e}.b-realme{background:#d97706}.b-iqoo{background:#0050a0}
+.b-transsion{background:#7c3aed}.b-motorola{background:#003087}.b-dyson{background:#c34a00}
+.b-panasonic{background:#003087}.b-hisense{background:#0a3d6b}.b-haier{background:#00529b}
+.b-tcl{background:#e31837}.b-tata{background:#486aae}.b-dixon{background:#1a6b3c}.b-voltas{background:#e65100}
+.b-foxconn{background:#2d5f2e}.b-luxshare{background:#1a237e}.b-goertek{background:#00695c}
+.b-pegatron{background:#4a148c}.b-murata{background:#1b5e20}.b-boe{background:#004d99}.b-jabil{background:#006838}
+.b-avc{background:#0d47a1}.b-salcomp{background:#2e7d32}.b-corning{background:#c62828}
+.b-catcher{background:#4e342e}.b-everwin{background:#37474f}.b-aac{background:#6a1b9a}
+.b-radiant{background:#00838f}.b-coretronic{background:#1565c0}.b-amphenol{background:#ad1457}
+.b-molex{background:#e65100}.b-nitto{background:#283593}.b-biel{background:#558b2f}
+.b-changhong{background:#d32f2f}.b-huaqin{background:#00695c}.b-wingtech{background:#4527a0}
+.b-bluestar{background:#1565c0}.b-inari{background:#00838f}.b-uwc{background:#4e342e}
+.b-nidec{background:#2e7d32}.b-victorygiant{background:#1b5e20}.b-click{background:#37474f}
+.b-suntak{background:#0d47a1}.b-shenghong{background:#1a237e}.b-kinwong{background:#004d40}.b-wus{background:#33691e}
+.b-compeq{background:#0277bd}.b-unimicron{background:#00695c}.b-tripod{background:#4527a0}.b-zhending{background:#1565c0}
+.b-flexium{background:#6a1b9a}.b-ofilm{background:#c62828}.b-gis{background:#2e7d32}.b-sunway{background:#e65100}.b-coxon{background:#37474f}
+.b-catl{background:#004d40}.b-eve{background:#1a237e}.b-gotion{background:#33691e}.b-rept{background:#0d47a1}
+.b-sumida{background:#4527a0}.b-kyocera{background:#00695c}.b-doosan{background:#1565c0}.b-iteq{background:#2e7d32}
+.b-tuc{background:#004d40}.b-syrma{background:#6a1b9a}.b-johnson{background:#37474f}.b-coolermaster{background:#c62828}
+.b-ats{background:#0277bd}.b-ase{background:#4a148c}.b-shanjin{background:#1565c0}.b-tdk{background:#c62828}
+.b-yageo{background:#00695c}.b-chemicom{background:#283593}.b-rubycon{background:#ad1457}.b-txc{background:#0d47a1}
+.b-omron{background:#004d40}.b-hongfa{background:#1a237e}.b-gseo{background:#33691e}.b-juteng{background:#37474f}
+.b-rosti{background:#4527a0}.b-wacker{background:#0277bd}.b-momentive{background:#6a1b9a}.b-basf{background:#1565c0}
+.b-posco{background:#0d47a1}.b-uacj{background:#004d40}.b-chemours{background:#2e7d32}.b-infineon{background:#0277bd}
+.b-chinpoon{background:#1a237e}.b-meiko{background:#00695c}.b-olympic{background:#4527a0}
+.b-lens{background:#c62828}.b-walsin{background:#0d47a1}.b-knowles{background:#4a148c}
+.b-samsungsdi{background:#1428a0}.b-lges{background:#c62828}.b-hirose{background:#00838f}
+.b-jae{background:#283593}.b-mabuchi{background:#33691e}.b-minebea{background:#0277bd}
+.b-ebmpapst{background:#c62828}.b-sunon{background:#2e7d32}.b-chicony{background:#37474f}
+.b-cowell{background:#6a1b9a}.b-partron{background:#1565c0}.b-foster{background:#004d40}
+.b-bse{background:#4527a0}.b-sumitomo{background:#0d47a1}.b-prysmian{background:#37474f}
+.b-jsw{background:#1a237e}.b-tatasteel{background:#486aae}.b-henkel{background:#c62828}
+.b-dow{background:#e65100}.b-3m{background:#c62828}.b-shinei{background:#004d40}
+.b-wistron{background:#283593}
+.b-quanta{background:#33691e}.b-compal{background:#37474f}.b-inventec{background:#6a1b9a}
+.b-epack{background:#c62828}.b-amber{background:#e65100}.b-kaynes{background:#004d40}
+.b-sihui{background:#1565c0}.b-shennan{background:#0d47a1}.b-aohong{background:#ad1457}
+.b-allfavor{background:#4527a0}.b-shengyi{background:#00838f}
+.b-midea{background:#0277bd}.b-mitsubishi{background:#c62828}.b-embraco{background:#1a237e}
+.b-hitachienergy{background:#c62828}.b-seoul{background:#1565c0}.b-mls{background:#e65100}
+.b-leoni{background:#0d47a1}.b-delfingen{background:#37474f}.b-jabil{background:#33691e}
+.b-deren{background:#004d40}.b-ect{background:#283593}.b-jonhon{background:#1a237e}
+.b-kaiwang{background:#6a1b9a}.b-huntkey{background:#0277bd}.b-haineng{background:#33691e}
+.b-highly{background:#37474f}.b-aux{background:#c62828}.b-btr{background:#0d47a1}
+.b-putailai{background:#004d40}.b-longcheer{background:#4527a0}.b-tinno{background:#ad1457}
+.b-tongda{background:#1565c0}.b-silverbasis{background:#283593}
+.b-ztt{background:#0277bd}.b-hengtong{background:#1a237e}.b-yuto{background:#e65100}
+.b-hexing{background:#33691e}.b-nanshan{background:#37474f}
+.b-policy{background:#374151}.b-event{background:#065f46}
+.b-supply{background:#5b21b6}.b-data{background:#0369a1}.b-ems{background:#5b21b6}
+.card h3{font-family:'Playfair Display',serif;font-size:17.5px;font-weight:700;line-height:1.3;color:var(--ink)}
+.card p{font-size:14px;color:#2c2620;line-height:1.7;margin-top:10px}
+.card p+p{margin-top:8px}
+.impact{background:var(--yellow-bg);border-left:3px solid var(--gold);padding:11px 15px;margin-top:16px}
+.impact-label{font-family:'Space Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+.impact p{font-size:13px;color:#3d2c00;line-height:1.6;margin-top:0}
+.src{font-family:'Space Mono',monospace;font-size:9.5px;color:var(--muted);margin-top:14px;padding-top:10px;border-top:1px solid var(--rule);line-height:1.6}
+.src a{color:var(--navy);text-decoration:none}.src a:hover{text-decoration:underline}
+.no-news{display:none}
+.global-wrap{background:var(--navy);color:#fff;padding:34px 36px;margin:40px 0}
+.global-wrap h2,.global-wrap .highlights-label{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:22px;display:flex;align-items:center;gap:10px;color:#fff;opacity:1}
+.g-card{border-left:3px solid rgba(255,255,255,.25);padding:13px 18px;margin-bottom:18px}
+.g-card:last-child{margin-bottom:0}
+.g-card h4{font-family:'Playfair Display',serif;font-size:15.5px;font-weight:700;margin-bottom:7px}
+.g-card p{font-size:13.5px;color:rgba(255,255,255,.82)}
+.g-link{display:inline-block;margin-top:8px;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#fbbf24}
+.g-src{font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.45);margin-top:8px}
+.supply-wrap{background:var(--supply-bg);border:1px solid var(--supply-border);padding:28px 32px;margin:40px 0;color:#3b0764}
+.supply-wrap h2,.supply-wrap .highlights-label{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#3b0764;margin-bottom:22px;display:flex;align-items:center;gap:10px;opacity:1}
+.s-card{background:#fff;border-left:4px solid var(--supply-accent);padding:15px 18px;margin-bottom:15px}
+.s-card h4{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:#3b0764;margin-bottom:6px}
+.s-card p{font-size:13.5px;color:#2e1065;line-height:1.65}
+.s-card .s-meta{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--supply-accent);margin-top:8px;text-transform:uppercase}
+.s-impact{background:#ede9fe;border-left:3px solid #7c3aed;padding:9px 13px;margin-top:10px}
+.s-impact p{font-size:12.5px;color:#3b0764;margin:0}
+.s-src{font-family:'Space Mono',monospace;font-size:9px;color:var(--supply-accent);margin-top:8px}
+.policy-wrap{background:var(--gold-light);border:1px solid #e8c44a;padding:28px 32px;margin:40px 0}
+.policy-wrap h2,.policy-wrap .highlights-label{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#78350f;margin-bottom:22px;display:flex;align-items:center;gap:10px;opacity:1}
+.p-card{background:#fff;border-left:4px solid #d97706;padding:16px 20px;margin-bottom:16px}
+.p-card h4{font-family:'Playfair Display',serif;font-size:15.5px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.p-card p{font-size:13.5px;color:#2c1800;line-height:1.65}.p-card p+p{margin-top:6px}
+.p-status{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;color:#92400e;margin-top:9px;text-transform:uppercase}
+.p-alert{background:#fef3c7;border:1px solid #fcd34d;padding:9px 13px;margin-top:10px;font-size:13px;color:#78350f}
+.ptable{width:100%;border-collapse:collapse;margin-top:22px;font-size:12.5px}
+.ptable th{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;background:var(--navy);color:#fff;padding:9px 11px;text-align:left}
+.ptable td{padding:9px 11px;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.5}
+.ptable tr:nth-child(even) td{background:rgba(255,255,255,.6)}
+.src-index{margin:40px 0;color:var(--ink)}
+.src-index h2{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--navy);margin-bottom:14px;padding-bottom:10px;border-bottom:2.5px solid var(--navy);display:flex;align-items:center;gap:8px}
+.itable{width:100%;border-collapse:collapse;font-size:12px}
+.itable th{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;background:var(--navy);color:#fff;padding:9px 11px;text-align:left}
+.itable td{padding:8px 11px;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--ink)}
+.itable tr.r-supply td{background:#f5f0ff;color:var(--ink)}.itable tr.r-policy td{background:#fff8e1;color:var(--ink)}
+.itable tr.r-global td{background:#eef2ff}.itable tr.r-new td{background:var(--new-bg)}
+.itable a{color:var(--navy);font-size:11px}
+.divider{height:1px;background:var(--rule);margin:28px 0}
+footer{border-top:2.5px solid var(--navy);padding-top:26px;margin-top:44px;font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);line-height:1.9}
+footer strong{color:var(--ink)}
+
+</style>
+</head>
+<body>
+<div class="masthead"><div class="wrap">
+  <div class="mast-eyebrow">Southeast Asia &amp; India · Manufacturing Intelligence</div>
+  <div class="mast-title">Southeast Asia &amp; India<br><em>Manufacturing Watch</em></div>
+  <div class="mast-flags">🇸🇬 🇲🇾 🇮🇩 🇹🇭 🇻🇳 🇮🇳</div>
+  <div class="mast-tags">
+    <span class="mast-tag">Home Appliances</span>
+    <span class="mast-tag">OEM/EMS</span>
+    <span class="mast-tag">Supply Chain</span>
+    <span class="mast-tag">Policy &amp; Regulation</span>
+    <span class="mast-tag">Market Intelligence</span>
+    <span class="mast-tag">Manufacturing</span>
+  </div>
+  <div class="mast-meta">📅 Coverage: 06 October 2026 – 12 October 2026 | 🗓 Compiled: 12 October 2026 | 🎯 Audience: Supply Chain Practitioners &amp; Operations Executives</div>
+</div></div>
+
+<div class="highlights"><div class="wrap">
+  <div class="highlights-label">⚡ Key Highlights — This Week</div>
+  <div class="hl-grid">
+    <div class="hl-item">
+      <div class="hl-num">1</div>
+      <div class="hl-text">Amber Enterprises confirms Q4FY27 production commencement for Oppo, OnePlus, and Realme handsets at its Jewar manufacturing facility.</div>
+    </div>
+    <div class="hl-item">
+      <div class="hl-num">2</div>
+      <div class="hl-text">Johnson Electric commissions dedicated automotive cooling and window lift motor manufacturing plant in Pillaipakkam, Chennai.</div>
+    </div>
+    <div class="hl-item">
+      <div class="hl-num">3</div>
+      <div class="hl-text">Murata Manufacturing wraps up its multi-phase inductor plant capacity buildout located in Dong Nai province, Vietnam.</div>
+    </div>
+    <div class="hl-item">
+      <div class="hl-num">4</div>
+      <div class="hl-text">UWC Berhad reallocates RM384.13 million private placement proceeds to directly fund factory expansion in Penang, Malaysia.</div>
+    </div>
+  </div>
+</div></div>
+
+<div class="supply-wrap"><div class="wrap">
+  <div class="section-rule">
+    <div class="section-icon">📦</div>
+    <h2>Core Component Supply Chain Update</h2>
+    <div class="section-sub">Upstream passives, electro-mechanical components, and specialized tooling assets</div>
+  </div>
+
+  <div class="s-card">
+    <h4>Murata Finalizes Factory Footprint Expansion for Inductor Manufacturing in Dong Nai</h4>
+    <p>Murata Manufacturing has officially completed its scheduled inductor facility expansion situated in southern Vietnam's Dong Nai industrial corridor. The infrastructure project, which finalized construction within one year and five months, delivers a fully commissioned production building to support high-frequency passive component lines.</p>
+    <div class="s-meta">📍 Dong Nai, Vietnam · Status: Commissioned &amp; Operational</div>
+    <div class="s-impact">
+      <p><strong>Sourcing Implication:</strong> Alleviates lead-time pressures for surface-mount inductors and EMI filtering components across Northern Vietnam assembly operations, reducing freight dependencies on East Asian material hubs.</p>
+    </div>
+    <div class="s-src">11 Oct 2026 · The Elec · <a href="https://www.thelec.net/news/articleView.html?idxno=14519">Source Link</a></div>
+  </div>
+
+  <div class="s-card">
+    <h4>Nidec Global Appliance Readies Embraco Compressor Manufacturing Site in Maharashtra</h4>
+    <p>Nidec Global Appliance is advancing the establishment of its dedicated Embraco compressor manufacturing plant in Chhatrapati Sambhaji Nagar (Aurangabad), Maharashtra. Planned to launch production within H2 2026, the verticalized production base is engineered for an annual nameplate run-rate of 6 million units, synthesizing core stamping, motor winding, precision machining, and variable-speed electronic drive assemblies.</p>
+    <div class="s-meta">📍 Chhatrapati Sambhaji Nagar, India · Status: Facility Buildout / Pre-Ramp</div>
+    <div class="s-impact">
+      <p><strong>Supply Chain Implication:</strong> Establishes a domestic localization baseline for R600a and R290 variable-capacity hermetic compressors, mitigating FX volatility and import exposure for Indian HVAC and domestic refrigeration OEMs.</p>
+    </div>
+    <div class="s-src">09 Oct 2026 · Cooling Post · <a href="https://www.coolingpost.com/world-news/nidec-plans-new-embraco-compressor-factory-in-india">Source Link</a></div>
+  </div>
+</div></div>
+
+<div class="policy-wrap"><div class="wrap">
+  <div class="section-rule">
+    <div class="section-icon">📜</div>
+    <h2>Policy Focus</h2>
+    <div class="section-sub">Regulatory shifts, hardware labeling compliance, and statutory market certifications</div>
+  </div>
+
+  <div class="p-card">
+    <h4>Singapore IMDA &amp; CSA Harmonize IoT Hardware Labelling and Certification Deadlines</h4>
+    <p>Singapore's Infocomm Media Development Authority (IMDA) and Cyber Security Agency (CSA) have enacted updated regulatory requirements regarding connected consumer electronic equipment entering commercial supply chains, scheduled for October 12, 2026. The mandate aligns IMDA wireless telecommunications type approvals with the CSA Cybersecurity Labelling Scheme (CLS), covering cloud connectivity safeguards, OT baseline defenses, and onboard algorithmic parameters across smart home apparatus.</p>
+    <div class="p-status">Status: Compliance Framework In Effect · Appointed Conformity Bodies</div>
+    <div class="p-alert">Hardware importers and EMS brands targeting Singapore must present verified two-year valid CLS certification alongside standard IMDA RF documentation prior to customs processing.</div>
+  </div>
+
+  <table class="ptable">
+    <thead>
+      <tr>
+        <th>Market</th>
+        <th>Policy</th>
+        <th>CE Impact</th>
+        <th>Effective Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>🇸🇬 Singapore</td>
+        <td>IMDA Wireless Certification &amp; CSA Cybersecurity Labelling Scheme (CLS) Harmonization</td>
+        <td>Mandatory cybersecurity verification for RF and IoT connected consumer electronics</td>
+        <td>12 Oct 2026</td>
+      </tr>
+    </tbody>
+  </table>
+</div></div>
+
+<div class="wrap">
+  <div class="section-rule">
+    <div class="section-icon">🇲🇾</div>
+    <h2>Malaysia</h2>
+    <div class="section-sub">Precision manufacturing, contract production, and industrial electronics capital</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span class="btag b-uwc">UWC</span>
+      <h3>UWC Bhd Diverts RM384.13M Placement Capital Exclusively to Factory Infrastructure and Operations</h3>
+    </div>
+    <p>Precision engineering and equipment manufacturing player UWC Bhd has officially restructured the utilization plan for its RM384.13 million private placement proceeds, fully dropping previous debt repayment allocations. Under the revised strategy announced on October 8, 2026, the company will funnel RM230.13 million toward expanding factory infrastructure over the next 24 months, with operational working capital raised to RM150.43 million.</p>
+    <p>The revised capital expenditure timeline enables UWC to step beyond piece-part fabrication into integrated machinery builds, supporting advanced semiconductor wafer fabrication clients. The dedicated infrastructure push scales Penang's capacity to absorb higher-complexity capital equipment and systems assembly locally.</p>
+    <div class="impact">
+      <span class="impact-label">Market Signal</span>
+      <p>Demonstrates structural transition among Malaysian Tier-1 manufacturing vendors from component supply into full-box build capital equipment manufacturing, securing stickier long-term customer engagements.</p>
+    </div>
+    <div class="src">09 Oct 2026 · The Edge Malaysia · <a href="https://theedgemalaysia.com/node/821091">Source Link</a></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="section-rule">
+    <div class="section-icon">🇮🇳</div>
+    <h2>India</h2>
+    <div class="section-sub">Domestic manufacturing footprint, component fabrication, and handset assembly</div>
+  </div>
+
+  <div class="card breaking">
+    <div class="card-header">
+      <span class="breaking-badge">Breaking</span>
+      <span class="btag b-oppo">OPPO</span>
+      <h3>Amber Enterprises Locks Commercial Timeline to Build Oppo, OnePlus, and Realme Smartphones</h3>
+    </div>
+    <p>Domestic contract manufacturing firm Amber Enterprises has finalized target timelines to initiate commercial assembly of smartphones for Oppo, OnePlus, and Realme starting in Q4FY27 (March 2027). The production footprint leverages a massive 116-acre manufacturing setup situated in proximity to Jewar Airport, supported by an aggregate capital investment layout of ₹6,785 crore.</p>
+    <p>Phase-one manufacturing is scheduled to process an annual volume of 8 million finished smartphone units, ramping aggressively to 16 million units in the second fiscal year of operation. The move operationalizes the strategic agreement executed with Oppo Mobiles India, moving Amber's core competencies beyond consumer durables and air treatment systems directly into high-density telecommunications EMS.</p>
+    <div class="impact">
+      <span class="impact-label">Strategic Read</span>
+      <p>Directly challenges traditional EMS dominance held by Foxconn and DBG in India, marking an aggressive scale-up of indigenous contract partners handling Chinese Tier-1 smartphone production pipelines.</p>
+    </div>
+    <div class="src">06 Oct 2026 · Business Standard · <a href="https://www.business-standard.com/companies/news/amber-to-start-manufacturing-oppo-oneplus-realme-phones-from-q4fy27-126081600160_1.html">Source Link</a></div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <span class="btag b-johnson">Johnson Electric</span>
+      <h3>Johnson Electric Commissions Dedicated Motor and Actuator Manufacturing Complex in Chennai</h3>
+    </div>
+    <p>Global motion subsystems and precision component manufacturer Johnson Electric has officially commissioned its brand-new production plant located in Pillaipakkam, Chennai, Tamil Nadu. The facility formally opened on October 10, 2026, creating dedicated shopfloor infrastructure for localized electromechanical assembly.</p>
+    <p>The manufacturing site is configured specifically to run high-efficiency fan motor lines, window-lift gear assemblies, and cooling fan modules. The local industrialization addresses immediate component sourcing requirements from domestic automotive subsystem integrators and regional consumer durables producers looking to de-risk imports.</p>
+    <div class="impact">
+      <span class="impact-label">Sourcing Implication</span>
+      <p>Shortens localized vendor onboarding cycles for small precision drive motors and high-reliability fan modules in Tamil Nadu's industrial corridor, enabling domestic Tier-1 brands to bypass marine import lead times.</p>
+    </div>
+    <div class="src">10 Oct 2026 · Just Auto · <a href="https://www.just-auto.com/news/hong-kong-johnson-electric-opening-india-factory">Source Link</a></div>
+  </div>
+</div>
+
+<div class="src-index"><div class="wrap">
+  <div class="section-rule">
+    <div class="section-icon">📑</div>
+    <h2>Source Index</h2>
+    <div class="section-sub">Verified documentation and cross-border reporting bibliography</div>
+  </div>
+  <table class="itable">
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Market</th>
+        <th>Story Topic</th>
+        <th>Source Media</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="r-supply">
+        <td>1</td>
+        <td>🇻🇳 Vietnam</td>
+        <td>Murata Finishes Dong Nai Inductor Facility Expansion</td>
+        <td>The Elec</td>
+        <td>11 Oct 2026</td>
+      </tr>
+      <tr class="r-supply">
+        <td>2</td>
+        <td>🇮🇳 India</td>
+        <td>Nidec Advances Aurangabad Compressor Factory Execution</td>
+        <td>Cooling Post</td>
+        <td>09 Oct 2026</td>
+      </tr>
+      <tr class="r-policy">
+        <td>3</td>
+        <td>🇸🇬 Singapore</td>
+        <td>IMDA Wireless &amp; CSA CLS Certification Harmonization</td>
+        <td>SGS Global</td>
+        <td>12 Oct 2026</td>
+      </tr>
+      <tr class="r-new">
+        <td>4</td>
+        <td>🇲🇾 Malaysia</td>
+        <td>UWC Bhd Reroutes RM384M Placement Directly into Plant Expansion</td>
+        <td>The Edge Malaysia</td>
+        <td>09 Oct 2026</td>
+      </tr>
+      <tr class="r-new">
+        <td>5</td>
+        <td>🇮🇳 India</td>
+        <td>Amber Enterprises Schedules Oppo, OnePlus, Realme Phone Production</td>
+        <td>Business Standard</td>
+        <td>06 Oct 2026</td>
+      </tr>
+      <tr class="r-new">
+        <td>6</td>
+        <td>🇮🇳 India</td>
+        <td>Johnson Electric Inaugurates Chennai Pillaipakkam Factory</td>
+        <td>Just Auto</td>
+        <td>10 Oct 2026</td>
+      </tr>
+    </tbody>
+  </table>
+</div></div>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Southeast Asia &amp; India Manufacturing Watch</strong> | Coverage: 06 October 2026 – 12 October 2026 | Compiled: 12 October 2026</p>
+    <p>CONFIDENTIAL &amp; PROPRIETARY. Formulated strictly for internal supply chain operations, industrial procurement, and cross-border manufacturing risk assessment. No generative embellishments or dated filings included.</p>
+    <p>Validated Data Sources: <em>The Elec, Cooling Post, SGS Market Access, The Edge Malaysia, Business Standard, Just Auto</em>.</p>
+  </div>
+</footer>
+</div>
+</body>
+</html>
