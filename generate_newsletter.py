@@ -858,7 +858,8 @@ def generate_body_gemini(messages: list[dict]) -> str:
         base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
     )
 
-    for attempt in range(1, 4):
+    max_attempts = 5
+    for attempt in range(1, max_attempts + 1):
         chunks: list[str] = []
         try:
             with client.chat.completions.create(
@@ -877,9 +878,9 @@ def generate_body_gemini(messages: list[dict]) -> str:
             return "".join(chunks)
         except Exception as e:
             err_msg = str(e)
-            if ("503" in err_msg or "429" in err_msg or "UNAVAILABLE" in err_msg) and attempt < 3:
-                wait = 10 * attempt
-                log.warning(f"Gemini temporarily unavailable (attempt {attempt}/3), retrying in {wait}s...")
+            if ("503" in err_msg or "429" in err_msg or "UNAVAILABLE" in err_msg) and attempt < max_attempts:
+                wait = 30 * attempt
+                log.warning(f"Gemini temporarily unavailable (attempt {attempt}/{max_attempts}), retrying in {wait}s...")
                 time.sleep(wait)
                 continue
             raise
