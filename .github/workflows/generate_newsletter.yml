@@ -12,9 +12,9 @@ on:
       provider:
         description: 'LLM provider'
         required: false
-        default: 'gemini'
+        default: 'deepseek'
         type: choice
-        options: [gemini, deepseek, anthropic]
+        options: [deepseek, gemini, anthropic]
       dry_run:
         description: 'Dry run (search only, skip LLM + email)'
         required: false
@@ -67,7 +67,7 @@ jobs:
           EMAIL_SMTP_PORT: ${{ vars.EMAIL_SMTP_PORT || '465' }}
 
           # ── Provider: manual input wins, else repo variable, else deepseek
-          PROVIDER: ${{ inputs.provider || vars.PROVIDER || 'gemini' }}
+          PROVIDER: ${{ inputs.provider || vars.PROVIDER || 'deepseek' }}
 
           # ── Output folder inside the repo
           OUTPUT_DIR: ./output
