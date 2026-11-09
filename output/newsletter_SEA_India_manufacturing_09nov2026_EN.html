@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEA & India Manufacturing Watch | 03–09 Nov 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+
+:root{--navy:#1a3a5c;--red:#c0392b;--cream:#f5f0e8;--white:#ffffff;
+--yellow-bg:#fdf6e3;--new-bg:#fff8f0;--ink:#0d0d0d;--muted:#6b5f50;
+--rule:#d4c9b5;--supply-bg:#f0eaf8;--supply-accent:#6d28d9;
+--supply-border:#c4b5fd;--gold:#b8860b;--gold-light:#fdf3d0;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--ink);font-size:15px;line-height:1.7}
+a{color:var(--navy)}a:hover{text-decoration:underline}
+.wrap{max-width:880px;margin:0 auto;padding:0 24px 80px}
+.masthead{background:var(--navy);color:#fff;padding:52px 40px 40px;position:relative;overflow:hidden}
+.masthead::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-55deg,transparent,transparent 8px,rgba(255,255,255,.03) 8px,rgba(255,255,255,.03) 9px);pointer-events:none}
+.masthead::before{content:'';position:absolute;bottom:0;left:0;right:0;height:5px;background:linear-gradient(90deg,var(--red) 0%,#e84040 50%,var(--red) 100%)}
+.mast-eyebrow{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:12px}
+.mast-title{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:16px}
+.mast-title em{font-style:italic;font-weight:400;color:rgba(255,255,255,.75)}
+.mast-flags{font-size:22px;letter-spacing:3px;margin:14px 0 10px;opacity:.9}
+.mast-tags{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 0}
+.mast-tag{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(255,255,255,.28);color:rgba(255,255,255,.68);padding:3px 9px;border-radius:2px}
+.mast-meta{font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,.6);margin-top:18px;display:flex;flex-wrap:wrap;gap:20px}
+.highlights{background:var(--red);color:#fff;padding:30px 32px}
+.highlights-label{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;opacity:.75;margin-bottom:18px}
+.hl-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.hl-grid{grid-template-columns:1fr}}
+.hl-item{display:flex;gap:12px;align-items:flex-start}
+.hl-num{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;line-height:1;opacity:.3;flex-shrink:0;width:26px}
+.hl-text{font-size:13.5px;font-weight:600;line-height:1.45}
+.section-rule{display:flex;align-items:center;gap:12px;margin:40px 0 20px;padding-bottom:12px;border-bottom:2.5px solid var(--navy);color:var(--ink)}
+.section-icon{font-size:22px}
+.section-rule h2{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--navy);flex:1}
+.section-sub{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.card{background:var(--white);border-top:3px solid var(--navy);padding:22px 24px;margin-bottom:20px;position:relative;box-shadow:0 1px 6px rgba(0,0,0,.05),0 0 0 1px rgba(0,0,0,.04);color:var(--ink)}
+.card.breaking{border-top-color:var(--red)}
+.card.new-item{background:var(--new-bg)}
+.breaking-badge{position:absolute;top:0;right:0;background:var(--red);color:#fff;font-family:'Space Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.14em;padding:3px 9px;text-transform:uppercase}
+.card-header{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px}
+.btag{font-family:'Space Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#fff;padding:3px 9px;border-radius:2px;flex-shrink:0;margin-top:3px}
+.b-samsung{background:#1428a0}.b-apple{background:#555}.b-huawei{background:#c82333}
+.b-oppo{background:#1e4a8c}.b-xiaomi{background:#f97316}.b-vivo{background:#415fff}
+.b-honor{background:#b8000e}.b-realme{background:#d97706}.b-iqoo{background:#0050a0}
+.b-transsion{background:#7c3aed}.b-motorola{background:#003087}.b-dyson{background:#c34a00}
+.b-panasonic{background:#003087}.b-hisense{background:#0a3d6b}.b-haier{background:#00529b}
+.b-tcl{background:#e31837}.b-tata{background:#486aae}.b-dixon{background:#1a6b3c}.b-voltas{background:#e65100}
+.b-foxconn{background:#2d5f2e}.b-luxshare{background:#1a237e}.b-goertek{background:#00695c}
+.b-pegatron{background:#4a148c}.b-murata{background:#1b5e20}.b-boe{background:#004d99}.b-jabil{background:#006838}
+.b-avc{background:#0d47a1}.b-salcomp{background:#2e7d32}.b-corning{background:#c62828}
+.b-catcher{background:#4e342e}.b-everwin{background:#37474f}.b-aac{background:#6a1b9a}
+.b-radiant{background:#00838f}.b-coretronic{background:#1565c0}.b-amphenol{background:#ad1457}
+.b-molex{background:#e65100}.b-nitto{background:#283593}.b-biel{background:#558b2f}
+.b-changhong{background:#d32f2f}.b-huaqin{background:#00695c}.b-wingtech{background:#4527a0}
+.b-bluestar{background:#1565c0}.b-inari{background:#00838f}.b-uwc{background:#4e342e}
+.b-nidec{background:#2e7d32}.b-victorygiant{background:#1b5e20}.b-click{background:#37474f}
+.b-suntak{background:#0d47a1}.b-shenghong{background:#1a237e}.b-kinwong{background:#004d40}.b-wus{background:#33691e}
+.b-compeq{background:#0277bd}.b-unimicron{background:#00695c}.b-tripod{background:#4527a0}.b-zhending{background:#1565c0}
+.b-flexium{background:#6a1b9a}.b-ofilm{background:#c62828}.b-gis{background:#2e7d32}.b-sunway{background:#e65100}.b-coxon{background:#37474f}
+.b-catl{background:#004d40}.b-eve{background:#1a237e}.b-gotion{background:#33691e}.b-rept{background:#0d47a1}
+.b-sumida{background:#4527a0}.b-kyocera{background:#00695c}.b-doosan{background:#1565c0}.b-iteq{background:#2e7d32}
+.b-tuc{background:#004d40}.b-syrma{background:#6a1b9a}.b-johnson{background:#37474f}.b-coolermaster{background:#c62828}
+.b-ats{background:#0277bd}.b-ase{background:#4a148c}.b-shanjin{background:#1565c0}.b-tdk{background:#c62828}
+.b-yageo{background:#00695c}.b-chemicom{background:#283593}.b-rubycon{background:#ad1457}.b-txc{background:#0d47a1}
+.b-omron{background:#004d40}.b-hongfa{background:#1a237e}.b-gseo{background:#33691e}.b-juteng{background:#37474f}
+.b-rosti{background:#4527a0}.b-wacker{background:#0277bd}.b-momentive{background:#6a1b9a}.b-basf{background:#1565c0}
+.b-posco{background:#0d47a1}.b-uacj{background:#004d40}.b-chemours{background:#2e7d32}.b-infineon{background:#0277bd}
+.b-chinpoon{background:#1a237e}.b-meiko{background:#00695c}.b-olympic{background:#4527a0}
+.b-lens{background:#c62828}.b-walsin{background:#0d47a1}.b-knowles{background:#4a148c}
+.b-samsungsdi{background:#1428a0}.b-lges{background:#c62828}.b-hirose{background:#00838f}
+.b-jae{background:#283593}.b-mabuchi{background:#33691e}.b-minebea{background:#0277bd}
+.b-ebmpapst{background:#c62828}.b-sunon{background:#2e7d32}.b-chicony{background:#37474f}
+.b-cowell{background:#6a1b9a}.b-partron{background:#1565c0}.b-foster{background:#004d40}
+.b-bse{background:#4527a0}.b-sumitomo{background:#0d47a1}.b-prysmian{background:#37474f}
+.b-jsw{background:#1a237e}.b-tatasteel{background:#486aae}.b-henkel{background:#c62828}
+.b-dow{background:#e65100}.b-3m{background:#c62828}.b-shinei{background:#004d40}
+.b-wistron{background:#283593}
+.b-quanta{background:#33691e}.b-compal{background:#37474f}.b-inventec{background:#6a1b9a}
+.b-epack{background:#c62828}.b-amber{background:#e65100}.b-kaynes{background:#004d40}
+.b-sihui{background:#1565c0}.b-shennan{background:#0d47a1}.b-aohong{background:#ad1457}
+.b-allfavor{background:#4527a0}.b-shengyi{background:#00838f}
+.b-midea{background:#0277bd}.b-mitsubishi{background:#c62828}.b-embraco{background:#1a237e}
+.b-hitachienergy{background:#c62828}.b-seoul{background:#1565c0}.b-mls{background:#e65100}
+.b-leoni{background:#0d47a1}.b-delfingen{background:#37474f}.b-jabil{background:#33691e}
+.b-deren{background:#004d40}.b-ect{background:#283593}.b-jonhon{background:#1a237e}
+.b-kaiwang{background:#6a1b9a}.b-huntkey{background:#0277bd}.b-haineng{background:#33691e}
+.b-highly{background:#37474f}.b-aux{background:#c62828}.b-btr{background:#0d47a1}
+.b-putailai{background:#004d40}.b-longcheer{background:#4527a0}.b-tinno{background:#ad1457}
+.b-tongda{background:#1565c0}.b-silverbasis{background:#283593}
+.b-ztt{background:#0277bd}.b-hengtong{background:#1a237e}.b-yuto{background:#e65100}
+.b-hexing{background:#33691e}.b-nanshan{background:#37474f}
+.b-policy{background:#374151}.b-event{background:#065f46}
+.b-supply{background:#5b21b6}.b-data{background:#0369a1}.b-ems{background:#5b21b6}
+.card h3{font-family:'Playfair Display',serif;font-size:17.5px;font-weight:700;line-height:1.3;color:var(--ink)}
+.card p{font-size:14px;color:#2c2620;line-height:1.7;margin-top:10px}
+.card p+p{margin-top:8px}
+.impact{background:var(--yellow-bg);border-left:3px solid var(--gold);padding:11px 15px;margin-top:16px}
+.impact-label{font-family:'Space Mono',monospace;font-size:8.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
+.impact p{font-size:13px;color:#3d2c00;line-height:1.6;margin-top:0}
+.src{font-family:'Space Mono',monospace;font-size:9.5px;color:var(--muted);margin-top:14px;padding-top:10px;border-top:1px solid var(--rule);line-height:1.6}
+.src a{color:var(--navy);text-decoration:none}.src a:hover{text-decoration:underline}
+.no-news{display:none}
+.global-wrap{background:var(--navy);color:#fff;padding:34px 36px;margin:40px 0}
+.global-wrap h2,.global-wrap .highlights-label{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:22px;display:flex;align-items:center;gap:10px;color:#fff;opacity:1}
+.g-card{border-left:3px solid rgba(255,255,255,.25);padding:13px 18px;margin-bottom:18px}
+.g-card:last-child{margin-bottom:0}
+.g-card h4{font-family:'Playfair Display',serif;font-size:15.5px;font-weight:700;margin-bottom:7px}
+.g-card p{font-size:13.5px;color:rgba(255,255,255,.82)}
+.g-link{display:inline-block;margin-top:8px;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#fbbf24}
+.g-src{font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,.45);margin-top:8px}
+.supply-wrap{background:var(--supply-bg);border:1px solid var(--supply-border);padding:28px 32px;margin:40px 0;color:#3b0764}
+.supply-wrap h2,.supply-wrap .highlights-label{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#3b0764;margin-bottom:22px;display:flex;align-items:center;gap:10px;opacity:1}
+.s-card{background:#fff;border-left:4px solid var(--supply-accent);padding:15px 18px;margin-bottom:15px}
+.s-card h4{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:#3b0764;margin-bottom:6px}
+.s-card p{font-size:13.5px;color:#2e1065;line-height:1.65}
+.s-card .s-meta{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--supply-accent);margin-top:8px;text-transform:uppercase}
+.s-impact{background:#ede9fe;border-left:3px solid #7c3aed;padding:9px 13px;margin-top:10px}
+.s-impact p{font-size:12.5px;color:#3b0764;margin:0}
+.s-src{font-family:'Space Mono',monospace;font-size:9px;color:var(--supply-accent);margin-top:8px}
+.policy-wrap{background:var(--gold-light);border:1px solid #e8c44a;padding:28px 32px;margin:40px 0}
+.policy-wrap h2,.policy-wrap .highlights-label{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#78350f;margin-bottom:22px;display:flex;align-items:center;gap:10px;opacity:1}
+.p-card{background:#fff;border-left:4px solid #d97706;padding:16px 20px;margin-bottom:16px}
+.p-card h4{font-family:'Playfair Display',serif;font-size:15.5px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.p-card p{font-size:13.5px;color:#2c1800;line-height:1.65}.p-card p+p{margin-top:6px}
+.p-status{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;color:#92400e;margin-top:9px;text-transform:uppercase}
+.p-alert{background:#fef3c7;border:1px solid #fcd34d;padding:9px 13px;margin-top:10px;font-size:13px;color:#78350f}
+.ptable{width:100%;border-collapse:collapse;margin-top:22px;font-size:12.5px}
+.ptable th{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;background:var(--navy);color:#fff;padding:9px 11px;text-align:left}
+.ptable td{padding:9px 11px;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.5}
+.ptable tr:nth-child(even) td{background:rgba(255,255,255,.6)}
+.src-index{margin:40px 0;color:var(--ink)}
+.src-index h2{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--navy);margin-bottom:14px;padding-bottom:10px;border-bottom:2.5px solid var(--navy);display:flex;align-items:center;gap:8px}
+.itable{width:100%;border-collapse:collapse;font-size:12px}
+.itable th{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;background:var(--navy);color:#fff;padding:9px 11px;text-align:left}
+.itable td{padding:8px 11px;border-bottom:1px solid var(--rule);vertical-align:top;color:var(--ink)}
+.itable tr.r-supply td{background:#f5f0ff;color:var(--ink)}.itable tr.r-policy td{background:#fff8e1;color:var(--ink)}
+.itable tr.r-global td{background:#eef2ff}.itable tr.r-new td{background:var(--new-bg)}
+.itable a{color:var(--navy);font-size:11px}
+.divider{height:1px;background:var(--rule);margin:28px 0}
+footer{border-top:2.5px solid var(--navy);padding-top:26px;margin-top:44px;font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);line-height:1.9}
+footer strong{color:var(--ink)}
+
+</style>
+</head>
+<body>
+<div class="masthead"><div class="wrap">
+  <div class="mast-eyebrow">Southeast Asia &amp; India · Manufacturing Intelligence</div>
+  <div class="mast-title">Southeast Asia &amp; India<br><em>Manufacturing Watch</em></div>
+  <div class="mast-flags">🇸🇬 🇲🇾 🇮🇩 🇹🇭 🇻🇳 🇮🇳</div>
+  <div class="mast-tags"><span class="mast-tag">Home Appliances</span><span class="mast-tag">OEM/EMS</span><span class="mast-tag">Supply Chain</span><span class="mast-tag">Policy &amp; Regulation</span><span class="mast-tag">Market Intelligence</span><span class="mast-tag">Manufacturing</span></div>
+  <div class="mast-meta">📅 Coverage: 03 November – 09 November 2026 &nbsp;|&nbsp; 🗓 Compiled: 09 November 2026 &nbsp;|&nbsp; 🎯 For: SEA/India sourcing, procurement &amp; supply-chain teams</div>
+</div></div>
+
+<div class="highlights"><div class="wrap">
+  <div class="highlights-label">⚡ Key Highlights — This Week</div>
+  <div class="hl-grid">
+    <div class="hl-item"><div class="hl-num">1</div><div class="hl-text">Wistron injects a further $24.5m into its Vietnam subsidiary to scale server production capacity.</div></div>
+    <div class="hl-item"><div class="hl-num">2</div><div class="hl-text">LG Electronics India files 5 Nov disclosure on phased Sri City investment; plant targets December 2026 start.</div></div>
+    <div class="hl-item"><div class="hl-num">3</div><div class="hl-text">Unimicron to exit German PCB plant, redirect $1.6bn into Asian capacity including Southeast Asia.</div></div>
+    <div class="hl-item"><div class="hl-num">4</div><div class="hl-text">Daikin confirms ¥100bn SEA/India push, including compact AC output in Indonesia.</div></div>
+  </div>
+</div></div>
+
+<div class="global-wrap"><div class="wrap">
+  <div class="section-rule"><span class="section-icon">🌐</span><h2>Global Industry Shifts</h2><div class="section-sub">Cross-border moves with named SEA/India impact</div></div>
+  <div class="g-card">
+    <h4>Unimicron to close German PCB plant, redirect $1.6bn into Asian expansion</h4>
+    <p>Unimicron plans to discontinue PCB manufacturing at its Geldern, Germany facility during H1 2027 while investing $1.6 billion in Asian expansion, spanning Taiwan, mainland China and Southeast Asia.</p>
+    <div class="g-link">→ Downstream SEA impact: the redirected capex reinforces the region's role as the growth leg for advanced substrate and PCB capacity as European output is retired.</div>
+    <div class="g-src">06 Nov 2026 · <a href="https://pcdandf.com/pcdesign/index.php/editorial/menu-news/fab-news/19567-unimicron-to-close-german-pcb-plant-invest-1-6b-in-asian-expansion">Printed Circuit Design &amp; Fab</a></div>
+  </div>
+  <div class="g-card">
+    <h4>Daikin commits ¥100bn to Southeast Asia and India over four years</h4>
+    <p>Daikin Industries will invest 100 billion yen ($711 million) across Southeast Asia and India over the next four years to build core parts and smaller air-conditioner production, including compact AC output in Indonesia.</p>
+    <div class="g-link">→ Downstream SEA impact: localises compressor and core-part supply for ASEAN AC assembly and reduces import dependence for regional OEMs.</div>
+    <div class="g-src">05 Nov 2026 · <a href="https://vir.com.vn/daikin-industries-to-expand-ma-and-investments-in-southeast-asia-and-india-97989.html">Vietnam Investment Review</a></div>
+  </div>
+</div></div>
+
+<div class="supply-wrap"><div class="wrap">
+  <div class="section-rule"><span class="section-icon">🔧</span><h2>Core Component Supply Chain Update</h2><div class="section-sub">PCB/FPC · Display · Camera · Battery · Passive · Compressors</div></div>
+
+  <div class="s-card">
+    <h4>Unimicron redirects $1.6bn to Asian PCB and substrate capacity</h4>
+    <p>The Taiwanese PCB maker will wind down manufacturing at its Geldern, Germany plant in H1 2027 and redeploy capital into Asian expansion covering Taiwan, mainland China and Southeast Asia.</p>
+    <div class="s-meta">📍 Southeast Asia (regional) · Status: capex reallocation announced</div>
+    <div class="s-impact"><p>Buyers of high-end PCB and substrate should expect capacity to concentrate further in Asia, tightening European supply options while widening SEA allocation.</p></div>
+    <div class="s-src">06 Nov 2026 · <a href="https://pcdandf.com/pcdesign/index.php/editorial/menu-news/fab-news/19567-unimicron-to-close-german-pcb-plant-invest-1-6b-in-asian-expansion">Printed Circuit Design &amp; Fab</a></div>
+  </div>
+
+  <div class="s-card">
+    <h4>Compeq holds capex above NT$20bn for three years, funding Thailand high-end capacity</h4>
+    <p>Compeq plans to sustain capital expenditure above NT$20 billion (about $612.7 million) for three consecutive years from 2026 to 2028, funding process upgrades and high-end capacity expansion at its Taiwan, mainland China and Thailand plants.</p>
+    <div class="s-meta">📍 Thailand · Status: multi-year capex programme</div>
+    <div class="s-impact"><p>Thailand's share of high-end PCB output rises, giving regional EMS buyers a domestic alternative for advanced boards.</p></div>
+    <div class="s-src">Nov 2026 · <a href="https://finance.biggo.com/news/36046932-89ec-40ce-b4c2-f61e8017c08e">BigGo Finance</a></div>
+  </div>
+
+  <div class="s-card">
+    <h4>Inari Amertron adds Penang RF factory space, lifting floor area 70%</h4>
+    <p>Inari Amertron is acquiring leasehold industrial land and a factory building in the Bayan Lepas Free Trade Zone for RM22.8 million, lifting its Penang RF manufacturing gross floor area from 283,000 sq ft to 500,000 sq ft.</p>
+    <div class="s-meta">📍 Penang, Malaysia · Status: acquisition for capacity flexibility</div>
+    <div class="s-impact"><p>Adds RF front-end capacity in Malaysia at a time of rising demand; gives buyers a second regional RF source alongside China and the Philippines.</p></div>
+    <div class="s-src">07 Nov 2026 · <a href="https://theedgemalaysia.com/article/inari%E2%80%99s-factory-acquisition-provides-flexibility-expand-rf-production">The Edge Malaysia</a></div>
+  </div>
+</div></div>
+
+<div class="policy-wrap"><div class="wrap">
+  <div class="section-rule"><span class="section-icon">📋</span><h2>Policy Focus</h2><div class="section-sub">Certification, incentives and market-access rules</div></div>
+  <div class="p-card">
+    <h4>India electrical appliances QCO 2026 tightens BIS certification gate</h4>
+    <p>India's Safety of Household, Commercial and Similar Electrical Appliances (Quality Control) Order, 2026 makes BIS certification a precondition for market access — no certification, no India market entry for covered appliances.</p>
+    <div class="p-status">Status: in force for covered product categories</div>
+    <div class="p-alert">⚠️ Exporters shipping household appliances into India must verify BIS registration before booking production.</div>
+  </div>
+  <div class="ptable">
+    <table>
+      <thead><tr><th>Market</th><th>Policy</th><th>CE Impact</th><th>Effective Date</th></tr></thead>
+      <tbody>
+        <tr><td>🇮🇳 India</td><td>Electrical Appliances QCO 2026 (BIS certification)</td><td>Mandatory certification for covered appliances; non-compliant goods blocked</td><td>2026</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div></div>
+
+<div class="section-rule"><span class="section-icon">🇻🇳</span><h2>Vietnam</h2><div class="section-sub">Manufacturing &amp; Supply Chain · OEM/EMS</div></div>
+<div class="card breaking">
+  <div class="card-header"><span class="breaking-badge">BREAKING</span><span class="btag b-ems">Wistron</span><h3>Wistron injects additional $24.5m into Vietnam server operations</h3></div>
+  <p>Wistron has injected a further $24.5 million into its Vietnam subsidiary, adding to roughly $300 million invested in the country since 2019, with the funds directed at expanding server production capacity.</p>
+  <p>The move follows board approvals for up to $59.05 million in additional Vietnam subsidiary investment and sits alongside $146 million allocated to equipment at its Westport, Texas plant — a two-track US-Vietnam capacity build-out.</p>
+  <div class="impact"><div class="impact-label">Sourcing Implication</div><p>Vietnam's server ODM capacity is scaling fast; procurement teams should qualify Vietnamese server assembly as a China-plus-one node for rack-scale orders.</p></div>
+  <div class="src">03 Nov 2026 · InvestVietnam · <a href="https://investvietnam.vn/wistron-injects-additional-036-24-5-million-into-vietnam-n2520.html">source</a></div>
+</div>
+<div class="card">
+  <div class="card-header"><span class="btag b-luxshare">Luxshare</span><h3>Luxshare-ICT adds 9m-unit VR line in Bac Ninh, lifting total capacity to 311m</h3></div>
+  <p>Luxshare-ICT is expanding production scale in Vietnam with a new VR goggle line rated at 9 million units annually, part of a plan to raise total annual capacity across its Bac Ninh factories from 257 million to 311 million items.</p>
+  <p>The expansion carries total investment capital of $520 million and requires recruiting 11,220 additional workers to reach the new production volume.</p>
+  <div class="impact"><div class="impact-label">Strategic Read</div><p>Vietnam is consolidating as the primary non-China base for VR/AR assembly; component suppliers should plan local inventory buffers accordingly.</p></div>
+  <div class="src">Nov 2026 · The Investor · <a href="https://theinvestor.vn/luxshare-to-add-9-mln-virtual-reality-products-to-production-in-vietnam-d18028.html">source</a></div>
+</div>
+<div class="card">
+  <div class="card-header"><span class="btag b-foxconn">Foxconn</span><h3>Foxconn targets November 2026 full-scale output on new Bac Ninh lines</h3></div>
+  <p>Foxconn planned to install new production lines at its Bac Ninh factory between May and August 2026, run trial operations in September and begin full-scale production in November 2026, with humanoid robot production among the planned activities.</p>
+  <p>The company has committed around $4 billion in Vietnam since its first investment in 2007 and employs roughly 130,000 workers there, and has separately announced an additional $58.32 million investment in Fushan Technology (Vietnam).</p>
+  <div class="impact"><div class="impact-label">Market Signal</div><p>Foxconn's Vietnam footprint is moving up the value curve from assembly toward automation and robotics — a signal for component and tooling suppliers to follow.</p></div>
+  <div class="src">Nov 2026 · VOV · <a href="https://english.vov.vn/en/economy/foxconn-plans-humanoid-robot-production-at-bac-ninh-factory-post1286900.vov">source</a></div>
+</div>
+
+<div class="section-rule"><span class="section-icon">🇮🇳</span><h2>India</h2><div class="section-sub">Manufacturing · PLI &amp; Policy · Supply Chain · OEM/EMS</div></div>
+<div class="card breaking">
+  <div class="card-header"><span class="breaking-badge">BREAKING</span><span class="btag b-policy">LG</span><h3>LG Electronics India discloses phased Sri City investment in 5 Nov filing</h3></div>
+  <p>LG Electronics India said in a 5 November 2026 filing that investments at its Sri City plant will be made in phases based on operational scale, equipment and technology needs, and did not disclose a rupee investment amount in the filing.</p>
+  <p>The 247-acre Sri City facility — LG's third India plant after Greater Noida and Pune — is a roughly ₹5,000 crore ($600 million) project targeting production start by December 2026 for air conditioners, compressors, refrigerators and washing machines, with around 1,495 direct jobs.</p>
+  <div class="impact"><div class="impact-label">Strategic Read</div><p>Phased capex language signals LG is keeping Sri City flexible on product mix; component suppliers should expect staged qualification rather than a single ramp.</p></div>
+  <div class="src">05 Nov 2026 · Multibagg · <a href="https://www.multibagg.ai/market-pulse/articles/lg-electronics-india-vehicle-solutions-announcement-cmw3iuxfd003kjk2r32s96egm">source</a></div>
+</div>
+<div class="card breaking">
+  <div class="card-header"><span class="breaking-badge">BREAKING</span><span class="btag b-vivo">vivo / Dixon</span><h3>India approves vivo–Dixon smartphone manufacturing joint venture</h3></div>
+  <p>The Indian government approved the joint venture between Dixon Technologies India and vivo Mobile India under Press Note 3 of 2020, clearing the 51:49, Dixon-controlled structure for smartphone manufacturing.</p>
+  <p>The JV is expected to add 20–22 million units of annual capacity at full run rate and generate around ₹30,000 crore in revenue, with production starting in the December quarter of FY27 and backward integration into camera and display modules.</p>
+  <div class="impact"><div class="impact-label">Sourcing Implication</div><p>A cleared vivo–Dixon JV gives buyers a compliant, India-domiciled smartphone manufacturing route with localised module supply over time.</p></div>
+  <div class="src">04 Nov 2026 · Developing Telecoms · <a href="https://developingtelecoms.com/telecom-business/vendor-news/20515-india-approves-vivo-dixon-smartphone-manufacturing-joint-venture.html">source</a></div>
+</div>
+<div class="card">
+  <div class="card-header"><span class="btag b-dixon">Dixon</span><h3>Dixon sets 60m-unit FY28 and 70m-unit FY29 mobile volume targets</h3></div>
+  <p>Dixon Technologies executives outlined multi-year mobile volume expansion targets of 60 million units by FY28 and 70 million units by FY29, supported by its joint ventures and growing component manufacturing capabilities.</p>
+  <p>Capacity is expected to rise from the current 70 million units to 180–190 million units over the next few years, with the company also targeting servers and data-centre segments.</p>
+  <div class="impact"><div class="impact-label">Market Signal</div><p>Dixon's volume roadmap implies a multi-year pull for locally sourced components — a planning cue for Indian enclosure, display and camera module suppliers.</p></div>
+  <div class="src">Nov 2026 · Sahi · <a href="https://www.sahi.com/news/dixon-tech-targets-mobile-volumes-of-60m-units-in-fy28-and-70m-units-in-fy29">source</a></div>
+</div>
+
+<div class="src-index"><div class="wrap">
+  <div class="section-rule"><span class="section-icon">📚</span><h2>Source Index</h2><div class="section-sub">Every item in this issue</div></div>
+  <table class="itable">
+    <thead><tr><th>No.</th><th>Market</th><th>Story Topic</th><th>Source Media</th><th>Date</th></tr></thead>
+    <tbody>
+      <tr class="r-global"><td>1</td><td>🌐 Regional</td><td>Unimicron closes German PCB plant, $1.6bn Asian expansion</td><td>Printed Circuit Design &amp; Fab</td><td>06 Nov 2026</td></tr>
+      <tr class="r-global"><td>2</td><td>🌐 Regional</td><td>Daikin ¥100bn SEA/India investment incl. Indonesia compact AC</td><td>Vietnam Investment Review</td><td>05 Nov 2026</td></tr>
+      <tr class="r-supply"><td>3</td><td>🇹🇭 Thailand</td><td>Compeq capex above NT$20bn 2026–2028, Thailand high-end capacity</td><td>BigGo Finance</td><td>Nov 2026</td></tr>
+      <tr class="r-supply"><td>4</td><td>🇲🇾 Malaysia</td><td>Inari Amertron RM22.8m Penang RF factory acquisition</td><td>The Edge Malaysia</td><td>07 Nov 2026</td></tr>
+      <tr class="r-policy"><td>5</td><td>🇮🇳 India</td><td>Electrical Appliances QCO 2026 / BIS certification gate</td><td>India Briefing</td><td>Nov 2026</td></tr>
+      <tr class="r-new"><td>6</td><td>🇻🇳 Vietnam</td><td>Wistron injects additional $24.5m into Vietnam server operations</td><td>InvestVietnam</td><td>03 Nov 2026</td></tr>
+      <tr class="r-new"><td>7</td><td>🇻🇳 Vietnam</td><td>Luxshare-ICT adds 9m-unit VR line, capacity to 311m items</td><td>The Investor</td><td>Nov 2026</td></tr>
+      <tr class="r-new"><td>8</td><td>🇻🇳 Vietnam</td><td>Foxconn Bac Ninh new lines target November 2026 full output</td><td>VOV</td><td>Nov 2026</td></tr>
+      <tr class="r-new"><td>9</td><td>🇮🇳 India</td><td>LG Electronics India 5 Nov filing on phased Sri City investment</td><td>Multibagg</td><td>05 Nov 2026</td></tr>
+      <tr class="r-new"><td>10</td><td>🇮🇳 India</td><td>India approves vivo–Dixon smartphone manufacturing JV</td><td>Developing Telecoms</td><td>04 Nov 2026</td></tr>
+      <tr class="r-new"><td>11</td><td>🇮🇳 India</td><td>Dixon targets 60m units FY28, 70m units FY29 mobile volumes</td><td>Sahi</td><td>Nov 2026</td></tr>
+    </tbody>
+  </table>
+</div></div>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Southeast Asia &amp; India Manufacturing Watch</strong> — Weekly Newsletter</p>
+    <p>Coverage period: 03 November – 09 November 2026 · Compiled: 09 November 2026</p>
+    <p>Disclaimer: This issue is compiled solely from the search results provided for the stated coverage window. Items are included only where the underlying event falls within 03–09 November 2026 or where no date is available but the content clearly describes events from this week. Figures, dates and investment amounts are as reported by the cited sources and have not been independently verified.</p>
+    <p>Sources: Printed Circuit Design &amp; Fab, Vietnam Investment Review, BigGo Finance, The Edge Malaysia, India Briefing, InvestVietnam, The Investor, VOV, Multibagg, Developing Telecoms, Sahi.</p>
+  </div>
+</footer>
+</div><!-- /wrap -->
+</body>
+</html>
