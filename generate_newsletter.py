@@ -74,6 +74,11 @@ SEARCH_N   = int(os.getenv("SEARCH_RESULTS_PER_QUERY") or "6")
 # override with OUTPUT_DIR env var for local Windows paths.
 OUTPUT_DIR = Path(os.getenv("OUTPUT_DIR", "./output"))
 
+# Abort (exit code 1, no LLM call, no email) when this share of searches fails,
+# or when the first ABORT_AFTER_FIRST searches all fail (e.g. API key or quota problem).
+MAX_SEARCH_FAIL_RATIO = float(os.getenv("MAX_SEARCH_FAIL_RATIO") or "0.5")
+ABORT_AFTER_FIRST     = int(os.getenv("ABORT_AFTER_FIRST_FAILURES") or "5")
+
 # ── Email configuration ───────────────────────────────────────────────────────
 EMAIL_SMTP_HOST = os.getenv("EMAIL_SMTP_HOST", "smtp.gmail.com")
 EMAIL_SMTP_PORT = int(os.getenv("EMAIL_SMTP_PORT", "465"))   # 465=SSL, 587=STARTTLS
@@ -133,6 +138,33 @@ def _parse_published_date(raw: str) -> datetime | None:
     return None
 
 
+class SearchAborted(RuntimeError):
+    """Raised when web search is clearly not working, so no empty newsletter is sent."""
+
+
+# Collected while searching: {"failed": int, "errors": {message: count}}
+SEARCH_STATS: dict = {"failed": 0, "errors": {}}
+
+
+def _record_failure(exc: Exception) -> None:
+    SEARCH_STATS["failed"] += 1
+    status = getattr(getattr(exc, "response", None), "status_code", None)
+    key = f"HTTP {status}" if status else type(exc).__name__
+    SEARCH_STATS["errors"][key] = SEARCH_STATS["errors"].get(key, 0) + 1
+
+
+def _explain(errors: dict) -> str:
+    hints = {
+        "HTTP 401": "Tavily rejected the API key - check the TAVILY_API_KEY secret.",
+        "HTTP 403": "Tavily refused the request - check the API key and plan.",
+        "HTTP 429": "Tavily rate limit hit - wait and re-run, or lower the search volume.",
+        "HTTP 432": "Tavily plan / credit limit exceeded - top up or upgrade the Tavily account, or use a new key.",
+        "HTTP 433": "Tavily pay-as-you-go limit reached - raise the limit in the Tavily dashboard.",
+    }
+    parts = [f"{k} x{v}" + (f" ({hints[k]})" if k in hints else "") for k, v in errors.items()]
+    return "; ".join(parts) or "unknown error"
+
+
 def tavily_search(query: str, days_back: int = 7) -> str:
     """Run one Tavily search; returns a formatted text block.
 
@@ -154,6 +186,7 @@ def tavily_search(query: str, days_back: int = 7) -> str:
         data = r.json()
     except Exception as exc:
         log.warning(f"    ⚠ Search failed: {exc}")
+        _record_failure(exc)
         return f"[Search unavailable for: {query}]"
 
     cutoff = datetime.now() - timedelta(days=days_back)
@@ -396,7 +429,13 @@ def run_all_searches(start: datetime, end: datetime) -> str:
     queries = build_queries(start, end)
     blocks: list[str] = []
     log.info(f"Running {len(queries)} searches via Tavily...")
+    SEARCH_STATS["failed"] = 0
+    SEARCH_STATS["errors"] = {}
     for i, item in enumerate(queries, 1):
+        if i > ABORT_AFTER_FIRST and SEARCH_STATS["failed"] == i - 1:
+            raise SearchAborted(
+                f"The first {i - 1} searches all failed - stopping early. "
+                f"Cause: {_explain(SEARCH_STATS['errors'])}")
         log.info(f"  [{i:02d}/{len(queries)}] R{item['r']} · {item['label']}")
         result = tavily_search(item["q"], days_back=7)
         blocks.append(
@@ -404,7 +443,12 @@ def run_all_searches(start: datetime, end: datetime) -> str:
             f"Query: {item['q']}\n\n{result}"
         )
         time.sleep(0.35)
-    log.info("✓ All searches complete")
+    failed, total = SEARCH_STATS["failed"], len(queries)
+    log.info(f"✓ All searches complete: {total - failed}/{total} succeeded, {failed} failed")
+    if total and failed / total >= MAX_SEARCH_FAIL_RATIO:
+        raise SearchAborted(
+            f"{failed} of {total} searches failed ({failed / total:.0%}, limit "
+            f"{MAX_SEARCH_FAIL_RATIO:.0%}). Cause: {_explain(SEARCH_STATS['errors'])}")
     sep = "\n\n" + "─" * 70 + "\n\n"
     return sep.join(blocks)
 
@@ -1029,7 +1073,14 @@ def main() -> None:
         search_results = cache.read_text(encoding="utf-8")
     else:
         log.info("\n[1/5] Running web searches...")
-        search_results = run_all_searches(start, end)
+        try:
+            search_results = run_all_searches(start, end)
+        except SearchAborted as exc:
+            log.error(f"\nSEARCH FAILED - newsletter NOT generated and NOT emailed.\n  {exc}")
+            if os.getenv("GITHUB_ACTIONS") == "true":
+                # Shows as a red annotation on the Actions run page
+                print(f"::error title=Web search failed::{exc}")
+            sys.exit(1)
 
     log.info(f"✓ Search data: {len(search_results):,} chars")
 
